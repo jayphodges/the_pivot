@@ -13,5 +13,6 @@ FactoryGirl.define do
     
     image "http://lorempixel.com/400/200"
 
+    category
   end
 end
