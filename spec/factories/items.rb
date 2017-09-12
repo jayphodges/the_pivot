@@ -9,9 +9,9 @@ FactoryGirl.define do
     	"descrip#{i}"
     end
     
-    price rand(1.0..1000.0)
+    price {rand(100.0)}
     
     image "http://lorempixel.com/400/200"
-    
+
   end
 end
