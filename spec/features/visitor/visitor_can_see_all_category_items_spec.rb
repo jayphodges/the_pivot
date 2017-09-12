@@ -3,7 +3,8 @@ require 'rails_helper'
 describe "Visitor can view category path" do
 	context "visitor visits /category_name" do
     scenario "and sees all items" do
-      create_list(:item, 6, category: "Guitar")
+      category = create(:category, title: "Guitar")
+      create_list(:item, 6, category: category)
       # As a visitor
       # When I visit “/:CATEGORY_NAME” 
       visit category_path(@category)
