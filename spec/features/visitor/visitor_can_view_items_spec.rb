@@ -8,7 +8,7 @@ describe "Visitor can view items" do
 			# When I visit “/items”
 			visit items_path
 			# I can see all existing items
-			expect(page).to have_css('items', count: 5)
+			expect(page).to have_css('item_card', count: 5)
 		end
 	end
 end
