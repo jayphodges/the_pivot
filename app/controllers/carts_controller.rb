@@ -1,8 +1,7 @@
 class CartsController < ApplicationController
 
   def show
-    @items = Item.where(id: session[:cart].values)
-    binding.pry
+    @items = Item.where(id: session[:cart].keys)
   end
 
   def create
