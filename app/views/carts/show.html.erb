@@ -3,6 +3,7 @@
 <h5><%= item.title %></h5>
 <p><%= item.description %></p>
 <p>$<%= item.price %></p>
+<%= link_to "Remove Item", cart_path(id: item.id), method: :delete %>
 <% end %>
 
 <p>Total: <%= @cart.total %></p>

@@ -1,8 +1,7 @@
 class CartsController < ApplicationController
 
   def show
-    @items = Item.where(id: session[:cart].values)
-    # @cart = 
+    @items = Item.where(id: session[:cart].keys)
   end
 
   def create
@@ -11,5 +10,10 @@ class CartsController < ApplicationController
     session[:cart] ||= Hash.new(0)
     session[:cart][id] = (session[:cart][id] || 0) + 1
     redirect_back(fallback_location: items_path)
+  end
+
+  def destroy
+    session[:cart].delete(params[:id].to_s)
+    redirect_to cart_path
   end
 end
