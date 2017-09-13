@@ -1,4 +1,4 @@
-<%  @items.each do |item| %>
+<% @items.each do |item| %>
 <div class="item-<%= item.id %>">
 <%= image_tag(item.image, class: "item_thumbnail") %>
 <h5><%= item.title %></h5>
@@ -6,6 +6,7 @@
 <p>$<%= item.price %></p>
 <p><%= @cart.quantity(item) %></p>
 <%= form_tag(cart_path, method: :patch) do %>
+  <%= hidden_field_tag(:item_id, item.id) %>
   <%= label_tag("Quantity") %>
   <%= text_field_tag("Quantity", "#{@cart.quantity(item)}") %>
   <%= submit_tag("Update") %>

@@ -12,6 +12,12 @@ class CartsController < ApplicationController
     redirect_back(fallback_location: items_path)
   end
 
+  def update
+    item = Item.find(params[:item_id])
+    @cart.update_item(item.id, params[:quantity])
+    redirect_to cart_path
+  end
+
   def destroy
     session[:cart].delete(params[:id].to_s)
     redirect_to cart_path
