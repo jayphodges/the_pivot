@@ -1,0 +1,8 @@
+<%  @items.each do |item| %>
+<%= image_tag(item.image, class: "item_thumbnail") %>
+<h5><%= item.title %></h5>
+<p><%= item.description %></p>
+<p>$<%= item.price %></p>
+<% end %>
+
+<p>Total: <%= @cart.total %></p>
