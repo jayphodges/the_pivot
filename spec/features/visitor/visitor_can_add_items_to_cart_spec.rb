@@ -11,8 +11,7 @@ describe "Visitor views items index" do
         expect(page).to have_content("Add to Cart")
 
         click_on "Add to Cart"
-        click_on "Add to Cart"
-        
+        # save_and_open_page
 
         click_on "View Cart"
 
@@ -21,7 +20,7 @@ describe "Visitor views items index" do
         expect(page).to have_content(item.title)
         expect(page).to have_content(item.description)
         expect(page).to have_content(item.price)
-        expect(page).to have_content(cart.total)
+        expect(page).to have_content("Total: #{item.price}")
       end
     end
   end

@@ -10,9 +10,9 @@ class Cart
   end
 
   def total
-    contents.each do |content|
+    final = contents.map do |content|
       item = Item.find_by(id: content.first)
       item.price * content.last
-    end
+    end.sum
   end
 end
