@@ -6,3 +6,5 @@
 <% end %>
 
 <p>Total: <%= @cart.total %></p>
+
+<%= link_to "Remove Item", cart_path, method: :delete %>

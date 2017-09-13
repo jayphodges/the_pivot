@@ -11,4 +11,8 @@ class CartsController < ApplicationController
     session[:cart][id] = (session[:cart][id] || 0) + 1
     redirect_back(fallback_location: items_path)
   end
+
+  def destroy
+    
+  end
 end
