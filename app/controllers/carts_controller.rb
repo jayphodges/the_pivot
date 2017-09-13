@@ -2,6 +2,7 @@ class CartsController < ApplicationController
 
   def show
     @items = Item.where(id: session[:cart].values)
+    # @cart = 
   end
 
   def create
