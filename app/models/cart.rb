@@ -10,8 +10,9 @@ class Cart
   end
 
   def total
-    binding.pry
-    items = Item.where(id: @contents.values)
-    items.pluck(:price).sum
+    contents.each do |content|
+      item = Item.find_by(id: content.first)
+      item.price * content.last
+    end
   end
 end
