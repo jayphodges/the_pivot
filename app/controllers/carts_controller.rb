@@ -13,6 +13,6 @@ class CartsController < ApplicationController
   end
 
   def destroy
-    
+    session[:cart].delete(params[:id].to_s)
   end
 end
