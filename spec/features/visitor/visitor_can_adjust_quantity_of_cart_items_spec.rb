@@ -17,7 +17,7 @@ RSpec.feature "User increases cart quantity of item" do
     # expect(page).to have_content("Item Subtotal: $1.00")
     expect(page).to have_content("Total: #{item.price}")
 
-    fill_in "quantity", with: "2"
+    fill_in "Quantity", with: "2"
     click_on "Update"
 
     expect(current_path).to eq(cart_path)
