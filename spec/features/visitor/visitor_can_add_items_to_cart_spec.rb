@@ -4,13 +4,14 @@ describe "Visitor views items index" do
   context "Visitor clicks on link to add item to cart" do
     context "Visitor clicks link to visit cart" do
       scenario "Visitor sees item with info and price in cart" do
-        item = create(:item)
+        category = create(:category)
+        item = create(:item, category: category)
 
         visit items_path
-
         expect(page).to have_content("Add to Cart")
 
         click_on "Add to Cart"
+        #CANT GET HERE
 
         click_on "View Cart"
 
