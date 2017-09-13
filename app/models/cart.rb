@@ -15,4 +15,9 @@ class Cart
       item.price * content.last
     end.sum
   end
+
+  def quantity(item)
+    id = item.id
+    contents[:id].to_s
+  end
 end

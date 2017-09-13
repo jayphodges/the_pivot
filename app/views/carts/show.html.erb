@@ -1,10 +1,10 @@
 <%  @items.each do |item| %>
-<div class="item-#{<%= item.id %>}">
+<div class="item-<%= item.id %>">
 <%= image_tag(item.image, class: "item_thumbnail") %>
 <h5><%= item.title %></h5>
 <p><%= item.description %></p>
 <p>$<%= item.price %></p>
-<p><%= item.quantity %></p>
+<p><%= @cart.quantity(item) %></p>
 <%= link_to "Remove Item", cart_path(id: item.id), method: :delete %>
 </div>
 <% end %>

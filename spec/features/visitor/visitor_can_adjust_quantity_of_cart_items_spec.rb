@@ -8,6 +8,7 @@ RSpec.feature "User increases cart quantity of item" do
 
     click_on "Add to Cart"
     click_on "View Cart"
+    save_and_open_page
 
     within(".item-#{item.id}") do
       expect(page).to have_content("1")
