@@ -1,10 +1,14 @@
 class CartsController < ApplicationController
 
   def show
-    @items = Item.find_by(id: :item_id)
+    @items = Item.where(id: session[:cart].values)
   end
 
   def create
+    id = params["item_id"].to_s
+    @item = Item.find_by(id: id)
+    session[:cart] ||= Hash.new(0)
+    session[:cart][id] = (session[:cart][id] || 0) + 1
     redirect_back(fallback_location: items_path)
   end
 end
