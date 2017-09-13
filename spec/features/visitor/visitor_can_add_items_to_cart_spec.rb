@@ -11,7 +11,6 @@ describe "Visitor views items index" do
         expect(page).to have_content("Add to Cart")
 
         click_on "Add to Cart"
-        #CANT GET HERE
 
         click_on "View Cart"
 

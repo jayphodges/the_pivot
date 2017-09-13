@@ -5,6 +5,6 @@ class CartsController < ApplicationController
   end
 
   def create
-    # redirect_back(fallback: items_path)
+    redirect_back(fallback_location: items_path)
   end
 end
