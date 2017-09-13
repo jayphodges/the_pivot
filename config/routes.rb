@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
 
-	resources :items, only: [:index]
+  resources :items, oonly: [:index]
 
-	resources :carts, only: [:create]
+  resources :carts, only: [:create]
 
-	resources :categories, path: "/", only: [:show]
+  get '/cart', to: 'carts#index', as: 'cart'
 
-	get '/cart', to: 'carts#index', as: 'cart'
+  resources :categories, path: '/', only: [:show]
 
 end
