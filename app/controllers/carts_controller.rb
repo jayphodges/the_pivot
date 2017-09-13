@@ -2,7 +2,7 @@ class CartsController < ApplicationController
 
   def show
     @items = Item.where(id: session[:cart].values)
-    # @cart = 
+    binding.pry
   end
 
   def create
