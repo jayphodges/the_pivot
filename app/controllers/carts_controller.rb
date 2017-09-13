@@ -14,5 +14,6 @@ class CartsController < ApplicationController
 
   def destroy
     session[:cart].delete(params[:id].to_s)
+    redirect_to cart_path
   end
 end
