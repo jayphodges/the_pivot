@@ -5,7 +5,6 @@ class CartsController < ApplicationController
   end
 
   def create
-    byebug
-    redirect_back(fallback: items_path)
+    # redirect_back(fallback: items_path)
   end
 end
