@@ -1,0 +1,8 @@
+<div>
+	<% @items.each do |item| %>
+	<div class="item_card">
+		<p><%= item.title %></p>
+		<p><%= link_to "Add to Cart", cart_path(item_id: item.id), method: :post %></p>
+	</div>
+	<% end %>
+</div>
