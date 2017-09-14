@@ -21,5 +21,12 @@ describe Cart do
 
       expect(@cart.contents).to eq({@item.id.to_s => 12})
     end
+
+    it '.subtotal' do
+      @cart.add_item(@item.id)
+      @cart.update_item(@item.id, 12)
+
+      expect(@cart.subtotal(@item)).to eq((12 * 5.5).to_s + '0')
+    end
   end
 end
