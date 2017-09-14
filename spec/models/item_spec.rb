@@ -55,11 +55,14 @@ RSpec.describe Item, type: :model do
     end
 
     context "valid attributes" do
-      # it "is valid with valid attributes" do
-      #   category = create(:category)
+      it "is valid with valid attributes" do
+        c = Category.create(title: "Guitars")
+        item = Item.create(title: 'title', description: "desc",
+          price: 5.5, image: 'foo.png', category_id: c.id)
 
-      #   expect(category).to be_valid
-      # end
+
+        expect(item).to be_valid
+      end
     end
   end
 end
