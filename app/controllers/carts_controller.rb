@@ -14,7 +14,7 @@ class CartsController < ApplicationController
 
   def update
     item = Item.find(params[:item_id])
-    @cart.update_item(item.id, params[:quantity])
+    @cart.update_item(item.id, params[:Quantity])
     redirect_to cart_path
   end
 
