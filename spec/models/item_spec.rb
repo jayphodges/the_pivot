@@ -65,4 +65,16 @@ RSpec.describe Item, type: :model do
       end
     end
   end
+
+  describe "instance methods" do
+    context "price sanitization" do
+      it '.formatted_price' do
+        c = Category.create(title: "Guitars")
+        item = Item.create(title: 'title', description: "desc",
+          price: 1.1, image: 'foo.png', category_id: c.id)
+
+        expect(item.formatted_price).to eq('1.10')
+      end
+    end
+  end
 end
