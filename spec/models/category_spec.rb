@@ -9,5 +9,13 @@ RSpec.describe Category, type: :model do
         expect(category).to be_invalid
       end
     end
+
+    context "valid attributes" do
+      it "is valid with valid attributes" do
+        category = create(:category)
+
+        expect(category).to be_valid
+      end
+    end
   end
 end
