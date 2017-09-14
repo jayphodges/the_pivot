@@ -3,7 +3,7 @@
 <%= image_tag(item.image, class: "item_thumbnail") %>
 <h5><%= item.title %></h5>
 <p><%= item.description %></p>
-<p>$<%= item.price %></p>
+<p>$<%= item.formatted_price %></p>
 <%= form_tag(cart_path, method: :patch) do %>
   <%= hidden_field_tag(:item_id, item.id) %>
   <%= label_tag("Quantity") %>
@@ -15,4 +15,4 @@
 </div>
 <% end %>
 
-<p>Total: <%= @cart.total %></p>
+<p>Total: $<%= @cart.total %></p>
