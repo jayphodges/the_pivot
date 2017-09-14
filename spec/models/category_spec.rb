@@ -1,5 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Category, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "validations" do
+    context "invalid attributes" do
+      it 'is invalid without a title' do
+        category = Category.create(title: "")
+
+        expect(category).to be_invalid
+      end
+    end
+  end
 end
