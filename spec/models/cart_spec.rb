@@ -37,5 +37,15 @@ describe Cart do
 
       expect(@cart.total).to eq('15.50')
     end
+
+    it '.quantity' do
+      @cart.add_item(@item.id)
+
+      expect(@cart.quantity(@item)).to eq(1)
+
+      @cart.add_item(@item.id)
+
+      expect(@cart.quantity(@item)).to eq(2)
+    end
   end
 end
