@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   get '/login', to: 'sessions#new'
 
+  resources :users, only: [:new]
+
   resources :categories, path: '/', only: [:show]
 
 end
