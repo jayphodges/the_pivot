@@ -1,9 +1,18 @@
-<%  @items.each do |item| %>
+<% @items.each do |item| %>
+<div class="item-<%= item.id %>">
 <%= image_tag(item.image, class: "item_thumbnail") %>
 <h5><%= item.title %></h5>
 <p><%= item.description %></p>
 <p>$<%= item.price %></p>
+<%= form_tag(cart_path, method: :patch) do %>
+  <%= hidden_field_tag(:item_id, item.id) %>
+  <%= label_tag("Quantity") %>
+  <%= text_field_tag("Quantity", "#{@cart.quantity(item)}") %>
+  <%= submit_tag("Update") %>
+<% end %>
+<p>Item Subtotal: $<%= @cart.subtotal(item) %></p>
 <%= link_to "Remove Item", cart_path(id: item.id), method: :delete %>
+</div>
 <% end %>
 
 <p>Total: <%= @cart.total %></p>
