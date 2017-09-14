@@ -17,7 +17,6 @@ class Cart
     id = item.id
     quantity = contents[id.to_s]
     num = quantity * item.price
-    binding.pry
     sprintf('%.2f', num)
   end
 
@@ -34,5 +33,5 @@ class Cart
     id = item.id
     contents[id.to_s]
   end
-  
+
 end
