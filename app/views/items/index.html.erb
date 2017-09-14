@@ -1,8 +1,18 @@
 <div>
-	<% @items.each do |item| %>
-	<div class="item_card index_item_<%= item.id %>">
-		<p><%= item.title %></p>
-		<p><%= link_to "Add to Cart", cart_path(item_id: item.id), method: :post %></p>
+<h1 class="center-text">ALL ITEMS</h1>
+
+	<div class="row items-row">
+		<% @items.each do |item| %>
+		<div class="col-md-3">
+
+			<div class="item_card index_item_<%= item.id %>">
+				<img class="item-card-img" src="<%= item.image %>" alt="">
+				<h3><%= item.title %></h3>
+				<p><%= link_to "Add to Cart", cart_path(item_id: item.id), method: :post %></p>
+			</div>
+
+		</div>
+
+		<% end %>
 	</div>
-	<% end %>
 </div>
