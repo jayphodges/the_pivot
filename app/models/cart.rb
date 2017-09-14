@@ -16,18 +16,23 @@ class Cart
   def subtotal(item)
     id = item.id
     quantity = contents[id.to_s]
-    quantity * item.price
+    num = quantity * item.price
+    binding.pry
+    sprintf('%.2f', num)
   end
 
   def total
-    contents.map do |content|
+    mapped_cont = contents.map do |content|
       item = Item.find_by(id: content.first)
       item.price * content.last
-    end.sum
+    end
+    total = mapped_cont.sum
+    sprintf('%.2f', total)
   end
 
   def quantity(item)
     id = item.id
     contents[id.to_s]
   end
+  
 end
