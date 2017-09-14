@@ -1,9 +1,9 @@
 describe Cart do
   context "instance methods" do
     before(:each) do
-      c = Category.create(title: "Guitars")
+      @c = Category.create(title: "Guitars")
       @item = Item.create(title: 'title', description: "desc",
-        price: 5.5, image: 'foo.png', category_id: c.id)
+        price: 5.5, image: 'foo.png', category_id: @c.id)
       @cart = Cart.new({})
     end
 
@@ -27,6 +27,15 @@ describe Cart do
       @cart.update_item(@item.id, 12)
 
       expect(@cart.subtotal(@item)).to eq((12 * 5.5).to_s + '0')
+    end
+
+    it '.total' do
+      item_2 = Item.create(title: 'title2', description: "desc",
+        price: 10, image: 'foo.png', category_id: @c.id)
+      @cart.add_item(@item.id)
+      @cart.add_item(item_2.id)
+
+      expect(@cart.total).to eq('15.50')
     end
   end
 end
