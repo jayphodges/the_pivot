@@ -1,5 +1,16 @@
-<h1>ITEM SHOW PAGE</h1>
-<img src="<%= @item.image %>" alt="">
-<h1> <%= @item.title %></h1>
-<h4><%= @item.price %></h4>
-<p><%= @item.description %></p>
+<div class="item_block">
+  <div class="row">
+    <div class="col-6 col-md-4 item_info">
+      <h4><%= @item.title %></h4>
+      <p>$<%= @item.formatted_price %></p>
+      <p><%= @item.description %></p>
+    </div>
+    <div class="col-6 col-md-4">
+      <%= link_to "Add to Cart", cart_path(item_id: @item.id), method: :post, class: "cart cart_show btn btn-outline-info" %>
+    </div>
+    <div class="col-6 col-md-4 item_image">
+      <img src="<%= @item.image %>" alt="">
+    </div>
+    <div class="col-6 col-md-4"></div>
+  </div>
+</div>
