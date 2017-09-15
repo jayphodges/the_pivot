@@ -1,1 +1,16 @@
-<%= link_to "Create Account", new_user_path %>
+<div>
+	<h3>User Login</h3>
+	<%= form_for(:session, url: login_path) do |f| %>
+			<%= f.label :username %>
+			<%= f.text_field :username %>
+
+			<%= f.label :password %>
+			<%= f.password_field :password %>
+
+			<%= f.submit "Login" %>
+	<% end %>
+</div>
+
+<div>
+	<%= link_to "Create Account", new_user_path %>
+</div>

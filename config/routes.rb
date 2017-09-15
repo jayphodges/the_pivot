@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resource :cart
 
   get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
 
   get '/dashboard', to: 'users#show'
 
