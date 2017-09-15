@@ -20,16 +20,19 @@ describe "Visitor can log in and see logged in options in cart" do
 
 			visit cart_path
 
-			expect(page).to_not have_content("Checkout")
-
-			expect(page).to have_content("Login or Create Account to Checkout")
+			within(".cart_checkout") do
+				expect(page).to have_content("Login or Create Account to Checkout")
+				expect(page).to have_content("Checkout", count: 1)
+			end
 
 			allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
 			visit cart_path
 
-			expect(page).to_not have_content("Login or Create Account to Checkout")
-			expect(page).to have_content("Checkout")
+			within(".cart_checkout") do
+				expect(page).to_not have_content("Login or Create Account to Checkout")
+				expect(page).to have_content("Checkout", count: 1)
+			end
 		end
 	end
 end
