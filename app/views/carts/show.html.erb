@@ -1,27 +1,45 @@
-<% @items.each do |item| %>
-<div class="item-<%= item.id %>">
-<%= image_tag(item.image, class: "item_thumbnail") %>
-<h5><%= item.title %></h5>
-<p><%= item.description %></p>
-<p>$<%= item.formatted_price %></p>
-<%= form_tag(cart_path, method: :patch) do %>
-  <%= hidden_field_tag(:item_id, item.id) %>
-  <%= label_tag("Quantity") %>
-  <%= text_field_tag("Quantity", "#{@cart.quantity(item)}") %>
-  <%= submit_tag("Update") %>
-<% end %>
-<p>Item Subtotal: $<%= @cart.subtotal(item) %></p>
-<%= link_to "Remove Item", cart_path(id: item.id), method: :delete %>
+<div class="row">
+  <div class="col-md-9">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Title</th>
+          <th>Quantity</th>
+          <th>Unit Price</th>
+          <th>Extended Price</th>
+          <th>Remove</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @items.each do |item| %>
+        <div class="item-<%= item.id %>">
+          <tr>
+            <td><%= image_tag(item.image, class: "item-cart-thumb") %></td>
+            <td><%= item.title %></td>
+            <td><%= form_tag(cart_path, method: :patch) do %>
+              <%= hidden_field_tag(:item_id, item.id) %>
+              <%= text_field_tag("Quantity", "#{@cart.quantity(item)}") %>
+              <%= submit_tag("Update") %>
+              <% end %>
+            </td>
+            <td>$<%= item.formatted_price %> each</td>
+            <td>Item Subtotal: $<%= @cart.subtotal(item) %></td>
+            <td>  <%= link_to "Remove Item", cart_path(id: item.id), method: :delete %></td>
+          </tr>
+        </div>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-3">
+    <h3 class="h-tag-no-top-margin-title center-text">Cart Total: $<%= @cart.total %></h3>
+    <div class="cart_checkout center-text">
+      <% if current_user %>
+      <%= link_to "Checkout", cart_path %>
+      <% else %>
+      <%= link_to "Login or Create Account to Checkout", login_path %>
+      <% end %>
+    </div>
+  </div>
 </div>
-<% end %>
-
-<p>Total: $<%= @cart.total %></p>
-
-<div class="cart_checkout">
-	<% if current_user %>
-		<%= link_to "Checkout", cart_path %> 
-	<% else %>
-		<%= link_to "Login or Create Account to Checkout", login_path %>
-	<% end %>
-</div>
-	 

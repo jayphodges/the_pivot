@@ -7,10 +7,10 @@
   </div>
 
   <div class="col-md-4">
-    <h1 class="item-show-title"> <%= @item.title %></h1>
-    <h4>Price: $<%= @item.formatted_price %> each</h4>
-    <%= link_to "Add to Cart", cart_path(item_id: @item.id), method: :post, class: "cart-button btn btn-outline-info" %><br>
-    <p class="cart-button btn btn-outline-info" >DUMMY BUTTON</p>
+    <h1 class="h-tag-no-top-margin-title"> <%= @item.title %></h1>
+    <h4>Price: $<%= @item.price %> each</h4>
+    <p class="btn btn-default" >DUMMY BUTTON</p><br>
+    <p class="btn btn-default" >DUMMY BUTTON</p>
 
   </div>
   <div class="col-md-4">
