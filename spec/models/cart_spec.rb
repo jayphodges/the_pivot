@@ -7,7 +7,7 @@ describe Cart do
       @cart = Cart.new({})
     end
 
-    it '.add_item' do
+    it '#add_item' do
       expect(@cart.contents).to eq({})
 
       @cart.add_item(@item.id)
@@ -15,21 +15,21 @@ describe Cart do
       expect(@cart.contents).to eq({@item.id.to_s => 1})
     end
 
-    it '.update_item' do
+    it '#update_item' do
       @cart.add_item(@item.id)
       @cart.update_item(@item.id, 12)
 
       expect(@cart.contents).to eq({@item.id.to_s => 12})
     end
 
-    it '.subtotal' do
+    it '#subtotal' do
       @cart.add_item(@item.id)
       @cart.update_item(@item.id, 12)
 
       expect(@cart.subtotal(@item)).to eq((12 * 5.5).to_s + '0')
     end
 
-    it '.total' do
+    it '#total' do
       item_2 = Item.create(title: 'title2', description: "desc",
         price: 10, image: 'foo.png', category_id: @c.id)
       @cart.add_item(@item.id)
@@ -38,7 +38,7 @@ describe Cart do
       expect(@cart.total).to eq('15.50')
     end
 
-    it '.quantity' do
+    it '#quantity' do
       @cart.add_item(@item.id)
 
       expect(@cart.quantity(@item)).to eq(1)

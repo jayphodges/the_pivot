@@ -68,7 +68,7 @@ RSpec.describe Item, type: :model do
 
   describe "instance methods" do
     context "price sanitization" do
-      it '.formatted_price' do
+      it '#formatted_price' do
         c = Category.create(title: "Guitars")
         item = Item.create(title: 'title', description: "desc",
           price: 1.1, image: 'foo.png', category_id: c.id)
