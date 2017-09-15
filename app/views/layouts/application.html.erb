@@ -43,7 +43,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="/cart">View Cart</a></li>
             <% if current_user %>
-            <li><a href="/logout">Logout</a></li>
+            <li><%= link_to "Logout", logout_path, method: :delete %></li>
             <li><%= current_user.username %></li>
             <% else %>
             <li><a href="/login">Login</a></li>
