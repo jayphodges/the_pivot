@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
 
-  resources :items, only: [:index]
+  root to: 'welcome#index'
 
-  # resources :carts, only: [:create]
+  resources :items, only: [:index, :show]
 
-  # get '/cart', to: 'carts#show', as: 'cart'
   resource :cart
+
+  get '/login', to: 'sessions#new'
+
+  get '/dashboard', to: 'users#show'
+
+  resources :users, only: [:new, :create, :show]
 
   resources :categories, path: '/', only: [:show]
 
