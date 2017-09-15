@@ -8,7 +8,7 @@
 			<div class="item_card index_item_<%= item.id %>">
 				<img class="item-card-img" src="<%= item.image %>" alt="">
 				<h3><%= link_to item.title, item_path(item) %></h3>
-				<p><%= link_to "Add to Cart", cart_path(item_id: item.id), method: :post %></p>
+				<p><%= link_to "Add to Cart", cart_path(item_id: item.id), method: :post, class: "cart btn btn-outline-info" %></p>
 				<div class="items-break-line"></div>
 			</div>
 
