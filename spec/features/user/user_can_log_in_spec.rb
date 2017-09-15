@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "Registered user can log in" do
 	context "user visits '/' and clicks on Login link" do
-		context "user can fill in information to log in and see dashboard" do
+		scenario "user can fill in information to log in and see dashboard" do
 			user = create(:user)
 # -As a registered user
 			visit root_path
