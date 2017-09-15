@@ -41,13 +41,20 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="/cart">View Cart</a></li>
-            <li class="dropdown">
-            </li>
+            <% if current_user %>
+            <li><a href="/logout">Logout</a></li>
+            <li><%= current_user.username %></li>
+            <% else %>
+            <li><a href="/login">Login</a></li>
+            <% end %>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
   </header>
+  <% flash.each do |type, message| %>
+    <%= sanitize(message) %>
+  <% end %>
   <%= yield %>
 </body>
 </html>
