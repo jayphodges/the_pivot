@@ -9,13 +9,9 @@ describe "User can see past orders" do
 			allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 			visit '/orders'
 
-			expect(page).to have_content(order.first.id)
-			expect(page).to have_content(order.last.id)
-			# expect(page).to have_content("Order", count: 4)
+			expect(page).to have_content(order1.id)
+			expect(page).to have_content(order2.id)
+			expect(page).to have_content(order3.id)
 		end
 	end
 end
-
-#id
-#created_at
-#updated_at
