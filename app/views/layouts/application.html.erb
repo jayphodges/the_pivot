@@ -47,6 +47,9 @@
       </div><!-- /.container-fluid -->
     </nav>
   </header>
+  <% flash.each do |type, message| %>
+    <%= sanitize(message) %>
+  <% end %>
   <%= yield %>
 </body>
 </html>
