@@ -1,1 +1,10 @@
 <h1>Order <%= @order.id %></h1>
+
+<ul>
+	<%= @items.each do |item| %>
+	<li>
+		Title: <%= item.title %>
+		Quantity: <%= order.item_quantity(item) %>
+	</li>
+	<% end %>
+</ul>
