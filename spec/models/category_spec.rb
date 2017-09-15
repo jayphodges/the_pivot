@@ -25,12 +25,4 @@ RSpec.describe Category, type: :model do
       end
     end
   end
-
-  describe "class methods" do
-    context "nav bar" do
-      it '.all_for_nav' do
-        expect(Category.all_for_nav).to eq(Category.all)
-      end
-    end
-  end
 end
