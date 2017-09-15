@@ -1,0 +1,11 @@
+<h1>All orders for <%= current_user.username %></h1>
+
+<ul>
+<% current_user.orders.each do |order| %>
+	<li>
+		Order id:<%= order.id %><br>
+		<%= order.created_at %>
+	</li>
+<% end %>
+</ul>
+
