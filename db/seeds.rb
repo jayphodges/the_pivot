@@ -1,3 +1,5 @@
+require 'faker'
+
 Category.destroy_all
 Item.destroy_all
 
@@ -8,11 +10,12 @@ Category.create!(title: "Drums")
 
 categories = Category.all
 
-categories.each do |category|
+20.times do |num|
+  category = categories.shuffle.first
+
 	puts "created #{category.title}"
-	10.times do |num|
-		Item.create(title: "title#{num}", description: "descrip#{num}", price: num + rand(5), image: "http://lorempixel.com/400/200", category_id: category.id)
-	end
-	items = Item.pluck(:title)
-	puts "Created #{items}"
+
+	item = Item.create(title: Faker::Music.instrument, description: Faker::RickAndMorty.quote, price: num + rand(5), image: "http://lorempixel.com/400/200", category_id: category.id)
+
+	puts "Created #{item.title} with category #{item.category.title}"
 end

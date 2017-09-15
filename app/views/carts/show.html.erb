@@ -16,3 +16,12 @@
 <% end %>
 
 <p>Total: $<%= @cart.total %></p>
+
+<div class="cart_checkout">
+	<% if current_user %>
+		<%= link_to "Checkout", cart_path %> 
+	<% else %>
+		<%= link_to "Login or Create Account to Checkout", login_path %>
+	<% end %>
+</div>
+	 

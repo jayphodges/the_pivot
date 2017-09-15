@@ -1,12 +1,19 @@
 language: ruby
 rvm:
-  - "2.4"
+- '2.4'
 env:
-  - DB=postgresql
+- DB=postgresql
 script:
-  - RAILS_ENV=test bundle exec rake db:migrate --trace
-  - bundle exec rake db:test:prepare
-  - bundle exec rspec
+- RAILS_ENV=test bundle exec rake db:migrate --trace
+- bundle exec rake db:test:prepare
+- bundle exec rspec
 before_script:
-  - bundle exec rake db:create
-bundler_args: --binstubs=./bundler_stubs
+- bundle exec rake db:create
+bundler_args: "--binstubs=./bundler_stubs"
+deploy:
+  provider: heroku
+  api_key:
+    secure: rGhQvjnktL5nlvT93Sct3kx2psMS5j1sdv3/dbuW7x097/aUTmdTtj7Z0kXiUneEXE3jUDqcTQcRlaCuxw0lTpGOYCUs9vnuqMlCtwMovD5f0oexQhsrtshzTwwDSO+M2oqeYwAsdVeHiWGkOaMXEFyDH53HrRJc2qZTFjlnVF1/hxS4Me5IqKAFPEeZpS7PJlSP2+B9XYAOEJL7S3eYReUERceWypgw3g34Wd+dZKzzprGt8dNAOOS++dyyHh1kSSiRP5kCKsEovD3np7g9Jnz7UmOldGlSNMETM3Z7gzpePcyH19x1LnHRqN6GzRiVpuRLeyRldkAPJENANa2rnuHNxkz7MBSiptq5rulKkXUARTHJpahMncjNrBpwEUsB4w6w4GYF3TUTXmLhCquOPKnWsalO0d6/FcFeEwPfGOPyJS87AzXizVIsvus26EK8G6CAEoaA3Zjps8tYzHaYy0HkkyRjFgKBbPS6uCoxf1R0AuULjyIQkMZUc2IxihP9vJc/gjGJ0fXkWYEQ0jDHyLnvfAk0KUcJHHea+6RtJyzj9bNmR5R0XJaizmtBz2LRtDh0lkcuevtATCpQy2thW+HvxIEJmCw5QWdFZYY7RtrdrgILG6Obryy9/RltoRBEyk4odIMQNvieQlW/0tZIehCfHXlOqE3BHYZsRFHa9ow=
+  app: musicemporium
+  on:
+    repo: amhursh/music_shop
