@@ -1,5 +1,20 @@
-<h1>ITEM SHOW PAGE</h1>
-<img src="<%= @item.image %>" alt="">
-<h1> <%= @item.title %></h1>
-<h4><%= @item.price %></h4>
-<p><%= @item.description %></p>
+<h1 class="center-text">ITEM SHOW PAGE</h1>
+<hr>
+<div class="row items-row">
+  <div class="col-md-4">
+
+    <img class="item-show-image" src="<%= @item.image %>" alt="">
+  </div>
+
+  <div class="col-md-4">
+    <h1 class="item-show-title"> <%= @item.title %></h1>
+    <h4>Price: $<%= @item.price %> each</h4>
+    <p class="btn btn-default" >DUMMY BUTTON</p><br>
+    <p class="btn btn-default" >DUMMY BUTTON</p>
+
+  </div>
+  <div class="col-md-4">
+    <p><%= @item.description %></p>
+    <p>DUMMY DESCRIPTION TEXT FOR FILLER. Spicy jalapeno bacon ipsum dolor amet ad turkey ea tail filet mignon occaecat ham hock pig aute tri-tip cupim meatloaf exercitation beef. Ground round tempor kevin cupidatat pork dolor turkey picanha cupim dolore ham hock shankle reprehenderit. Ut ground round bacon doner adipisicing kevin andouille shankle beef dolor. Ground round dolore cow do pork belly beef ribs sausage pastrami mollit adipisicing veniam ex enim rump dolore. Rump do mollit prosciutto jerky. Nostrud ut veniam pancetta bresaola short loin ball tip shoulder. Et cupidatat pork salami tail cow. Eu turkey nostrud shank bresaola. Tri-tip reprehenderit incididunt enim.</p>
+  </div>
+</div>

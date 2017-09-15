@@ -39,3 +39,9 @@
 .center-text {
   text-align: center;
 }
+.item-show-title {
+  margin-top: 0px;
+}
+.item-show-image {
+  width: 95%;
+}
