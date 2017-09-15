@@ -26,8 +26,6 @@ describe "User can see individual past order" do
 		  expect(page).to have_content(order.id)
 		# -And I should see a link to view that order
 		# -And when I click that link
-
-			save_and_open_page
 		  click_on 'View Order'
 		# -Then I should see each item that was order with the quantity and line-item subtotals
 		  expect(page).to have_content(item1.title)
