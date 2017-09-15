@@ -45,3 +45,7 @@
 .item-show-image {
   width: 95%;
 }
+.cart-button {
+  border: 1px solid black;
+  outline-color: red;
+}
