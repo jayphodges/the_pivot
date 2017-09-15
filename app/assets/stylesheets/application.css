@@ -39,16 +39,9 @@
 .center-text {
   text-align: center;
 }
-.item_info {
-  margin-left: 5%;
+.item-show-title {
+  margin-top: 0px;
 }
-.item_image {
-  margin-left: 30%;
-}
-.cart {
-  border: 1px solid black;
-  outline-color: red;
-}
-.cart_show {
-  margin-top: 10%;
+.item-show-image {
+  width: 95%;
 }
