@@ -12,10 +12,10 @@ describe "Visitor can create an account" do
 
         click_on("Create Account")
 
-        fill_in "user[username]", with: "Joel"
-        fill_in "user[password]", with: "password"
-        fill_in "user[full_name]", with: "Joel Lindow"
-        fill_in "user[address]", with: "1122 Booger Booger Avenue"
+        fill_in "Username", with: "Joel"
+        fill_in "Password", with: "password"
+        fill_in "Full Name", with: "Joel Lindow"
+        fill_in "Address", with: "1122 Booger Booger Avenue"
         click_on "Create Account"
 
         expect(current_path).to eq("/dashboard")
