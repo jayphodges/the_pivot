@@ -17,18 +17,24 @@
 .navbar {
   border-radius: 0px;
 }
-
 .navbar-brand {
   font-size: 40px;
   letter-spacing: -3px;
 }
-
 .item-card-img {
-  width: 90%;
+  width: 95%;
+  border-radius: 5px;
 }
-
+.item-card {
+  padding: 10px;
+}
 .items-row {
   margin: 10px;
+}
+.items-break-line {
+  background-color: black;
+  height: 2px;
+  margin-right: 5%;
 }
 .center-text {
   text-align: center;

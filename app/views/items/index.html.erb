@@ -3,12 +3,13 @@
 
 	<div class="row items-row">
 		<% @items.each do |item| %>
-		<div class="col-md-3">
+		<div class="col-md-3 item-card">
 
 			<div class="item_card index_item_<%= item.id %>">
 				<img class="item-card-img" src="<%= item.image %>" alt="">
-				<h3><%= item.title %></h3>
+				<h3><%= link_to item.title, item_path(item) %></h3>
 				<p><%= link_to "Add to Cart", cart_path(item_id: item.id), method: :post %></p>
+				<div class="items-break-line"></div>
 			</div>
 
 		</div>
