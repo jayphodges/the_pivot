@@ -17,7 +17,6 @@ describe "Visitor can create an account" do
         fill_in "Full Name", with: "Joel Lindow"
         fill_in "Address", with: "1122 Booger Booger Avenue"
         click_on "Create Account"
-        save_and_open_page
 
         expect(current_path).to eq("/dashboard")
         expect(page).to have_content("Logged in as Joel")
