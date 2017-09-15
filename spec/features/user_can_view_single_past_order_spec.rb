@@ -5,7 +5,18 @@ describe "User can see individual past order" do
 		scenario "user can see all order information" do
 		  user = create(:user)
 		  order = create(:order, user: user)
-		  item1, item2, item3 = create_list(:item, order: order)
+		  category = create(:category)
+		  # item1, item2, item3 = create_list(:item, 3)
+		  item1 = order.items.create(title: "Cool Item", description: "Descrip",
+		  													 price: 35.0, image: "http://lorempixel.com/400/200",
+		  													 category: category)
+		  item2 = order.items.create(title: "Cool Item2", description: "Descrip2",
+		  													 price: 35.50, image: "http://lorempixel.com/400/200",
+		  													 category: category)
+		  item3 = order.items.create(title: "Cool Item3", description: "Descrip3",
+		  													 price: 35.99, image: "http://lorempixel.com/400/200",
+		  													 category: category)
+		  
 		  allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
 		# -As an authenticated user
@@ -15,7 +26,9 @@ describe "User can see individual past order" do
 		  expect(page).to have_content(order.id)
 		# -And I should see a link to view that order
 		# -And when I click that link
-		  click_on 'View'
+
+			save_and_open_page
+		  click_on 'View Order'
 		# -Then I should see each item that was order with the quantity and line-item subtotals
 		  expect(page).to have_content(item1.title)
 		  expect(page).to have_content(item2.title)
