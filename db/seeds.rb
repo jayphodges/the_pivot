@@ -15,7 +15,7 @@ categories = Category.all
 
 	puts "created #{category.title}"
 
-	item = Item.create(title: Faker::Music.instrument, description: Faker::RickAndMorty.quote, price: num + rand(5), image: "http://lorempixel.com/400/200", category_id: category.id)
+	item = Item.create(title: Faker::Music.instrument, description: Faker::RickAndMorty.quote, price: num + rand(5), image: "http://lorempixel.com/400/400", category_id: category.id)
 
 	puts "Created #{item.title} with category #{item.category.title}"
 end
