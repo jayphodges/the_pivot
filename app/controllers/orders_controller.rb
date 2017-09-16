@@ -8,4 +8,16 @@ class OrdersController < ApplicationController
 		@items = @order.items.distinct
 	end
 
+	def create
+		order = Order.new(user_id: current_user.id)
+		order.add_items(@cart)
+		if order.save
+			flash[:success] = "Order was successfully placed"
+			redirect_to orders_path
+		else
+			flash[:failure] = "There was an error processing your order"
+			redirect_to cart_path
+		end
+	end
+
 end
