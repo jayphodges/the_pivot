@@ -18,6 +18,7 @@ describe "User can see individual past order" do
 		  													 category: category)
 		  
 		  allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+		  binding.pry
 
 		# -As an authenticated user
 		# -When I visit “/orders”

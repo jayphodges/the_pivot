@@ -3,6 +3,8 @@ class Order < ApplicationRecord
   has_many :orders_items
   has_many :items, through: :orders_items
 
+  enum status: %w(ordered paid cancelled completed)
+
   def item_quantity(item)
   	id = item.id
   	items.where(id: id).count
