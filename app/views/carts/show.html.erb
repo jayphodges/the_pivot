@@ -36,7 +36,7 @@
     <h3 class="h-tag-no-top-margin-title center-text">Cart Total: $<%= @cart.total %></h3>
     <div class="cart_checkout center-text">
       <% if current_user %>
-      <%= link_to "Checkout", cart_path %>
+      <%= link_to "Checkout", orders_path, method: :post %>
       <% else %>
       <%= link_to "Login or Create Account to Checkout", login_path %>
       <% end %>
