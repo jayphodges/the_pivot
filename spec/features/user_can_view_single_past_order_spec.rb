@@ -4,9 +4,11 @@ describe "User can see individual past order" do
 	context "user visits /orders and clicks on order link" do
 		scenario "user can see all order information" do
 		  user = create(:user)
+
 		  order = create(:order, user: user, status: 3)
+
 		  category = create(:category)
-		  # item1, item2, item3 = create_list(:item, 3)
+
 		  item1 = order.items.create(title: "Cool Item", description: "Descrip",
 		  													 price: 35.0, image: "http://lorempixel.com/400/200",
 		  													 category: category)
@@ -18,16 +20,13 @@ describe "User can see individual past order" do
 		  													 category: category)
 		  
 		  allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-		# -As an authenticated user
-		# -When I visit “/orders”
+
 		  visit '/orders'
-		# -Then I should see my past order
+
 		  expect(page).to have_content(order.id)
-		# -And I should see a link to view that order
-		# -And when I click that link
+
 		  click_on 'View Order'
-		  save_and_open_page
-		# -Then I should see each item that was order with the quantity and line-item subtotals
+
 		  expect(page).to have_content(item1.title)
 		  expect(page).to have_content(item2.title)
 		  expect(page).to have_content(item3.title)
@@ -40,17 +39,13 @@ describe "User can see individual past order" do
 
 		  expect(page).to have_content(order.item_quantity(item3))
 		  expect(page).to have_content(order.item_subtotal(item3))
-		# -And I should see links to each item’s show page
+
 		  expect(page).to have_selector(:link_or_button, 'View Item', count: 3)
-		# -And I should see the current status of the order (ordered, paid, cancelled, completed)
+
 		  expect(page).to have_content("Order Status: #{order.status}")
-		# -And I should see the total price for the order
 			expect(page).to have_content(order.total_order_price)
-		# -And I should see the date/time that the order was submitted
 		  expect(page).to have_content(order.created_at)
-		# -If the order was completed or cancelled
 		  expect(page).to have_content("Order completed at")
-		# -Then I should see a timestamp when the action took place
 		  expect(page).to have_content(order.updated_at)
     end
 	end
