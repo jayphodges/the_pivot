@@ -29,7 +29,7 @@ RSpec.describe Order, type: :model do
 
   describe "methods" do
     context "instance methods" do
-      it '.total_order_price' do
+      it '#total_order_price' do
         user = create(:user)
         order = create(:order, user: user, status: 1)
         category = create(:category)
@@ -46,7 +46,7 @@ RSpec.describe Order, type: :model do
         expect(order.total_order_price).to eq(106.49)
       end
 
-      it '.item_quantity1' do
+      it '#item_quantity' do
         user = create(:user)
         order = create(:order, user: user, status: 1)
         category = create(:category)
@@ -64,6 +64,28 @@ RSpec.describe Order, type: :model do
         end
 
         expect(order.item_quantity(item_1)).to eq(5)
+      end
+
+      it '#item_subtotal' do
+        user = create(:user)
+        order = create(:order, user: user, status: 1)
+        category = create(:category)
+        item_1 = order.items.create(title: "Cool Item", description: "Descrip",
+                                    price: 35.0, image: "http://lorempixel.com/400/200",
+                                    category: category)
+        item2 = order.items.create(title: "Cool Item2", description: "Descrip2",
+                                   price: 35.50, image: "http://lorempixel.com/400/200",
+                                   category: category)
+        item3 = order.items.create(title: "Cool Item3", description: "Descrip3",
+                                   price: 35.99, image: "h`ttp://lorempixel.com/400/200",
+                                   category: category)
+        4.times do
+          order.items << item_1
+        end
+
+        expect(order.item_subtotal(item_1)).to eq(175.0)
+
+        expect(order.item_subtotal(item_1)).to eq()
       end
     end
   end
