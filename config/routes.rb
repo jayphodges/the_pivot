@@ -18,4 +18,7 @@ Rails.application.routes.draw do
 
   resources :categories, path: '/', only: [:show]
 
+  scope :admin, module: :admin do
+    get '/dashboard', to: 'admin#show', as: 'admin_dashboard'
+  end
 end
