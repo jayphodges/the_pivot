@@ -39,7 +39,7 @@
 .center-text {
   text-align: center;
 }
-.item-show-title {
+.h-tag-no-top-margin-title {
   margin-top: 0px;
 }
 .item-show-image {
@@ -48,4 +48,8 @@
 .cart-button {
   border: 1px solid black;
   outline-color: red;
+}
+.item-cart-thumb {
+  height: 50px;
+  width: 50px;
 }
