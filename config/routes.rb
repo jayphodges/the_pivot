@@ -12,13 +12,14 @@ Rails.application.routes.draw do
 
   resources :orders, only: [:index, :show]
 
+  namespace :admin do
+    get '/dashboard', to: 'admin#show'
+  end
+
   get '/dashboard', to: 'users#show'
 
   resources :users, only: [:new, :create, :show]
 
   resources :categories, path: '/', only: [:show]
 
-  scope :admin, module: :admin do
-    get '/dashboard', to: 'admin#show', as: 'admin_dashboard'
-  end
 end
