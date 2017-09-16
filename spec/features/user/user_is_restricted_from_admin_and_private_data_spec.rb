@@ -33,7 +33,7 @@ describe "User is restricted from admin pages and other user's data" do
       visit admin_dashboard_path
 
       expect(current_path).to eq('/admin/dashboard')
-      expect(response.status).to eq(404)
+      expect(page).to have_content("404")
     end
   end
 end
