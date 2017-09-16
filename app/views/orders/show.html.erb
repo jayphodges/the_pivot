@@ -1,0 +1,22 @@
+<h1>Order <%= @order.id %></h1>
+
+<ul>
+	<% @items.each do |item| %>
+	<li>
+		Title: <%= item.title %>
+		Quantity: <%= @order.item_quantity(item) %>
+		Subtotal: <%= @order.item_subtotal(item) %>
+		<%= link_to "View Item", item_path(item) %>
+	</li>
+	<% end %>
+</ul>
+
+<h5>Total Price: <%= @order.total_order_price %></h5>
+<h5>Order Status: <%= @order.status %></h5>
+<h5>Order Submitted: <%= @order.created_at %></h5>
+<% if @order.completed? %>
+	<p>Order completed at <%= @order.updated_at %></p>
+<% elsif @order.cancelled? %>
+	<p>Order cancelled at <%= @order.updated_at %></p>
+<% end %>
+
