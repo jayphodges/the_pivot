@@ -3,8 +3,9 @@
 <ul>
 <% current_user.orders.each do |order| %>
 	<li>
-		Order id:<%= order.id %><br>
-		<%= order.created_at %>
+		Order id: <%= order.id %><br>
+		<%= order.created_at %><br>
+		Status: <%= order.status %>
 	</li>
 	<%= link_to "View Order", order_path(order) %>
 <% end %>

@@ -24,4 +24,11 @@ class Order < ApplicationRecord
     sprintf('%.2f', price)
   end
 
+  def add_items(cart)
+    cart.contents.each do |item_id, quantity|
+      item = Item.find(item_id)
+      quantity.times {items << item}
+    end
+  end
+
 end
