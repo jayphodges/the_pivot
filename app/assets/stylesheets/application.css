@@ -47,7 +47,9 @@
 }
 .cart-button {
   border: 1px solid black;
-  outline-color: red;
+}
+.cart-button-retired {
+  border: 1px solid red;
 }
 .item-cart-thumb {
   height: 50px;

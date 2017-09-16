@@ -9,7 +9,12 @@
   <div class="col-md-4">
     <h1 class="h-tag-no-top-margin-title"> <%= @item.title %></h1>
     <h4>Price: $<%= @item.formatted_price %> each</h4>
-    <%= link_to "Add to Cart", cart_path(item_id: @item.id), method: :post, class: "cart-button btn btn-outline-info" %><br>
+
+    <% if @item.active? %>
+      <%= link_to "Add to Cart", cart_path(item_id: @item.id), method: :post, class: "cart-button btn btn-outline-info" %><br>
+    <% else %>
+      <button type="button" class="cart-button-retired btn btn-danger">Item Retired</button>
+    <% end %>
 
   </div>
   <div class="col-md-4">
