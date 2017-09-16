@@ -1,19 +1,19 @@
 <div>
 <h1 class="center-text">ALL ITEMS</h1>
-
 	<div class="row items-row">
 		<% @items.each do |item| %>
 		<div class="col-md-3 item-card">
-
 			<div class="item_card index_item_<%= item.id %>">
 				<img class="item-card-img" src="<%= item.image %>" alt="">
 				<h3><%= link_to item.title, item_path(item) %></h3>
-				<p><%= link_to "Add to Cart", cart_path(item_id: item.id), method: :post, class: "cart btn btn-outline-info" %></p>
+				<% if item.active? %>
+					<%= link_to "Add to Cart", cart_path(item_id: item.id), method: :post, class: "cart-button btn btn-outline-info" %>
+				<% else %>
+					<button type="button" class="cart-button-retired btn btn-danger">Item Retired</button>
+				<% end %>
 				<div class="items-break-line"></div>
 			</div>
-
 		</div>
-
 		<% end %>
 	</div>
 </div>

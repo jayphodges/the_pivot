@@ -39,16 +39,22 @@
 .center-text {
   text-align: center;
 }
-.item_info {
-  margin-left: 5%;
+.h-tag-no-top-margin-title {
+  margin-top: 0px;
 }
-.item_image {
-  margin-left: 30%;
+.item-show-image {
+  width: 95%;
 }
-.cart {
+.cart-button {
   border: 1px solid black;
-  outline-color: red;
 }
-.cart_show {
-  margin-top: 10%;
+.cart-button-retired {
+  border: 1px solid red;
+}
+.item-cart-thumb {
+  height: 50px;
+  width: 50px;
+}
+.carousel-image {
+  width: 100%;
 }
