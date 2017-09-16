@@ -32,10 +32,8 @@ describe "Visitor can log in and create order" do
 
 			expect(current_path).to eq(orders_path)
 
-			save_and_open_page
-
 			expect(page).to have_content("Order was successfully placed")
-			expect(page).to have_content("Order id: 393829")
+			expect(page).to have_content("Order id: #{Order.last.id}")
 			expect(page).to have_content("ordered")
     end
   end
