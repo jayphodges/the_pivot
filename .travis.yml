@@ -9,8 +9,6 @@ script:
 - bundle exec rspec
 before_script:
 - bundle exec rake db:create
-- heroku pg:reset
-- heroku pg:push music_shop_development DATABASE_URL --app musicemporium
 bundler_args: "--binstubs=./bundler_stubs"
 deploy:
   provider: heroku
