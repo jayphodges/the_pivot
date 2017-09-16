@@ -37,5 +37,3 @@ describe "User is restricted from admin pages and other user's data" do
     end
   end
 end
-# -I cannot view the administrator screens or use admin functionality -
-# I cannot make myself an admin
