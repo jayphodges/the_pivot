@@ -6,6 +6,7 @@
 		Title: <%= item.title %>
 		Quantity: <%= @order.item_quantity(item) %>
 		Subtotal: <%= @order.item_subtotal(item) %>
+		<%= link_to "View Item", item_path(item) %>
 	</li>
 	<% end %>
 </ul>

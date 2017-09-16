@@ -41,9 +41,7 @@ describe "User can see individual past order" do
 		  expect(page).to have_content(order.item_quantity(item3))
 		  expect(page).to have_content(order.item_subtotal(item3))
 		# -And I should see links to each item’s show page
-		  expect(page).to have_selector(:link_or_button, 'View Item1')
-		  expect(page).to have_selector(:link_or_button, 'View Item2')
-		  expect(page).to have_selector(:link_or_button, 'View Item3')
+		  expect(page).to have_selector(:link_or_button, 'View Item', count: 3)
 		# -And I should see the current status of the order (ordered, paid, cancelled, completed)
 		  expect(page).to have_content("Order Status: #{order.status}")
 		# -And I should see the total price for the order
