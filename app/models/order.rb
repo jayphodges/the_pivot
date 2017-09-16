@@ -5,6 +5,10 @@ class Order < ApplicationRecord
 
   enum status: %w(ordered paid cancelled completed)
 
+  def total_order_price
+  	items.sum(:price)
+  end
+
   def item_quantity(item)
   	id = item.id
   	items.where(id: id).count

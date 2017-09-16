@@ -18,8 +18,6 @@ describe "User can see individual past order" do
 		  													 category: category)
 		  
 		  allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-		  binding.pry
-
 		# -As an authenticated user
 		# -When I visit “/orders”
 		  visit '/orders'
@@ -28,6 +26,7 @@ describe "User can see individual past order" do
 		# -And I should see a link to view that order
 		# -And when I click that link
 		  click_on 'View Order'
+		  save_and_open_page
 		# -Then I should see each item that was order with the quantity and line-item subtotals
 		  expect(page).to have_content(item1.title)
 		  expect(page).to have_content(item2.title)
