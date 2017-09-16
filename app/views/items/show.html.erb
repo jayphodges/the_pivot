@@ -13,7 +13,7 @@
     <% if @item.active? %>
       <%= link_to "Add to Cart", cart_path(item_id: @item.id), method: :post, class: "cart-button btn btn-outline-info" %><br>
     <% else %>
-      <p class="cart-button btn btn-outline-warning">Item Retired</p>
+      <button type="button" class="cart-button-retired btn btn-danger">Item Retired</button>
     <% end %>
 
   </div>
