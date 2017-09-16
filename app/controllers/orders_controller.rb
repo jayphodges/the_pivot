@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+	before_action :require_user
 
 	def index
 	end
@@ -19,5 +20,4 @@ class OrdersController < ApplicationController
 			redirect_to cart_path
 		end
 	end
-
 end
