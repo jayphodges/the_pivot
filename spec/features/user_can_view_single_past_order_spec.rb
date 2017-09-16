@@ -4,7 +4,7 @@ describe "User can see individual past order" do
 	context "user visits /orders and clicks on order link" do
 		scenario "user can see all order information" do
 		  user = create(:user)
-		  order = create(:order, user: user)
+		  order = create(:order, user: user, status: 3)
 		  category = create(:category)
 		  # item1, item2, item3 = create_list(:item, 3)
 		  item1 = order.items.create(title: "Cool Item", description: "Descrip",
@@ -49,7 +49,7 @@ describe "User can see individual past order" do
 		# -And I should see the date/time that the order was submitted
 		  expect(page).to have_content(order.created_at)
 		# -If the order was completed or cancelled
-		  expect(page).to have_content("Completed")
+		  expect(page).to have_content("Order completed at")
 		# -Then I should see a timestamp when the action took place
 		  expect(page).to have_content(order.updated_at)
     end
