@@ -5,7 +5,7 @@ describe "Visitor is restricted from admin pages and other user's data" do
     scenario 'Visitor visits /orders and cannot see other users orders' do
       visit orders_path
 
-      expect(current_path).to eq('/orders')
+      expect(current_path).to eq('/login')
       expect(page).to have_content("Login")
     end
 
