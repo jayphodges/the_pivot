@@ -41,7 +41,7 @@ RSpec.feature "User increases cart quantity of item" do
 
     within(".index_item_#{item2.id}") do
       click_on "Add to Cart"
-    end    
+    end
 
     click_on "View Cart"
 
