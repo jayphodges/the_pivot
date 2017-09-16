@@ -7,7 +7,7 @@ class Order < ApplicationRecord
   enum status: %w(ordered paid cancelled completed)
 
   def total_order_price
-  	items.sum(:price)
+  	sanitize_price(items.sum(:price))
   end
 
   def item_quantity(item)
@@ -17,7 +17,11 @@ class Order < ApplicationRecord
 
   def item_subtotal(item)
   	id = item.id
-  	items.where(id: id).sum(:price)
+  	sanitize_price(items.where(id: id).sum(:price))
+  end
+
+  def sanitize_price(price)
+    sprintf('%.2f', price)
   end
 
 end

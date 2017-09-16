@@ -43,7 +43,7 @@ RSpec.describe Order, type: :model do
                                    price: 35.99, image: "h`ttp://lorempixel.com/400/200",
                                    category: category)
 
-        expect(order.total_order_price).to eq(106.49)
+        expect(order.total_order_price).to eq('106.49')
       end
 
       it '#item_quantity' do
@@ -83,9 +83,7 @@ RSpec.describe Order, type: :model do
           order.items << item_1
         end
 
-        expect(order.item_subtotal(item_1)).to eq(175.0)
-
-        expect(order.item_subtotal(item_1)).to eq()
+        expect(order.item_subtotal(item_1)).to eq('175.00')
       end
     end
   end
