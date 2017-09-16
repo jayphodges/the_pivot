@@ -9,8 +9,6 @@ describe "Visitor can visit retired item page" do
 
       visit item_path(item)
 
-      save_and_open_page
-
       expect(page).to_not have_content("Add to Cart")
       expect(page).to have_content("Item Retired")
     end
