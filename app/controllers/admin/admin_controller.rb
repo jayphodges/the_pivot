@@ -2,7 +2,17 @@ class Admin::AdminController < Admin::BaseController
   before_action :require_admin
 
   def show
-    
+    if params[:orders] == 'ordered'
+    	@orders = Order.ordered
+    elsif params[:orders] == 'cancelled'
+    	@orders = Order.cancelled
+    elsif params[:orders] == 'paid'
+    	@orders = Order.paid
+    elsif params[:orders] == 'completed'
+    	@orders = Order.completed
+    else
+    	@orders = Order.all
+    end
   end
 
   private
