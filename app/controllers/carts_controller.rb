@@ -1,7 +1,11 @@
 class CartsController < ApplicationController
 
   def show
-    @items = Item.where(id: session[:cart].keys)
+    if cart_session?
+      @items = Item.where(id: session[:cart].keys)
+    else
+      @items = nil
+    end
   end
 
   def create
