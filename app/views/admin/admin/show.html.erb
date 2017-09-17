@@ -5,13 +5,13 @@
             <div class="col-md-4">
                 <canvas id="myChart" width="400" height="400"></canvas>
                 <script>
-                var ctx = document.getElementById("productsByDate");
+                var ctx = document.getElementById("ordersByMonth");
                 var myChart = new Chart(ctx, {
                     type: 'bar',
                     data: {
                         labels: ["January", "Februay", "March", "April", "May", "June", "July", "August", "September", "November", "December"],
                         datasets: [{
-                            label: '# of Votes',
+                            label: '# of Orders by Month',
                             data: [12, 19, 3, 5, 2, 3],
                             backgroundColor: [
                                 'rgba(255, 99, 132, 0.2)',
