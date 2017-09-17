@@ -19,8 +19,14 @@ describe 'User can edit their information' do
         click_on "Edit User"
         expect(current_path).to eq("/users/#{user.id}/edit")
 
+        fill_in "Full Name", with: "Joel Lindow"
+        fill_in "Address", with: "1122 Booger Booger Avenue"
+
         click_on "Update"
-        
+
+        expect(current_path).to eq(dashboard_path)
+        expect(page).to have_content("1122 Booger Booger Avenue")
+        expect(page).to have_content("Joel Lindow")
       end
     end
   end
