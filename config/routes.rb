@@ -14,11 +14,12 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/dashboard', to: 'admin#show'
+    resources :items, only: [:new, :create]
   end
 
   get '/dashboard', to: 'users#show'
 
-  resources :users, only: [:new, :create, :show]
+  resources :users, only: [:new, :create, :show, :update, :edit]
 
   resources :categories, path: '/', only: [:show]
 
