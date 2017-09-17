@@ -1,6 +1,6 @@
 <div class="new-item-wrapper">
   <h1>Add a New Item</h1>
-  <%= form_for @item do |f| %>
+  <%= form_for [:admin, @item] do |f| %>
     <%= f.label :title %>
     <%= f.text_field :title %>
 
