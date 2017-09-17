@@ -27,7 +27,7 @@ class Order < ApplicationRecord
   def add_items(cart)
     cart.contents.each do |item_id, quantity|
       item = Item.find(item_id)
-      quantity.times {items << item}
+      quantity.to_i.times {items << item}
     end
   end
 
