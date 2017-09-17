@@ -64,6 +64,7 @@
 }
 .dashboard-wrapper {
   margin-left: 20px;
+  margin-right: 30px;
 }
 .category-show-title-div {
   background-color: black;
@@ -80,5 +81,11 @@
   margin-right: 10px;
 }
 .item-show-button{
+  margin-left: 5px;
+}
+body > div > div.metrics-wrapper > div {
+  margin-top: -50px;
+}
+.dashboard-wrapper > h1 {
   margin-left: 5px;
 }
