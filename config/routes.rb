@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   get '/dashboard', to: 'users#show'
 
-  resources :users, only: [:new, :create, :show]
+  resources :users, only: [:new, :create, :show, :update, :edit]
 
   resources :categories, path: '/', only: [:show]
 

@@ -1,0 +1,15 @@
+<%= form_for(@user) do |f| %>
+  <%= f.label :username %>
+  <%= f.text_field :username %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+
+  <%= f.label :full_name, "Full Name" %>
+  <%= f.text_field :full_name %>
+
+  <%= f.label :address %>
+  <%= f.text_field :address %>
+
+  <%= f.submit "Update" %>
+<% end %>
