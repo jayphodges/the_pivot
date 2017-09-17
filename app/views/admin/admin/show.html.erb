@@ -23,4 +23,13 @@
     <div class="control-panel-wrapper">
         
     </div>
+
+    <div>
+        <% @orders.each do |order| %>
+            Id: <%= order.id %>
+            Created At: <%= order.created_at %>
+            Updated At: <%= order.updated_at %>
+            Status: <%= order.status %>
+        <% end %>
+    </div>
 </div>
