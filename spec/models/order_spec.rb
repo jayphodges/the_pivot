@@ -113,6 +113,19 @@ RSpec.describe Order, type: :model do
 
         expect(Order.orders_by_month.values).to be_a(Array)
       end
+
+      it '.orders_by_month' do
+        user = create(:user)
+        order = create(:order, user: user, status: 1)
+        c = Category.create(title: "Guitars")
+        10.times do
+          order.items.create(title: "Cool Item", description: "Descrip",
+                             price: 35.0, image: "http://lorempixel.com/400/200",
+                             category: c, created_at: rand(1.years).seconds.ago)
+        end
+
+        expect(Order.orders_by_day_of_week.values).to be_a(Array)
+      end
     end
   end
 end

@@ -7,8 +7,8 @@
                 <%= line_chart Order.orders_by_month %>
             </div>
             <div class="col-md-4">
-                <h4 class="graph-title">Product Popularity</h4>
-                <%=  %>
+                <h4 class="graph-title"># of Orders by Day</h4>
+                <%= column_chart Order.orders_by_day_of_week %>
             </div>
             <div class="col-md-4">
             </div>
