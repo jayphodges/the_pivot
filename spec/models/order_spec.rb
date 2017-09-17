@@ -85,6 +85,19 @@ RSpec.describe Order, type: :model do
 
         expect(order.item_subtotal(item_1)).to eq('175.00')
       end
+
+      it '#add_items' do
+        user = create(:user)
+        order = create(:order, user: user, status: 1)
+        category = create(:category)
+        item_1 = order.items.create(title: "Cool Item", description: "Descrip",
+                                    price: 35.0, image: "http://lorempixel.com/400/200",
+                                    category: category)
+        cart = Cart.new({item_1.id => 10})
+
+
+        expect(order.add_items(cart)).to eq({item_1.id => 10})
+      end
     end
   end
 end
