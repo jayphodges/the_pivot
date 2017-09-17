@@ -11,7 +11,7 @@ describe "Admin can add items" do
       fill_in "session[password]", with: admin.password
       click_button "Login"
 
-      visit admin_items_new_path
+      visit new_admin_item_path
 
       expect(current_path).to eq('/admin/items/new')
 
