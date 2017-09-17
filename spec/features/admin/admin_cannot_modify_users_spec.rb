@@ -3,7 +3,6 @@ describe 'Admin cannot edit user information' do
     context 'admin can visit their edit page' do
       context 'admin can edit their information' do
         scenario 'admin cannot edit other users information' do
-          user = create(:user, id: 5, address: 'something', full_name: 'something else')
           admin = create(:user, role: 1)
 
           visit root_path
@@ -30,14 +29,31 @@ describe 'Admin cannot edit user information' do
           expect(page).to have_content("1122 Booger Booger Avenue")
           expect(page).to have_content("Joel Lindow")
 
-          visit("/users/#{user.id}/edit")
+          visit("/users/5/edit")
 
           fill_in "Full Name", with: "some dude"
           fill_in "Address", with: "some address"
 
           click_on "Update"
 
-          visit("/users/#{user.id}")
+          click_on "Logout"
+
+          user = create(:user, username: 'some_person', password: 'password', id: 5, address: 'something', full_name: 'something else')
+
+          visit root_path
+
+          click_on "Login"
+
+          expect(current_path).to eq login_path
+
+          fill_in "session[username]", with: user.username
+          fill_in "session[password]", with: user.password
+
+          within(".login-wrapper") do
+            click_on("Login")
+          end
+
+          visit("/users/5")
 
           save_and_open_page
 
