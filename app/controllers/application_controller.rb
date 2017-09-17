@@ -25,4 +25,8 @@ class ApplicationController < ActionController::Base
       redirect_to login_url
     end
   end
+
+  def cart_session?
+    true if !session[:cart].nil?
+  end
 end
