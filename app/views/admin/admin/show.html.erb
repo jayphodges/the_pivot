@@ -34,10 +34,10 @@
 
     <div class="dashboard_orders_header">
         <p><%= link_to "All Orders", admin_dashboard_path %>: <%= Order.count %></p>
-        <p><%= link_to "Ordered Orders", '/dashboard?orders=ordered' %>: <%= Order.ordered.count %></p>
-        <p><%= link_to "Paid Orders", '/dashboard?orders=paid' %>: <%= Order.paid.count %></p>
-        <p><%= link_to "Cancelled Orders", '/dashboard?orders=cancelled' %>: <%= Order.cancelled.count %></p>
-        <p><%= link_to "Completed Orders", '/dashboard?orders=completed' %>: <%= Order.completed.count %></p>
+        <p><%= link_to "Ordered Orders", '/admin/dashboard?orders=ordered' %>: <%= Order.ordered.count %></p>
+        <p><%= link_to "Paid Orders", '/admin/dashboard?orders=paid' %>: <%= Order.paid.count %></p>
+        <p><%= link_to "Cancelled Orders", '/admin/dashboard?orders=cancelled' %>: <%= Order.cancelled.count %></p>
+        <p><%= link_to "Completed Orders", '/admin/dashboard?orders=completed' %>: <%= Order.completed.count %></p>
     </div>
 
     <div class="dashboard_orders">
