@@ -1,0 +1,17 @@
+<div class="metrics-wrapper">
+    <h3>Metrics</h3>
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-md-4">
+                <h4 class="graph-title"># of Orders by Month</h4>
+                <%= line_chart Order.orders_by_month %>
+            </div>
+            <div class="col-md-4">
+                <h4 class="graph-title"># of Orders by Day</h4>
+                <%= column_chart Order.orders_by_day_of_week %>
+            </div>
+            <div class="col-md-4">
+            </div>
+            </div>
+        </div>
+    </div>

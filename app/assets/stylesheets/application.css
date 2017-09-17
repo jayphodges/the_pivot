@@ -58,3 +58,9 @@
 .carousel-image {
   width: 100%;
 }
+.graph-title {
+  margin-left: 10px;
+}
+.metrics-wrapper {
+  margin-left: 20px;
+}

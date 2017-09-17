@@ -31,4 +31,11 @@ class Order < ApplicationRecord
     end
   end
 
+  def self.orders_by_month
+    Order.group_by_month("orders.created_at::date").count
+  end
+
+  def self.orders_by_day_of_week
+    Order.group_by_day_of_week(:created_at, format: "%a").count
+  end
 end
