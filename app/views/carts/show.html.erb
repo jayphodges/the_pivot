@@ -11,25 +11,29 @@
           <th>Remove</th>
         </tr>
       </thead>
-      <tbody>
-        <% @items.each do |item| %>
-        <div class="item-<%= item.id %>">
-          <tr>
-            <td><%= image_tag(item.image, class: "item-cart-thumb") %></td>
-            <td><%= item.title %></td>
-            <td><%= form_tag(cart_path, method: :patch) do %>
-              <%= hidden_field_tag(:item_id, item.id) %>
-              <%= text_field_tag("Quantity", "#{@cart.quantity(item)}") %>
-              <%= submit_tag("Update") %>
-              <% end %>
-            </td>
-            <td>$<%= item.formatted_price %> each</td>
-            <td>Item Subtotal: $<%= @cart.subtotal(item) %></td>
-            <td>  <%= link_to "Remove Item", cart_path(id: item.id), method: :delete %></td>
-          </tr>
-        </div>
-        <% end %>
-      </tbody>
+      <% if !@items.nil? %>
+        <tbody>
+          <% @items.each do |item| %>
+          <div class="item-<%= item.id %>">
+            <tr>
+              <td><%= image_tag(item.image, class: "item-cart-thumb") %></td>
+              <td><%= item.title %></td>
+              <td><%= form_tag(cart_path, method: :patch) do %>
+                <%= hidden_field_tag(:item_id, item.id) %>
+                <%= text_field_tag("Quantity", "#{@cart.quantity(item)}") %>
+                <%= submit_tag("Update") %>
+                <% end %>
+              </td>
+              <td>$<%= item.formatted_price %> each</td>
+              <td>Item Subtotal: $<%= @cart.subtotal(item) %></td>
+              <td>  <%= link_to "Remove Item", cart_path(id: item.id), method: :delete %></td>
+            </tr>
+          </div>
+          <% end %>
+        </tbody>
+      <% else %>
+        <h3>Cart is Empty</h3>
+      <% end %>
     </table>
   </div>
   <div class="col-md-3">
