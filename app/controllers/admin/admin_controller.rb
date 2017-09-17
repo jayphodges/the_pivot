@@ -2,6 +2,7 @@ class Admin::AdminController < Admin::BaseController
   before_action :require_admin
 
   def show
+  	binding.pry
     if params[:orders] == 'ordered'
     	@orders = Order.ordered
     elsif params[:orders] == 'cancelled'

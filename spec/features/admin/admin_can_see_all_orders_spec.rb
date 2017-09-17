@@ -45,10 +45,10 @@ describe "Admin can see and manipulate all orders" do
 # -And I can see the total number of orders for each status (“Ordered”, “Paid”, “Cancelled”, “Completed”)
       expect(page).to have_content("Paid Orders: 2")
       expect(page).to have_content("Cancelled Orders: 1")
-      expect(page).to have_content("Ordered Orders: 0")
-      expect(page).to have_content("Completed Orders: 0")
+      expect(page).to have_content("Ordered Orders: 1")
+      expect(page).to have_content("Completed Orders: 1")
 # -And I can see a link for each individual order
-      expect(page).to have_content("View Order", count: 3)
+      expect(page).to have_content("View Order", count: 5)
 # -And I can filter orders to display by each status type (“Ordered”, “Paid”, “Cancelled”, “Completed”)
       expect(page).to have_selector(:link_or_button, "All Orders")
       expect(page).to have_selector(:link_or_button, "Ordered Orders")
