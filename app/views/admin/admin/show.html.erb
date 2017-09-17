@@ -12,7 +12,7 @@
                         labels: ["January", "Februay", "March", "April", "May", "June", "July", "August", "September", "November", "December"],
                         datasets: [{
                             label: '# of Orders by Month',
-                            data: [12, 19, 3, 5, 2, 3],
+                            data: <% Item.orders_by_month.values %>,
                             backgroundColor: [
                                 'rgba(255, 99, 132, 0.2)',
                                 'rgba(54, 162, 235, 0.2)',
