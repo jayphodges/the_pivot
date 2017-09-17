@@ -11,8 +11,4 @@ class Item < ApplicationRecord
   def formatted_price
     sprintf('%.2f', price)
   end
-
-  def self.orders_by_month
-    Item.group_by_month("items.created_at::date").count
-  end
 end

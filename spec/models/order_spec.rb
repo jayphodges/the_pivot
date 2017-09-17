@@ -99,5 +99,20 @@ RSpec.describe Order, type: :model do
         expect(order.add_items(cart)).to eq({item_1.id => 10})
       end
     end
+
+    context "class methods" do
+      it '.orders_by_month' do
+        user = create(:user)
+        order = create(:order, user: user, status: 1)
+        c = Category.create(title: "Guitars")
+        10.times do
+          order.items.create(title: "Cool Item", description: "Descrip",
+                             price: 35.0, image: "http://lorempixel.com/400/200",
+                             category: c, created_at: rand(1.years).seconds.ago)
+        end
+
+        expect(Order.orders_by_month.values).to be_a(Array)
+      end
+    end
   end
 end

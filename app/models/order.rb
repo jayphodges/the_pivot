@@ -31,4 +31,7 @@ class Order < ApplicationRecord
     end
   end
 
+  def self.orders_by_month
+    Order.group_by_month("orders.created_at::date").count
+  end
 end

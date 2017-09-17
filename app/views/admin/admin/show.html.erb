@@ -3,50 +3,15 @@
     <div class="jumbotron">
         <div class="row">
             <div class="col-md-4">
-                <canvas id="myChart" width="400" height="400"></canvas>
-                <script>
-                var ctx = document.getElementById("ordersByMonth");
-                var myChart = new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: ["January", "Februay", "March", "April", "May", "June", "July", "August", "September", "November", "December"],
-                        datasets: [{
-                            label: '# of Orders by Month',
-                            data: <% Item.orders_by_month.values %>,
-                            backgroundColor: [
-                                'rgba(255, 99, 132, 0.2)',
-                                'rgba(54, 162, 235, 0.2)',
-                                'rgba(255, 206, 86, 0.2)',
-                                'rgba(75, 192, 192, 0.2)',
-                                'rgba(153, 102, 255, 0.2)',
-                                'rgba(255, 159, 64, 0.2)'
-                            ],
-                            borderColor: [
-                                'rgba(255,99,132,1)',
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(255, 206, 86, 1)',
-                                'rgba(75, 192, 192, 1)',
-                                'rgba(153, 102, 255, 1)',
-                                'rgba(255, 159, 64, 1)'
-                            ],
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        scales: {
-                            yAxes: [{
-                                ticks: {
-                                    beginAtZero: true
-                                }
-                            }]
-                        }
-                    }
-                });
-                </script>
-                <div class="col-md-4">
-                </div>
-                <div class="col-md-4">
-                </div>
+                <h4 class="graph-title"># of Orders by Month</h4>
+                <%= line_chart Order.orders_by_month %>
+            </div>
+            <div class="col-md-4">
+                <h4 class="graph-title">Product Popularity</h4>
+                <%=  %>
+            </div>
+            <div class="col-md-4">
+            </div>
             </div>
         </div>>
     </div>

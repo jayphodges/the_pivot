@@ -9,13 +9,18 @@ Category.create!(title: "Synth")
 Category.create!(title: "Drums")
 
 categories = Category.all
+user = User.create(username: 'sam', password: 'sam', role: 0)
 
-20.times do |num|
+60.times do |num|
   category = categories.shuffle.first
 
-	puts "created #{category.title}"
+  order = user.orders.create(status: 1, created_at: rand(1.years).seconds.ago)
 
-	item = Item.create(title: Faker::Music.instrument, description: Faker::RickAndMorty.quote, price: num + rand(5), image: "http://lorempixel.com/400/400", category_id: category.id)
+  puts "created #{category.title}"
 
-	puts "Created #{item.title} with category #{item.category.title}"
+  item = order.items.create(title: Faker::Music.instrument, description: Faker::RickAndMorty.quote, price: num + rand(5), image: "http://lorempixel.com/400/400", category_id: category.id, created_at: rand(1.years).seconds.ago)
+
+  puts "Created #{item.title} with category #{item.category.title}"
 end
+
+User.create(username: 'admin', password: 'admin', role: 'admin')

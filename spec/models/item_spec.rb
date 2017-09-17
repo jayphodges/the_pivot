@@ -77,16 +77,4 @@ RSpec.describe Item, type: :model do
       end
     end
   end
-
-  describe "class methods" do
-    context ".orders_by_month" do
-      it 'returns order count split into months' do
-        c = Category.create(title: "Guitars")
-        create(:item, title: "test")
-        items = create_list(:item, 1000, created_at: rand(1.years).seconds.ago)
-
-        expect(Item.orders_by_month.values).to be_a(Array)
-      end
-    end
-  end
 end
