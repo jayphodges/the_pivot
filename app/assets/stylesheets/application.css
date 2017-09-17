@@ -16,6 +16,7 @@
 
 .navbar {
   border-radius: 0px;
+  margin-bottom: 0px;
 }
 .navbar-brand {
   font-size: 40px;
@@ -63,4 +64,21 @@
 }
 .dashboard-wrapper {
   margin-left: 20px;
+}
+.category-show-title-div {
+  background-color: black;
+}
+.category-show-title {
+  margin-top: 0px;
+  padding-top: 3px;
+  padding-left: 20px;
+  padding-bottom: 3px;
+  color: lightgrey;
+}
+.category-show-body {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.item-show-button{
+  margin-left: 5px;
 }

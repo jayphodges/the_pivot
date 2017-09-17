@@ -6,19 +6,18 @@
     <img class="item-show-image" src="<%= @item.image %>" alt="">
   </div>
 
-  <div class="col-md-4">
+  <div class="col-md-8">
     <h1 class="h-tag-no-top-margin-title"> <%= @item.title %></h1>
     <h4>Price: $<%= @item.formatted_price %> each</h4>
-
-    <% if @item.active? %>
-      <%= link_to "Add to Cart", cart_path(item_id: @item.id), method: :post, class: "cart-button btn btn-outline-info" %><br>
-    <% else %>
-      <button type="button" class="cart-button-retired btn btn-danger">Item Retired</button>
-    <% end %>
-
-  </div>
-  <div class="col-md-4">
     <p><%= @item.description %></p>
     <p>DUMMY DESCRIPTION TEXT FOR FILLER. Spicy jalapeno bacon ipsum dolor amet ad turkey ea tail filet mignon occaecat ham hock pig aute tri-tip cupim meatloaf exercitation beef. Ground round tempor kevin cupidatat pork dolor turkey picanha cupim dolore ham hock shankle reprehenderit. Ut ground round bacon doner adipisicing kevin andouille shankle beef dolor. Ground round dolore cow do pork belly beef ribs sausage pastrami mollit adipisicing veniam ex enim rump dolore. Rump do mollit prosciutto jerky. Nostrud ut veniam pancetta bresaola short loin ball tip shoulder. Et cupidatat pork salami tail cow. Eu turkey nostrud shank bresaola. Tri-tip reprehenderit incididunt enim.</p>
+  <div class="item-show-button">
+  <% if @item.active? %>
+  <%= link_to "Add to Cart", cart_path(item_id: @item.id), method: :post, class: "cart-button btn btn-outline-info" %><br>
+  <% else %>
+  <button type="button" class="cart-button-retired btn btn-danger">Item Retired</button>
+  <% end %>
+</div>
   </div>
+
 </div>
