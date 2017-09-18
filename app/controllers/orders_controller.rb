@@ -22,29 +22,12 @@ class OrdersController < ApplicationController
 		end
 	end
 
-	def cancel
+	def update
 		order = Order.find(params[:id])
-		order.cancelled!
+		order.cancelled! if params[:status] == 'cancelled'
+		order.paid! if params[:status] == 'paid'
+		order.completed! if params[:status] == 'complete'
 		redirect_to admin_dashboard_path
 	end
-
-	def pay
-		order = Order.find(params[:id])
-		order.paid!
-		redirect_to admin_dashboard_path
-	end
-
-	def complete
-		order = Order.find(params[:id])
-		binding.pry
-		order.completed!
-		redirect_to admin_dashboard_path
-	end
-
-	# private
-
-	# def find_order
-	# 	order = Order.find(params[:id])
-	# end
 
 end
