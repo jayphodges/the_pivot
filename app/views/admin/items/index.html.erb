@@ -18,7 +18,7 @@
       <td><%= item.description %></td>
       <td><%= item.price %></td>
       <td><%= item.status %></td>
-      <td><%= link_to edit_admin_items_path, "Edit" %></td>
+      <td><%= link_to "Edit", edit_admin_item_path(item) %></td>
     </tr>
     <% end %>
   </tbody>
