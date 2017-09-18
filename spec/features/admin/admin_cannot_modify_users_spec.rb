@@ -55,8 +55,6 @@ describe 'Admin cannot edit user information' do
 
           visit("/users/5")
 
-          save_and_open_page
-
           expect(page).to_not have_content("some dude")
           expect(page).to_not have_content("some address")
         end

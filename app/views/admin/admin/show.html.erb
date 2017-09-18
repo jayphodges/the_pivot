@@ -36,11 +36,34 @@
                 <%= link_to "Add New Item", new_admin_item_path, type: "button", class: "btn btn-success btn-large btn-block" %>
             </div>
             <div class="col-xs-6 col-md-4">
-              <%= link_to 'Edit Admin', edit_user_path(@user), type: "button", class: "btn btn-success btn-large btn-block" %>
+              <%= link_to 'Edit Admin', edit_user_path(current_user), type: "button", class: "btn btn-success btn-large btn-block" %>
             </div>
             <div class="col-xs-6 col-md-4">
                 <%= link_to 'View Items', admin_items_path, type: "button", class: "btn btn-success btn-large btn-block" %>
             </div>
         </div>
+    </div>
+
+    <div class="dashboard_orders_header">
+        <p><%= link_to "All Orders", admin_dashboard_path %>: <%= Order.count %></p>
+        <p><%= link_to "Ordered Orders", '/admin/dashboard?orders=ordered' %>: <%= Order.ordered.count %></p>
+        <p><%= link_to "Paid Orders", '/admin/dashboard?orders=paid' %>: <%= Order.paid.count %></p>
+        <p><%= link_to "Cancelled Orders", '/admin/dashboard?orders=cancelled' %>: <%= Order.cancelled.count %></p>
+        <p><%= link_to "Completed Orders", '/admin/dashboard?orders=completed' %>: <%= Order.completed.count %></p>
+    </div>
+
+    <div class="dashboard_orders">
+        <% @orders.each do |order| %>
+        <div class="admin_index_order<%= order.id %>">
+            Id: <%= order.id %>
+            Created At: <%= order.created_at %>
+            Updated At: <%= order.updated_at %>
+            Status: <%= order.status %>
+            <%= link_to "View Order", order_path(order) %>
+            <%= link_to "Cancel", order_path(id: order.id, status: 'cancelled'), method: :patch if (order.paid? || order.ordered?) %>
+            <%= link_to "Mark as Paid", order_path(id: order.id, status: 'paid'), method: :patch if order.ordered? %>
+            <%= link_to "Mark as Completed", order_path(id: order.id, status: 'complete'), method: :patch if order.paid? %>
+        </div>
+        <% end %>
     </div>
 </div>
