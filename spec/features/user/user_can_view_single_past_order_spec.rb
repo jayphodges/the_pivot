@@ -40,13 +40,13 @@ describe "User can see individual past order" do
 		  expect(page).to have_content(order.item_quantity(item3))
 		  expect(page).to have_content(order.item_subtotal(item3))
 
-		  expect(page).to have_selector(:link_or_button, 'View Item', count: 3)
+		  expect(page).to have_selector(:link_or_button, "#{item1.title}")
 
 		  expect(page).to have_content("Order Status: #{order.status}")
 			expect(page).to have_content(order.total_order_price)
-		  expect(page).to have_content(order.created_at)
+		  expect(page).to have_content(order.created_at.to_formatted_s(:long_ordinal))
 		  expect(page).to have_content("Order completed at")
-		  expect(page).to have_content(order.updated_at)
+		  expect(page).to have_content(order.updated_at.to_formatted_s(:long_ordinal))
     end
 	end
 end
