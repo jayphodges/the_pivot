@@ -12,11 +12,13 @@
 </ul>
 
 <h5>Total Price: <%= @order.total_order_price %></h5>
+<h5>Order Submitted: <%= @order.created_at.to_formatted_s(:long_ordinal) %></h5>
 <h5>Order Status: <%= @order.status %></h5>
-<h5>Order Submitted: <%= @order.created_at %></h5>
 <% if @order.completed? %>
-	<p>Order completed at <%= @order.updated_at %></p>
+	<p>Order completed at <%= @order.updated_at.to_formatted_s(:long_ordinal) %></p>
 <% elsif @order.cancelled? %>
-	<p>Order cancelled at <%= @order.updated_at %></p>
+	<p>Order cancelled at <%= @order.updated_at.to_formatted_s(:long_ordinal) %></p>
+<% elsif @order.paid? %>
+	<p>Order paid at <%= @order.updated_at.to_formatted_s(:long_ordinal) %></p>
 <% end %>
 
