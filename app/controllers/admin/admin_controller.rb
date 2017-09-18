@@ -3,15 +3,15 @@ class Admin::AdminController < Admin::BaseController
 
   def show
     if params[:orders] == 'ordered'
-    	@orders = Order.ordered
+    	@orders = Order.ordered.order(:id)
     elsif params[:orders] == 'cancelled'
-    	@orders = Order.cancelled
+    	@orders = Order.cancelled.order(:id)
     elsif params[:orders] == 'paid'
-    	@orders = Order.paid
+    	@orders = Order.paid.order(:id)
     elsif params[:orders] == 'completed'
-    	@orders = Order.completed
+    	@orders = Order.completed.order(:id)
     else
-    	@orders = Order.all
+    	@orders = Order.order(:id)
     end
   end
 
