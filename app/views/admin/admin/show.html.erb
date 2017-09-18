@@ -54,6 +54,7 @@
 
     <div class="dashboard_orders">
         <% @orders.each do |order| %>
+        <div class="admin_index_order<%= order.id %>">
             Id: <%= order.id %>
             Created At: <%= order.created_at %>
             Updated At: <%= order.updated_at %>
@@ -68,6 +69,7 @@
             <% if order.paid? %>
                 <%= link_to "Mark as Completed", mark_completed_order_path(order) %>
             <% end %>
+        </div>
         <% end %>
     </div>
 </div>
