@@ -104,14 +104,15 @@ describe "Admin can see and manipulate all orders" do
         click_on "Mark as Paid"
       end
 
-      expect(page).to have_content("ordered", count: 2)
+      expect(page).to have_content("ordered", count: 0)
 # -I can click on “mark as completed” on orders that are “paid”
+
       expect(page).to have_content("completed", count: 1)
 
       within(".admin_index_order3") do
         click_on "Mark as Completed"
       end
-
+      
       expect(page).to have_content("completed", count: 2)
     end
   end
