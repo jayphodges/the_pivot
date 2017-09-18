@@ -6,8 +6,12 @@ class OrdersController < ApplicationController
 	end
 
 	def show
-		@order = Order.find(params[:id])
-		@items = @order.items.distinct
+		if Order.find(params[:id]).user_id == current_user.id
+			@order = Order.find(params[:id])
+			@items = @order.items.distinct
+		else
+			not_found
+		end
 	end
 
 	def create
