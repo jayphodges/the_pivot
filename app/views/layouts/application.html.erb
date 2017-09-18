@@ -1,64 +1,96 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>MusicShop</title>
-  <%= csrf_meta_tags %>
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-</head>
-
-<body>
-  <header>
-    <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+  <head>
+    <title>MusicShop</title>
+    <%= csrf_meta_tags %>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/">Music Store</a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <li><a href="/items">Items</a></li>
-            <li><a href="#">Link</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-              <% all_for_nav.each do |category| %>
-                <li><%= link_to "#{category.title.capitalize}", category_path(category.title) %></li>
+            </button>
+            <a class="navbar-brand" href="/">Music Store</a>
+          </div>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li><a href="/items">Items</a></li>
+              <li><a href="#">Link</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <% all_for_nav.each do |category| %>
+                  <li><%= link_to "#{category.title.capitalize}", category_path(category.title) %></li>
+                  <% end %>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <% if !current_user.nil? && current_user.admin? %>
+              <li><%= link_to "Admin Dashboard", admin_dashboard_path %></li>
               <% end %>
+              <li><a href="/cart">View Cart</a></li>
+              <% if current_user %>
+              <li><%= link_to "Logout", logout_path, method: :delete %></li>
+              <li><%= current_user.username %></li>
+              <% else %>
+              <li><a href="/login">Login</a></li>
+              <% end %>
+            </ul>
+            </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+          </nav>
+        </header>
+        <% flash.each do |type, message| %>
+        <%= sanitize(message) %>
+        <% end %>
+        <%= yield %>
+      </body>
+
+      <footer>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-sm-6 footerleft ">
+              <div class="logofooter"><%= image_tag("footer-music.svg", alt: "Edit Entry", height: "125px") %></div>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.</p>
+            </div>
+            <div class="col-md-6 col-sm-6 paddingtop-bottom footerright">
+              <h6 class="heading7">Categories</h6>
+              <ul class="footer-ul">
+                <li><a href="#">Dummy's until we erb it</a></li>
+                <li><a href="#">Guitars</a></li>
+                <li><a href="#">Keyboards</a></li>
+                <li><a href="#">Synths</a></li>
+                <li><a href="#">Drums</a></li>
               </ul>
-            </li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <% if !current_user.nil? && current_user.admin? %>
-            <li><%= link_to "Admin Dashboard", admin_dashboard_path %></li>
-            <% end %>
-            <li><a href="/cart">View Cart</a></li>
-            <% if current_user %>
-            <li><%= link_to "Logout", logout_path, method: :delete %></li>
-            <li><%= current_user.username %></li>
-            <% else %>
-            <li><a href="/login">Login</a></li>
-            <% end %>
-          </ul>
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
-    </nav>
-  </header>
-  <% flash.each do |type, message| %>
-    <%= sanitize(message) %>
-  <% end %>
-  <%= yield %>
-</body>
-</html>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <!--footer start from here-->
+      <div class="copyright">
+        <div class="container">
+          <div class="col-md-6">
+            <p>© 2017 - Joel, Aaron, Randy, Sam</p>
+          </div>
+          <div class="col-md-6">
+            <ul class="bottom_ul">
+              <li><a href="https://github.com/amhursh/music_shop/">Source Code</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </html>
