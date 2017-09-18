@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
 	before_action :require_user
+	# before_action :find_order, only: [:cancel, :pay, :complete]
 
 	def index
 	end
@@ -20,4 +21,13 @@ class OrdersController < ApplicationController
 			redirect_to cart_path
 		end
 	end
+
+	def update
+		order = Order.find(params[:id])
+		order.cancelled! if params[:status] == 'cancelled'
+		order.paid! if params[:status] == 'paid'
+		order.completed! if params[:status] == 'complete'
+		redirect_back(fallback_location: admin_dashboard_path)
+	end
+
 end
