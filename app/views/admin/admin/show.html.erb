@@ -61,7 +61,7 @@
             Status: <%= order.status %>
             <%= link_to "View Order", order_path(order) %>
             <% if (order.paid? || order.ordered?) %>
-                <%= link_to "Cancel", cancel_order_path(order) %>
+                <%= link_to "Cancel", cancel_order_path(id: order.id), method: :post %>
             <% end %>
             <% if order.ordered? %>
                 <%= link_to "Mark as Paid", mark_paid_order_path(order) %>
