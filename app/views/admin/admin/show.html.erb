@@ -60,15 +60,9 @@
             Updated At: <%= order.updated_at %>
             Status: <%= order.status %>
             <%= link_to "View Order", order_path(order) %>
-            <% if (order.paid? || order.ordered?) %>
-                <%= link_to "Cancel", order_path(id: order.id, make_status: 'cancelled'), method: :patch %>
-            <% end %>
-            <% if order.ordered? %>
-                <%= link_to "Mark as Paid", order_path(id: order.id, make_status: 'paid'), method: :patch %>
-            <% end %>
-            <% if order.paid? %>
-                <%= link_to "Mark as Completed", order_path(id: order.id, make_status: 'complete'), method: :patch %>
-            <% end %>
+            <%= link_to "Cancel", order_path(id: order.id, status: 'cancelled'), method: :patch if (order.paid? || order.ordered?) %>
+            <%= link_to "Mark as Paid", order_path(id: order.id, status: 'paid'), method: :patch if order.ordered? %>
+            <%= link_to "Mark as Completed", order_path(id: order.id, status: 'complete'), method: :patch if order.paid? %>
         </div>
         <% end %>
     </div>
