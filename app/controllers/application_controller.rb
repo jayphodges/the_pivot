@@ -29,4 +29,8 @@ class ApplicationController < ActionController::Base
   def cart_session?
     true if !session[:cart].nil?
   end
+
+  def not_found
+    render file: "/public/404"
+  end
 end
