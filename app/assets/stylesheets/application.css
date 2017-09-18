@@ -16,6 +16,7 @@
 
 .navbar {
   border-radius: 0px;
+  margin-bottom: 0px;
 }
 .navbar-brand {
   font-size: 40px;
@@ -58,4 +59,34 @@
 }
 .carousel-image {
   width: 100%;
+}
+.graph-title {
+  margin-left: 10px;
+}
+.dashboard-wrapper {
+  margin-left: 20px;
+  margin-right: 30px;
+}
+.category-show-title-div {
+  background-color: black;
+}
+.category-show-title {
+  margin-top: 0px;
+  padding-top: 3px;
+  padding-left: 20px;
+  padding-bottom: 3px;
+  color: lightgrey;
+}
+.category-show-body {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.item-show-button{
+  margin-left: 5px;
+}
+body > div > div.metrics-wrapper > div {
+  margin-top: -50px;
+}
+.dashboard-wrapper > h1 {
+  margin-left: 5px;
 }

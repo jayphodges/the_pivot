@@ -1,0 +1,12 @@
+<% form_for @item do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+
+  <%= f.label :price %>
+  <p>$</p><%= f.text_field :price %>
+
+  <%= f.select :category_id, Category.all.collect { |c| [ c.title, c.id ] }, include_blank: false %>
+<% end %>

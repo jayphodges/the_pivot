@@ -1,5 +1,7 @@
+<div class="category-show-title-div">
+  <h3 class="category-show-title center-text">Current Inventory</h3>
+</div>
 <div>
-<h1 class="center-text">Current Inventory</h1>
 	<div class="row items-row">
 		<% @items.each do |item| %>
 		<div class="col-md-3 item-card">
@@ -7,10 +9,11 @@
 				<img class="item-card-img" src="<%= item.image %>" alt="">
 				<h3><%= link_to item.title, item_path(item) %></h3>
 				<% if item.active? %>
-					<%= link_to "Add to Cart", cart_path(item_id: item.id), method: :post, class: "cart-button btn btn-outline-info" %>
+				<%= link_to "Add to Cart", cart_path(item_id: item.id), method: :post, class: "cart-button btn btn-outline-info" %>
 				<% else %>
-					<button type="button" class="cart-button-retired btn btn-danger">Item Retired</button>
+				<button type="button" class="cart-button-retired btn btn-danger">Item Retired</button>
 				<% end %>
+				<br><br>
 				<div class="items-break-line"></div>
 			</div>
 		</div>

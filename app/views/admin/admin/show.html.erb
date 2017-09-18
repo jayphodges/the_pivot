@@ -1,0 +1,46 @@
+<div class="dashboard-wrapper">
+    <h1>Admin Dashboard</h1>
+    <hr>
+    <br>
+    <div class="metrics-wrapper">
+        <br>
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Metrics</h3>
+                </div>
+                <div class="card-block">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h4 class="card-title graph-title"># of Orders by Month</h4>
+                        <%= line_chart Order.orders_by_month, class: 'card-text' %>
+                    </div>
+                    <div class="col-md-4">
+                        <h4 class="card-header graph-title"># of Orders by Day</h4>
+                        <%= column_chart Order.orders_by_day_of_week, class: 'card-text' %>
+                    </div>
+                    <div class="col-md-4">
+                        <h4 class="card-header graph-title"># of Items by Category</h4>
+                        <%= pie_chart Category.items_in_category, class: 'card-text' %>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="control-panel-wrapper">
+        <div class="row">
+            <div class="col-xs-6 col-md-4">
+                <%= link_to "Add New Item", new_admin_item_path, type: "button", class: "btn btn-success btn-large btn-block" %>
+            </div>
+            <div class="col-xs-6 col-md-4">
+              <%= link_to 'Edit Admin', edit_user_path(@user), type: "button", class: "btn btn-success btn-large btn-block" %>
+            </div>
+            <div class="col-xs-6 col-md-4">
+                <%= link_to 'View Items', admin_items_path, type: "button", class: "btn btn-success btn-large btn-block" %>
+            </div>
+        </div>
+    </div>
+</div>
