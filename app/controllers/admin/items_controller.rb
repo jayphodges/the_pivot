@@ -1,4 +1,8 @@
 class Admin::ItemsController < Admin::BaseController
+  def index
+    
+  end
+
   def new
     @item = Item.new
   end
