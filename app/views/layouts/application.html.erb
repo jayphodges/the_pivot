@@ -75,11 +75,9 @@
             <div class="col-md-6 col-sm-6 paddingtop-bottom footerright">
               <h6 class="heading7">Categories</h6>
               <ul class="footer-ul">
-                <li><a href="#">Dummy's until we erb it</a></li>
-                <li><a href="#">Guitars</a></li>
-                <li><a href="#">Keyboards</a></li>
-                <li><a href="#">Synths</a></li>
-                <li><a href="#">Drums</a></li>
+                <% all_for_nav.each do |category| %>
+                  <li><%= link_to "#{category.title.capitalize}", category_path(category.title) %></li>
+                <% end %>
                 <br>
               </ul>
             </div>
