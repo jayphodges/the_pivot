@@ -36,7 +36,7 @@
                 <%= link_to "Add New Item", new_admin_item_path, type: "button", class: "btn btn-success btn-large btn-block" %>
             </div>
             <div class="col-xs-6 col-md-4">
-              <%= link_to 'Edit Admin', edit_user_path(@user), type: "button", class: "btn btn-success btn-large btn-block" %>
+              <%= link_to 'Edit Admin', edit_user_path(current_user), type: "button", class: "btn btn-success btn-large btn-block" %>
             </div>
             <div class="col-xs-6 col-md-4">
                 <%= link_to 'View Items', admin_items_path, type: "button", class: "btn btn-success btn-large btn-block" %>
@@ -59,6 +59,15 @@
             Updated At: <%= order.updated_at %>
             Status: <%= order.status %>
             <%= link_to "View Order", order_path(order) %>
+            <% if (order.paid? || order.ordered?) %>
+                <%= link_to "Cancel", cancel_order_path(order) %>
+            <% end %>
+            <% if order.ordered? %>
+                <%= link_to "Mark as Paid", mark_paid_order_path(order) %>
+            <% end %>
+            <% if order.paid? %>
+                <%= link_to "Mark as Completed", mark_completed_order_path(order) %>
+            <% end %>
         <% end %>
     </div>
 </div>
