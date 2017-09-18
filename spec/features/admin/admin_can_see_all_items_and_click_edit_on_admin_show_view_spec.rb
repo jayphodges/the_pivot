@@ -18,12 +18,12 @@ describe "Admin visits /admin/dashboard" do
 
         click_on "View Items"
 
-        expect(current_path).to be(admin_items_path)
+        expect(current_path).to eq(admin_items_path)
 
         expect(page).to have_content(item_1.title)
         expect(page).to have_content(item_1.description)
         expect(page).to have_content(item_1.status)
-        expect(page).to have_link("Edit")
+        expect(page).to have_selector(:link_or_button, "Edit")
       end
     end
   end

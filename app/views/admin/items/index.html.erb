@@ -1,0 +1,25 @@
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Image</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Status</th>
+      <th>Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @items.each do |item| %>
+    <tr>
+      <th><img src="<%= item.image %>" alt=""></th>
+      <td><%= item.title %></td>
+      <td><%= item.description %></td>
+      <td><%= item.price %></td>
+      <td><%= item.status %></td>
+      <td><%= link_to edit_admin_items_path, "Edit" %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
