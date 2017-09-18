@@ -9,6 +9,7 @@ describe "Admin can view individual order" do
 	      user = create(:user)
 
 	      order1 = create(:order, user: user)
+	      order1.paid!
 
 	      admin = create(:user, role: 1)
 
@@ -30,7 +31,7 @@ describe "Admin can view individual order" do
 # -Then I can see the order’s date and time.
 	      expect(page).to have_content("Order #{order1.id}")
 	      expect(page).to have_content("Order Submitted: #{order1.created_at.to_formatted_s(:long_ordinal)}")
-	      expect(page).to have_content("Order #{order1.status} at: #{order1.updated_at.to_formatted_s(:long_ordinal)}")
+	      expect(page).to have_content("Order #{order1.status} at #{order1.updated_at.to_formatted_s(:long_ordinal)}")
 # -And I can see the purchaser’s full name and address.
         expect(page).to have_content("Customer Name: #{user.full_name}")
         expect(page).to have_content("Mailing Address: #{user.address}")
