@@ -30,16 +30,16 @@ describe "Admin can see and manipulate all orders" do
       visit admin_dashboard_path
 
       expect(page).to have_content(order1.id)
-      expect(page).to have_content(order1.created_at)
-      expect(page).to have_content(order1.updated_at)
+      expect(page).to have_content(order1.created_at.to_formatted_s(:long_ordinal))
+      expect(page).to have_content(order1.updated_at.to_formatted_s(:long_ordinal))
       expect(page).to have_content(order1.status)
       expect(page).to have_content(order2.id)
-      expect(page).to have_content(order2.created_at)
-      expect(page).to have_content(order2.updated_at)
+      expect(page).to have_content(order2.created_at.to_formatted_s(:long_ordinal))
+      expect(page).to have_content(order2.updated_at.to_formatted_s(:long_ordinal))
       expect(page).to have_content(order2.status)
       expect(page).to have_content(order3.id)
-      expect(page).to have_content(order3.created_at)
-      expect(page).to have_content(order3.updated_at)
+      expect(page).to have_content(order3.created_at.to_formatted_s(:long_ordinal))
+      expect(page).to have_content(order3.updated_at.to_formatted_s(:long_ordinal))
       expect(page).to have_content(order3.status)
 
       expect(page).to have_content("Paid Orders: 2")
