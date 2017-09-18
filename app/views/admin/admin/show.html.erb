@@ -1,69 +1,87 @@
-<div class="dashboard-wrapper">
-    <h1>Admin Dashboard</h1>
-    <hr>
-    <br>
-    <div class="metrics-wrapper">
-        <br>
-        <div class="container">
-            <div class="card">
-                <div class="card-header">
-                    <h3>Metrics</h3>
-                </div>
-                <div class="card-block">
-                <div class="row">
-                    <div class="col-md-4">
-                        <h4 class="card-title graph-title"># of Orders by Month</h4>
-                        <%= line_chart Order.orders_by_month, class: 'card-text' %>
-                    </div>
-                    <div class="col-md-4">
-                        <h4 class="card-header graph-title"># of Orders by Day</h4>
-                        <%= column_chart Order.orders_by_day_of_week, class: 'card-text' %>
-                    </div>
-                    <div class="col-md-4">
-                        <h4 class="card-header graph-title"># of Items by Category</h4>
-                        <%= pie_chart Category.items_in_category, class: 'card-text' %>
-                    </div>
-                </div>
-            </div>
-            </div>
-        </div>
-    </div>
-    <br>
-    <br>
-    <div class="control-panel-wrapper">
-        <div class="row">
-            <div class="col-xs-6 col-md-4">
-                <%= link_to "Add New Item", new_admin_item_path, type: "button", class: "btn btn-success btn-large btn-block" %>
-            </div>
-            <div class="col-xs-6 col-md-4">
-              <%= link_to 'Edit Admin', edit_user_path(current_user), type: "button", class: "btn btn-success btn-large btn-block" %>
-            </div>
-            <div class="col-xs-6 col-md-4">
-                <%= link_to 'View Items', admin_items_path, type: "button", class: "btn btn-success btn-large btn-block" %>
-            </div>
-        </div>
-    </div>
+<div class="category-show-title-div">
+  <h3 class="category-show-title center-text">ADMIN DASHBOARD</h3>
+</div>
+  <hr>
 
-    <div class="dashboard_orders_header">
-        <p><%= link_to "All Orders", admin_dashboard_path %>: <%= Order.count %></p>
-        <p><%= link_to "Ordered Orders", '/admin/dashboard?orders=ordered' %>: <%= Order.ordered.count %></p>
-        <p><%= link_to "Paid Orders", '/admin/dashboard?orders=paid' %>: <%= Order.paid.count %></p>
-        <p><%= link_to "Cancelled Orders", '/admin/dashboard?orders=cancelled' %>: <%= Order.cancelled.count %></p>
-        <p><%= link_to "Completed Orders", '/admin/dashboard?orders=completed' %>: <%= Order.completed.count %></p>
+  <div class="row">
+    <div class="col-xs-4 col-md-4">
+      <%= link_to "Add New Item", new_admin_item_path, type: "button", class: "btn btn-success   btn-block" %>
     </div>
+    <div class="col-xs-4 col-md-4">
+      <%= link_to 'Edit Admin', edit_user_path(current_user), type: "button", class: "btn btn-success btn-block" %>
+    </div>
+    <div class="col-xs-4 col-md-4">
+      <%= link_to 'View Items', admin_items_path, type: "button", class: "btn btn-success btn-block" %>
+    </div>
+  </div>
 
-    <div class="dashboard_orders">
+  <hr>
+  <br>
+  <br>
+  <div class="row">
+    <div class="col-md-4">
+      <h4 class="card-title graph-title">Orders by Month</h4>
+      <%= line_chart Order.orders_by_month, class: 'card-text' %>
+    </div>
+    <div class="col-md-4">
+      <h4 class="card-header graph-title">Orders by Day</h4>
+      <%= column_chart Order.orders_by_day_of_week, class: 'card-text' %>
+    </div>
+    <div class="col-md-4">
+      <h4 class="card-header graph-title">Items by Category</h4>
+      <%= pie_chart Category.items_in_category, class: 'card-text' %>
+    </div>
+  </div>
+  <br>
+  <hr>
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-2">
+      <p><%= link_to "All Orders", admin_dashboard_path %>: <%= Order.count %></p>
+    </div>
+    <div class="col-md-2">
+      <p><%= link_to "Ordered Orders", '/admin/dashboard?orders=ordered' %>: <%= Order.ordered.count %></p>
+    </div>
+    <div class="col-md-2">
+      <p><%= link_to "Paid Orders", '/admin/dashboard?orders=paid' %>: <%= Order.paid.count %></p>
+    </div>
+    <div class="col-md-2">
+      <p><%= link_to "Cancelled Orders", '/admin/dashboard?orders=cancelled' %>: <%= Order.cancelled.count %></p>
+    </div>
+    <div class="col-md-2">
+      <p><%= link_to "Completed Orders", '/admin/dashboard?orders=completed' %>: <%= Order.completed.count %></p>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+  <hr>
+  <div class="dashboard_orders">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Created</th>
+          <th>Updated</th>
+          <th>Status</th>
+          <th>View</th>
+          <th>Cancel</th>
+          <th>Mark Paid</th>
+          <th>Mark Complete</th>
+        </tr>
+      </thead>
+      <tbody>
         <% @orders.each do |order| %>
-        <div class="admin_index_order<%= order.id %>">
-            Id: <%= order.id %>
-            Created At: <%= order.created_at %>
-            Updated At: <%= order.updated_at %>
-            Status: <%= order.status %>
-            <%= link_to "View Order", order_path(order) %>
-            <%= link_to "Cancel", order_path(id: order.id, status: 'cancelled'), method: :patch if (order.paid? || order.ordered?) %>
-            <%= link_to "Mark as Paid", order_path(id: order.id, status: 'paid'), method: :patch if order.ordered? %>
-            <%= link_to "Mark as Completed", order_path(id: order.id, status: 'complete'), method: :patch if order.paid? %>
-        </div>
+        <tr class="admin_index_order<%= order.id %>">
+          <td>Id: <%= order.id %></td>
+          <td><%= order.created_at.to_formatted_s(:long_ordinal) %></td>
+          <td><%= order.updated_at.to_formatted_s(:long_ordinal) %></td>
+          <td><%= order.status %></td>
+          <td><%= link_to "View Order", order_path(order) %></td>
+          <td><%= link_to "Cancel", order_path(id: order.id, status: 'cancelled'), method: :patch if (order.paid? || order.ordered?) %></td>
+          <td><%= link_to "Mark as Paid", order_path(id: order.id, status: 'paid'), method: :patch if order.ordered? %></td>
+          <td><%= link_to "Mark as Completed", order_path(id: order.id, status: 'complete'), method: :patch if order.paid? %></td>
+        </tr>
         <% end %>
-    </div>
+      </tbody>
+    </table>
+  </div>
 </div>

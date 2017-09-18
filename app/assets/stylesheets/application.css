@@ -68,14 +68,14 @@
   margin-right: 30px;
 }
 .category-show-title-div {
-  background-color: black;
+  background-color: lightgray;
 }
 .category-show-title {
   margin-top: 0px;
   padding-top: 3px;
   padding-left: 20px;
   padding-bottom: 3px;
-  color: lightgrey;
+  color: grey;
 }
 .category-show-body {
   margin-left: 10px;
