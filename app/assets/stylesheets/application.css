@@ -104,7 +104,7 @@ body > div > div.metrics-wrapper > div {
 
 /* Footer Below */
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,300);
-footer { background-color:#0c1a1e; font-family: 'Open Sans', sans-serif; position:absolute; width:100%; bottom:25px;}
+footer { background-color:#0c1a1e; font-family: 'Open Sans', sans-serif; position:fixed; width:100%; bottom:25px;}
 .footerleft { margin-top:50px; padding:0 36px; }
 .logofooter { margin-bottom:10px; font-size:25px; color:#fff; font-weight:700;}
 
@@ -133,7 +133,7 @@ footer { background-color:#0c1a1e; font-family: 'Open Sans', sans-serif; positio
  .icon { float:left; margin-right:5px;}
 
 
- .copyright { position:absolute; width:100%; bottom:0px; background-color:#000000;}
+ .copyright { position:absolute; width:100%; bottom:0px; position: fixed; background-color:#000000;}
  .copyright p { text-align:left; color:#FFF; padding:10px 0; margin-bottom:0px;}
  .heading7 { font-size:21px; font-weight:700; color:#d9d6d6; margin-bottom:22px;}
  .post p { font-size:12px; color:#FFF; line-height:20px;}
