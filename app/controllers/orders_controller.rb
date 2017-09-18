@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
 	before_action :require_user
+	# before_action :find_order, only: [:cancel, :pay, :complete]
 
 	def index
 	end
@@ -20,4 +21,30 @@ class OrdersController < ApplicationController
 			redirect_to cart_path
 		end
 	end
+
+	def cancel
+		order = Order.find(params[:id])
+		order.cancelled!
+		redirect_to admin_dashboard_path
+	end
+
+	def pay
+		order = Order.find(params[:id])
+		order.paid!
+		redirect_to admin_dashboard_path
+	end
+
+	def complete
+		order = Order.find(params[:id])
+		binding.pry
+		order.completed!
+		redirect_to admin_dashboard_path
+	end
+
+	# private
+
+	# def find_order
+	# 	order = Order.find(params[:id])
+	# end
+
 end
