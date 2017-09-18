@@ -58,35 +58,35 @@ describe "Admin can see and manipulate all orders" do
 # -And I have links to transition between statuses
       click_on "Ordered Orders"
 
-      expect(page).to_not have_content(order2.created_at)
-      expect(page).to_not have_content(order3.created_at)
-      expect(page).to_not have_content(order1.created_at)
-      expect(page).to_not have_content(order4.created_at)
-      expect(page).to have_content(order5.created_at)
+      expect(page).to_not have_content("Id: 2")
+      expect(page).to_not have_content("Id: 3")
+      expect(page).to_not have_content("Id: 1")
+      expect(page).to_not have_content("Id: 4")
+      expect(page).to have_content("Id: 5")
 
       click_on "Paid Orders"
 
-      expect(page).to have_content(order2reated_at)
-      expect(page).to have_content(order3.created_at)
-      expect(page).to_not have_content(order1.created_at)
-      expect(page).to_not have_content(order4.created_at)
-      expect(page).to_not have_content(order5.created_at)
+      expect(page).to have_content("Id: 2")
+      expect(page).to have_content("Id: 3")
+      expect(page).to_not have_content("Id: 1")
+      expect(page).to_not have_content("Id: 4")
+      expect(page).to_not have_content("Id: 5")
 
       click_on "Cancelled Orders"
 
-      expect(page).to have_content(order1.created_at)
-      expect(page).to_not have_content(order2.created_at)
-      expect(page).to_not have_content(order3.created_at)
-      expect(page).to_not have_content(order4.created_at)
-      expect(page).to_not have_content(order5.created_at)
+      expect(page).to have_content("Id: 1")
+      expect(page).to_not have_content("Id: 2")
+      expect(page).to_not have_content("Id: 3")
+      expect(page).to_not have_content("Id: 4")
+      expect(page).to_not have_content("Id: 5")
 
       click_on "Completed Orders"
 
-      expect(page).to_not have_content(order1.created_at)
-      expect(page).to_not have_content(order2.created_at)
-      expect(page).to_not have_content(order3.created_at)
-      expect(page).to have_content(order4.created_at)
-      expect(page).to_not have_content(order5.created_at)
+      expect(page).to_not have_content("Id: 1")
+      expect(page).to_not have_content("Id: 2")
+      expect(page).to_not have_content("Id: 3")
+      expect(page).to have_content("Id: 4")
+      expect(page).to_not have_content("Id: 5")
 # -I can click on “cancel” on individual orders which are “paid” or “ordered”
       click_on "All Orders"
 
