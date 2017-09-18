@@ -17,9 +17,9 @@ Rails.application.routes.draw do
     resources :items, only: [:new, :create]
   end
 
-  post '/orders', to: 'orders#cancel', as: 'cancel_order'
-  post '/orders', to: 'orders#pay', as: 'mark_paid_order'
-  post '/orders', to: 'orders#complete', as: 'mark_completed_order'
+  post '/order', to: 'orders#cancel', as: 'cancel_order'
+  post '/order', to: 'orders#pay', as: 'mark_paid_order'
+  post '/order', to: 'orders#complete', as: 'mark_completed_order'
 
   get '/dashboard', to: 'users#show'
 
