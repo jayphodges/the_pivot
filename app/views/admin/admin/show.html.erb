@@ -64,10 +64,10 @@
                 <%= link_to "Cancel", cancel_order_path(id: order.id), method: :post %>
             <% end %>
             <% if order.ordered? %>
-                <%= link_to "Mark as Paid", mark_paid_order_path(order) %>
+                <%= link_to "Mark as Paid", mark_paid_order_path(id: order.id), method: :post %>
             <% end %>
             <% if order.paid? %>
-                <%= link_to "Mark as Completed", mark_completed_order_path(order) %>
+                <%= link_to "Mark as Completed", mark_completed_order_path(id: order.id), method: :post %>
             <% end %>
         </div>
         <% end %>
