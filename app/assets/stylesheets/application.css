@@ -90,3 +90,7 @@ body > div > div.metrics-wrapper > div {
 .dashboard-wrapper > h1 {
   margin-left: 5px;
 }
+.admin-item-thumb {
+  width: 100px;
+  height: 100px;
+}
