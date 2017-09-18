@@ -18,6 +18,7 @@ class OrdersController < ApplicationController
 		order = Order.new(user_id: current_user.id)
 		order.add_items(@cart)
 		if order.save
+			session[:cart].clear
 			flash[:success] = "Order was successfully placed"
 			redirect_to orders_path
 		else
