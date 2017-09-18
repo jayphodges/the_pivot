@@ -27,7 +27,7 @@ class OrdersController < ApplicationController
 		order.cancelled! if params[:status] == 'cancelled'
 		order.paid! if params[:status] == 'paid'
 		order.completed! if params[:status] == 'complete'
-		redirect_to admin_dashboard_path
+		redirect_back(fallback_location: admin_dashboard_path)
 	end
 
 end
