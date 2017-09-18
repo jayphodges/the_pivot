@@ -90,6 +90,10 @@ body > div > div.metrics-wrapper > div {
 .dashboard-wrapper > h1 {
   margin-left: 5px;
 }
+.admin-item-thumb {
+  width: 100px;
+  height: 100px;
+}
 
 /* Footer Below */
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,300);
@@ -131,3 +135,5 @@ footer { background-color:#0c1a1e; min-height:180px; font-family: 'Open Sans', s
  .bottom_ul li { float:left; line-height:40px;}
  .bottom_ul li:after { content:"/"; color:#FFF; margin-right:8px; margin-left:8px;}
  .bottom_ul li a { color:#FFF;  font-size:12px;}
+
+
