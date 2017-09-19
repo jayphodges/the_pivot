@@ -16,6 +16,7 @@ FactoryGirl.define do
     sequence :address do |i|
     	"#{i} streetname, street"
     end
-    
+
+    role 0
   end
 end
