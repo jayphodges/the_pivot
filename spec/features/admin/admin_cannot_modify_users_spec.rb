@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 describe 'Admin cannot edit user information' do
   context 'admin can log in' do
     context 'admin can visit their edit page' do
