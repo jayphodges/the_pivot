@@ -40,7 +40,7 @@ RSpec.describe Order, type: :model do
                                    price: 35.50, image: "http://lorempixel.com/400/200",
                                    category: category)
         item3 = order.items.create(title: "Cool Item3", description: "Descrip3",
-                                   price: 35.99, image: "h`ttp://lorempixel.com/400/200",
+                                   price: 35.99, image: "http://lorempixel.com/400/200",
                                    category: category)
 
         OrdersItem.where(item_id: item_1.id).update(unit_price: 35.0)
@@ -61,7 +61,7 @@ RSpec.describe Order, type: :model do
                                    price: 35.50, image: "http://lorempixel.com/400/200",
                                    category: category)
         item3 = order.items.create(title: "Cool Item3", description: "Descrip3",
-                                   price: 35.99, image: "h`ttp://lorempixel.com/400/200",
+                                   price: 35.99, image: "http://lorempixel.com/400/200",
                                    category: category)
         4.times do
           order.items << item_1
@@ -81,7 +81,7 @@ RSpec.describe Order, type: :model do
                                    price: 35.50, image: "http://lorempixel.com/400/200",
                                    category: category)
         item3 = order.items.create(title: "Cool Item3", description: "Descrip3",
-                                   price: 35.99, image: "h`ttp://lorempixel.com/400/200",
+                                   price: 35.99, image: "http://lorempixel.com/400/200",
                                    category: category)
 
 
