@@ -22,6 +22,10 @@ describe "Admin can view individual order" do
 			  item3 = order1.items.create(title: "Cool Item3", description: "Descrip3",
 			  													 price: 35.99, image: "http://lorempixel.com/400/200",
 			  													 category: category)
+			  
+			  OrdersItem.where(item_id: item1.id).update(unit_price: 35.0)
+			  OrdersItem.where(item_id: item2.id).update(unit_price: 35.50)
+			  OrdersItem.where(item_id: item3.id).update(unit_price: 35.99)
 
 	      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
