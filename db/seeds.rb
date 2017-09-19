@@ -9,7 +9,7 @@ Category.create!(title: "Synth")
 Category.create!(title: "Drums")
 
 categories = Category.all
-user = User.create(username: 'sam', password: 'sam', role: 0)
+user = User.create(username: 'sam', password: 'sam', full_name: 'sam lim', address: 'sams incubator', role: 0)
 
 60.times do |num|
   category = categories.shuffle.first
@@ -23,4 +23,4 @@ user = User.create(username: 'sam', password: 'sam', role: 0)
   puts "Created #{item.title} with category #{item.category.title}"
 end
 
-User.create(username: 'admin', password: 'admin', role: 'admin')
+User.create(username: 'admin', password: 'admin', full_name: 'admin admin', address: 'admin street, admintown', role: 'admin')
