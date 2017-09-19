@@ -21,7 +21,7 @@ class Order < ApplicationRecord
 
   def item_subtotal(item)
   	id = item.id
-  	sanitize_price(orders_items.where(id: id).sum(:unit_price))
+  	sanitize_price(orders_items.where(item_id: id).sum(:unit_price))
   end
 
   def sanitize_price(price)
