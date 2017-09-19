@@ -7,7 +7,11 @@ class Order < ApplicationRecord
   enum status: %w(ordered paid cancelled completed)
 
   def total_order_price
-  	sanitize_price(items.sum(:price))
+  	sanitize_price(orders_items.sum(:unit_price))
+  end
+
+  def item_price(item)
+    sanitize_price(orders_items.find_by(order_id: self.id, item_id: item.id).unit_price)
   end
 
   def item_quantity(item)
@@ -17,7 +21,7 @@ class Order < ApplicationRecord
 
   def item_subtotal(item)
   	id = item.id
-  	sanitize_price(items.where(id: id).sum(:price))
+  	sanitize_price(orders_items.where(item_id: id).sum(:unit_price))
   end
 
   def sanitize_price(price)
@@ -28,6 +32,13 @@ class Order < ApplicationRecord
     cart.contents.each do |item_id, quantity|
       item = Item.find(item_id)
       quantity.to_i.times {items << item}
+    end
+  end
+
+  def add_unit_price_to_join(cart)
+    cart.contents.each do |item_id, quantity|
+      item = Item.find(item_id)
+      orders_items.where(item_id: item_id).update(unit_price: item.price)
     end
   end
 
