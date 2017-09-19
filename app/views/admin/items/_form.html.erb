@@ -1,12 +1,21 @@
-<% form_for @item do |f| %>
+<%= form_for [:admin, @item] do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
 
   <%= f.label :description %>
   <%= f.text_area :description %>
 
-  <%= f.label :price %>
-  <p>$</p><%= f.text_field :price %>
+  <p><%= f.label :price %>
+  $<%= f.number_field :price %></p>
 
+  <%= f.label :category %>
   <%= f.select :category_id, Category.all.collect { |c| [ c.title, c.id ] }, include_blank: false %>
+
+  <%= f.label :image %>
+  <%= f.text_field :image %>
+
+  <%= f.label :status %>
+  <%= f.select :status, ["active", "retired"] %>
+
+  <%= f.submit "Submit" %>
 <% end %>
