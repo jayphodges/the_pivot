@@ -24,10 +24,14 @@ body {
 .navbar {
   border-radius: 0px;
   margin-bottom: 0px;
+  min-height: 85px;
 }
 .navbar-brand {
   font-size: 40px;
   letter-spacing: -3px;
+}
+body > header > nav > div > div.navbar-header > a > img {
+  margin-top: -10px;
 }
 .item-card-img {
   width: 95%;
