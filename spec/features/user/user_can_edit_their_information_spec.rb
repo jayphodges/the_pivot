@@ -23,6 +23,7 @@ describe 'User can edit their information' do
 
         fill_in "Full Name", with: "Joel Lindow"
         fill_in "Address", with: "1122 Booger Booger Avenue"
+        fill_in "Password", with: user.password
 
         click_on "Submit"
 
