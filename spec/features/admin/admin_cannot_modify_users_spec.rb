@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 describe 'Admin cannot edit user information' do
   context 'admin can log in' do
     context 'admin can visit their edit page' do
@@ -23,7 +25,7 @@ describe 'Admin cannot edit user information' do
           fill_in "Full Name", with: "Joel Lindow"
           fill_in "Address", with: "1122 Booger Booger Avenue"
 
-          click_on "Update"
+          click_on "Submit"
 
           expect(current_path).to eq(dashboard_path)
           expect(page).to have_content("1122 Booger Booger Avenue")
@@ -34,7 +36,7 @@ describe 'Admin cannot edit user information' do
           fill_in "Full Name", with: "some dude"
           fill_in "Address", with: "some address"
 
-          click_on "Update"
+          click_on "Submit"
 
           click_on "Logout"
 
