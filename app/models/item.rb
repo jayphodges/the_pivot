@@ -11,4 +11,5 @@ class Item < ApplicationRecord
   def formatted_price
     sprintf('%.2f', price)
   end
+
 end

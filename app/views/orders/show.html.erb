@@ -10,7 +10,7 @@
 	<li>
 		Title: <%= link_to item.title, item_path(item) %>
 		Quantity: <%= @order.item_quantity(item) %>
-		Price: $<%= item.formatted_price %> Each
+		Price: $<%= @order.item_price(item) %> Each
 		Subtotal: $<%= @order.item_subtotal(item) %>
 	</li>
 	<% end %>
