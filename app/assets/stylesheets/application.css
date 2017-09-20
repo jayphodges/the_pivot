@@ -107,6 +107,9 @@ body > div > div.metrics-wrapper > div {
   width: 100px;
   height: 100px;
 }
+.intro {
+  text-align: center;
+}
 
 /* Footer Below */
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,300);
