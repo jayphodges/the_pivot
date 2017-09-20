@@ -1,13 +1,21 @@
 <h1>All orders for <%= current_user.username %></h1>
-
-<ul>
-<% current_user.orders.each do |order| %>
-	<li>
-		Order id: <%= order.id %><br>
-		<%= order.created_at.to_formatted_s(:long_ordinal) %><br>
-		Status: <%= order.status %>
-	</li>
-	<%= link_to "View Order", order_path(order) %>
-<% end %>
-</ul>
-
+<table class="table">
+<thead>
+		<tr>
+			<th>Order Id</th>
+			<th>Date Ordered</th>
+			<th>Status</th>
+			<th>View</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% current_user.orders.each do |order| %>
+			<tr>
+				<td><%= order.id %></td>
+				<td><%= order.created_at.to_formatted_s(:long_ordinal) %></td>
+				<td><%= order.status %></td>
+				<td><%= link_to "View Order", order_path(order) %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
