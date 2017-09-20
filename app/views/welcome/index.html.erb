@@ -1,51 +1,72 @@
-<h1 class="center-text">THIS IS THE WELCOME INDEX PAGE</h1>
-
-<div class="container">
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
-
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner">
-
-      <div class="item active">
-        <img src="https://baconmockup.com/900/300/" alt="Los Angeles" style="width:100%;">
-        <div class="carousel-caption">
-          <h3>Los Angeles</h3>
-          <p>LA is always so much fun if you like breaking Starbucks windows out with shovels.</p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans+Mono|Shrikhand" rel="stylesheet">
+    <style>
+    h1 {
+    font-family: 'Shrikhand', cursive;
+    }
+    h3 {
+    font-family: 'Droid Sans Mono', monospace;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+          <div class="item active">
+            <%= image_tag("oldschoolmic.jpg") %>
+            <div class="carousel-caption">
+              <h1>Microphone!</h1>
+              <h3>Da best in today's microphones</h3>
+            </div>
+          </div>
+          <div class="item">
+            <%= image_tag("jankypiani.jpg") %>
+            <div class="carousel-caption">
+              <h1>Piano KEYS!!!!</h1>
+              <h3>You want piano? Wez gots piani!</h3>
+            </div>
+          </div>
+          <div class="item">
+            <%= image_tag("headphones.jpg") %>
+            <div class="carousel-caption">
+              <h1>Headphones</h1>
+              <h3>We aint got em!</h3>
+            </div>
+          </div>
         </div>
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+          <span class="sr-only">Next</span>
+        </a>
       </div>
 
-      <div class="item">
-        <img src="https://baconmockup.com/900/300/" alt="Chicago" style="width:100%;">
-        <div class="carousel-caption">
-          <h3>Chicago</h3>
-          <p>Thank you, Chicago! Our national homicide rate is up massively becasue of your efforts.</p>
-        </div>
+      <div class="intro">
+        <hr>
+        <h4>About Music Emporium</h4>
+        <hr>
+        <p>Thank you for visiting Music Emporium, the <i>only</i> place on the internet where we cater to your specific music needs! From Guitars to Synths, we here at Music Emporium will find the perfect match for you and your new instrument. As avid music enthusiasts ourselves, we take pride in finding the <b>best</b> products at the <b>lowest</b> prices. Give us a shot and let us show you what we can do!</p>
+        <hr>
+        <h4>About this Website</h4>
+        <hr>
+        <p>This web app was built using <i>Ruby on Rails</i>. You can find the source code <a href="https://github.com/amhursh/music_shop">here</a>. Please feel free to contribute to this open source eCommerce framework!</p>
+        <hr>
       </div>
-
-      <div class="item">
-        <img src="https://baconmockup.com/900/300/" alt="New York" style="width:100%;">
-        <div class="carousel-caption">
-          <h3>New York</h3>
-          <p>We love the Big Apple! But we hat actual apples. Thanks Monsanto!</p>
-        </div>
-      </div>
-
     </div>
-
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-</div>
+  </body>
+</html>

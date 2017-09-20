@@ -14,7 +14,7 @@
 
   .rails-default-error-page div.dialog {
     width: 95%;
-    max-width: 33em;
+    max-width: 60em;
     margin: 4em auto 0;
   }
 
@@ -27,7 +27,7 @@
     border-top-left-radius: 9px;
     border-top-right-radius: 9px;
     background-color: white;
-    padding: 7px 12% 0;
+    padding: 7px 5% 0;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
 
@@ -58,10 +58,12 @@
   <!-- This file lives in public/404.html -->
   <div class="dialog">
     <div>
+      <img src="http://www.reactiongifs.com/wp-content/uploads/2013/08/no.gif" alt="">
       <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
+      <p>Sometimes we rock out too hard and end up inwierd places too. That's when you have to take a moment and re-evaluate your life. Go back to a place you're familiar with and start over. So, get out of here. There's nothing to see here.</p>
+      <p><%= link_to "Back To Main Page", root_path %></p>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
+    <p>If you are the application owner check the logs for more information. If you're not, go back to the main page and buy something.</p>
   </div>
 </body>
 </html>

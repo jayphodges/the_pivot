@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
 	before_action :require_user
-	# before_action :find_order, only: [:cancel, :pay, :complete]
+	# before_save 
 
 	def index
 	end
@@ -18,6 +18,8 @@ class OrdersController < ApplicationController
 		order = Order.new(user_id: current_user.id)
 		order.add_items(@cart)
 		if order.save
+			order.add_unit_price_to_join(@cart)
+			session[:cart].clear
 			flash[:success] = "Order was successfully placed"
 			redirect_to orders_path
 		else

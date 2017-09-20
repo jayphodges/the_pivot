@@ -24,8 +24,9 @@ describe 'Admin cannot edit user information' do
 
           fill_in "Full Name", with: "Joel Lindow"
           fill_in "Address", with: "1122 Booger Booger Avenue"
+          fill_in "Password", with: admin.password
 
-          click_on "Update"
+          click_on "Submit"
 
           expect(current_path).to eq(dashboard_path)
           expect(page).to have_content("1122 Booger Booger Avenue")
@@ -36,7 +37,7 @@ describe 'Admin cannot edit user information' do
           fill_in "Full Name", with: "some dude"
           fill_in "Address", with: "some address"
 
-          click_on "Update"
+          click_on "Submit"
 
           click_on "Logout"
 

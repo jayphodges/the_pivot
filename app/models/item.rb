@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   validates :title, presence: true, uniqueness: true
-  validates :description, :price, :image, :category_id, presence: true
+  validates :description, :price, :category_id, presence: true
 
   belongs_to :category
   has_many :orders_items
@@ -8,7 +8,11 @@ class Item < ApplicationRecord
 
   enum status: %w(active retired)
 
+  has_attached_file :image, styles: { small: "64x64", med: "100x100", large: "200x200" }, :default_url => "https://heuft.com/upload/image/400x267/no_image_placeholder.png"
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
+
   def formatted_price
     sprintf('%.2f', price)
   end
+
 end
