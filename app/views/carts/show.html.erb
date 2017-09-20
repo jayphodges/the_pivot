@@ -7,7 +7,7 @@
           <th>Title</th>
           <th>Quantity</th>
           <th>Unit Price</th>
-          <th>Extended Price</th>
+          <th>Subtotal</th>
           <th>Remove</th>
         </tr>
       </thead>
@@ -25,7 +25,7 @@
                 <% end %>
               </td>
               <td>$<%= item.formatted_price %> each</td>
-              <td>Item Subtotal: $<%= @cart.subtotal(item) %></td>
+              <td>$<%= @cart.subtotal(item) %></td>
               <td>  <%= link_to "Remove Item", cart_path(id: item.id), method: :delete %></td>
             </tr>
           </div>
