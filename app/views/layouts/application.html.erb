@@ -59,10 +59,12 @@
             </div><!-- /.container-fluid -->
           </nav>
         </header>
-        <% flash.each do |type, message| %>
-        <%= sanitize(message) %>
-        <% end %>
-        <%= yield %>
+          <% flash.each do |type, message| %>
+        <div class="green-flash">
+          <%= sanitize(message) %>
+        </div>
+          <% end %>
+          <%= yield %>
       </body>
 
       <footer>

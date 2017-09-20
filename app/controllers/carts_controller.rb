@@ -32,7 +32,9 @@ class CartsController < ApplicationController
   end
 
   def destroy
+    item = Item.find(params[:id])
     session[:cart].delete(params[:id].to_s)
+    flash[:success] = "Successfully removed #{item.title} from your cart"
     redirect_to cart_path
   end
 end
