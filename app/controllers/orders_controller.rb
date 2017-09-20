@@ -19,7 +19,6 @@ class OrdersController < ApplicationController
 		order.add_items(@cart)
 		if order.save
 			order.add_unit_price_to_join(@cart)
-			# binding.pry
 			session[:cart].clear
 			flash[:success] = "Order was successfully placed"
 			redirect_to orders_path

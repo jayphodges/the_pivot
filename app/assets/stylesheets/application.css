@@ -34,7 +34,9 @@ body > header > nav > div > div.navbar-header > a > img {
   margin-top: -10px;
 }
 .item-card-img {
-  width: 95%;
+  width: 250px;
+  height: 250px;
+  margin-left: 20px;
   border-radius: 5px;
 }
 .item-card {
