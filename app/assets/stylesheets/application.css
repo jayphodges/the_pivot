@@ -172,3 +172,9 @@ body > div > div.metrics-wrapper > div {
   padding-top: 8%;
   padding-bottom: 10%;
 }
+
+.green-flash {
+  border-style: none;
+  background-color: lightgreen;
+  text-align: center;
+}
