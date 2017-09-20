@@ -151,6 +151,9 @@ body > div > div.metrics-wrapper > div {
   width: 100px;
   height: 100px;
 }
+.intro {
+  text-align: center;
+}
 
 
 
