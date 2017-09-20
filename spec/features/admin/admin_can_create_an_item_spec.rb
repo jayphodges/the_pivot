@@ -20,7 +20,7 @@ describe "Admin can add items" do
       fill_in "Description", with: "Product description. It's good"
       fill_in "Price", with: 25.99
       select 'Guitars', from: "item_category_id"
-      attach_file("Image", './app/assets/images/Asset 1@2x.png')
+      attach_file("Image", './app/assets/images/logo-header.png')
 
       click_on "Submit"
 

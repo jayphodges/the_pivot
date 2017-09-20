@@ -28,7 +28,7 @@ describe 'Admin visits admin/items' do
 
         fill_in "Title", with: "whatever"
         fill_in "Description", with: "something else"
-        attach_file("Image", './app/assets/images/Asset 1@2x.png')
+        attach_file("Image", './app/assets/images/logo-header.png')
         select "retired", from: "Status"
 
         click_on ("Submit")
