@@ -15,7 +15,7 @@
 */
 /* Footer Below */
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,300);
-footer { background-color:#0c1a1e; font-family: 'Open Sans', sans-serif; position:relative;
+footer { background-color:#0c1a1e; font-family: 'Open Sans', sans-serif; position:relative; padding-bottom: 20px;
    left:0px;
    bottom:0px;
    width:100%;}
