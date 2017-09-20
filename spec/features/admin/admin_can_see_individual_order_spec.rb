@@ -42,9 +42,9 @@ describe "Admin can view individual order" do
 
         expect(page).to have_content(order1.item_quantity(item1))
 
-        expect(page).to have_content("$35.00 Each")
+        expect(page).to have_content("$35.00 each")
 
-        expect(page).to have_content("Subtotal: $35.50")
+        expect(page).to have_content("$35.50")
         expect(page).to have_content("Total Price: $106.49")
       end
     end

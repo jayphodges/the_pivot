@@ -22,7 +22,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/"><%= image_tag("Asset 3.svg", alt: "Edit Entry", height: "50px") %></a>
+            <a class="navbar-brand" href="/"><%= image_tag("logo-header.png", alt: "Edit Entry", height: "50px") %></a>
           </div>
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -59,17 +59,19 @@
             </div><!-- /.container-fluid -->
           </nav>
         </header>
-        <% flash.each do |type, message| %>
-        <%= sanitize(message) %>
-        <% end %>
-        <%= yield %>
+          <% flash.each do |type, message| %>
+        <div class="green-flash">
+          <%= sanitize(message) %>
+        </div>
+          <% end %>
+          <%= yield %>
       </body>
 
       <footer>
         <div class="container">
           <div class="row">
             <div class="col-md-6 col-sm-6 footerleft ">
-              <div class="logofooter"><%= image_tag("Asset 1.svg", alt: "Edit Entry", height: "125px") %></div>
+              <div class="logofooter"><%= image_tag("logo-footer.png", alt: "Edit Entry", height: "125px") %></div>
               <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.</p>
             </div>
             <div class="col-md-6 col-sm-6 paddingtop-bottom footerright">

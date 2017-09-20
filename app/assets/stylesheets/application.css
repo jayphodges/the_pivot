@@ -155,6 +155,26 @@ body > div > div.metrics-wrapper > div {
   text-align: center;
 }
 
+.cart-total-col {
+  padding-top: 20px;
+}
 
+.form-item {
+  width: 100%;
+}
 
+.form-label {
+  font-weight: bold;
+  margin-top: 5px;
+}
 
+.profile {
+  padding-top: 8%;
+  padding-bottom: 10%;
+}
+
+.green-flash {
+  border-style: none;
+  background-color: lightgreen;
+  text-align: center;
+}

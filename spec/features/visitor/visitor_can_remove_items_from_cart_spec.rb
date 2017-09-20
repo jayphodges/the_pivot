@@ -14,7 +14,7 @@ describe "Visitor views item index" do
           expect(page).to have_content(item.title)
           click_on "Remove Item"
 
-          expect(page).to_not have_content(item.title)
+          expect(page).to_not have_content(item.title, count: 2)
         end
       end
     end

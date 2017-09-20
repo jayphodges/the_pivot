@@ -1,16 +1,14 @@
-<div class="login-wrapper">
+<div class="login-wrapper profile center-text">
 	<h3>User Login</h3>
 	<%= form_for(:session, url: login_path) do |f| %>
-			<%= f.label :username %>
-			<%= f.text_field :username %>
+			<%= f.label :username %><br>
+			<%= f.text_field :username %><br>
 
-			<%= f.label :password %>
-			<%= f.password_field :password %>
+			<%= f.label :password %><br>
+			<%= f.password_field :password %><br><br>
 
-			<%= f.submit "Login" %>
+			<%= f.submit "Login" %><br>
 	<% end %>
-</div>
-
-<div>
+<br>
 	<%= link_to "Create Account", new_user_path %>
 </div>

@@ -1,4 +1,7 @@
-<h1><%= @user.username %></h1>
-<p><%= @user.full_name %></p>
-<p><%= @user.address %></p>
-<%= link_to 'Edit User', edit_user_path(@user) %>
+<div class="center-text profile">
+    <h1>Username: <%= @user.username %></h1>
+    <p><strong>Full Name: </strong><%= @user.full_name %></p>
+    <p><strong>Address: </strong><%= @user.address %></p>
+    <div class="btn btn-default center-text"><%= link_to 'Edit User', edit_user_path(@user) %></div>
+</div>
+<br>
