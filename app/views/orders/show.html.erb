@@ -5,25 +5,32 @@
 	<h3>Mailing Address: <%= @order.user.address %></h3>
 <% end %>
 
-<ul>
-	<% @items.each do |item| %>
-	<li>
-		Title: <%= link_to item.title, item_path(item) %>
-		Quantity: <%= @order.item_quantity(item) %>
-		Price: $<%= @order.item_price(item) %> Each
-		Subtotal: $<%= @order.item_subtotal(item) %>
-	</li>
-	<% end %>
-</ul>
+<table class="table">
+  <thead>
+    <th>Title</th>
+    <th>Quantity</th>
+    <th>Price</th>
+    <th>Subtotal</th>
+  </thead>
+  <tbody>
+    <% @items.each do |item| %>
+    <tr>
+      <td><%= link_to item.title, item_path(item) %></td>
+      <td><%= @order.item_quantity(item) %></td>
+      <td>$<%= @order.item_price(item) %> each</td>
+      <td>$<%= @order.item_subtotal(item) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <h5>Total Price: $<%= @order.total_order_price %></h5>
 <h5>Order Submitted: <%= @order.created_at.to_formatted_s(:long_ordinal) %></h5>
 <h5>Order Status: <%= @order.status %></h5>
 <% if @order.completed? %>
-	<h5>Order completed at <%= @order.updated_at.to_formatted_s(:long_ordinal) %></h5>
+  <h5>Order completed at <%= @order.updated_at.to_formatted_s(:long_ordinal) %></h5>
 <% elsif @order.cancelled? %>
-	<h5>Order cancelled at <%= @order.updated_at.to_formatted_s(:long_ordinal) %></h5>
+  <h5>Order cancelled at <%= @order.updated_at.to_formatted_s(:long_ordinal) %></h5>
 <% elsif @order.paid? %>
-	<h5>Order paid at <%= @order.updated_at.to_formatted_s(:long_ordinal) %></h5>
-<% end %>
-
+  <h5>Order paid at <%= @order.updated_at.to_formatted_s(:long_ordinal) %></h5>
+  <% end %>

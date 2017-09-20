@@ -22,21 +22,19 @@ describe "Visitor can log in and create order" do
 
       click_on "Login or Create Account to Checkout"
 
-			fill_in "session[username]", with: user.username
-			fill_in "session[password]", with: user.password
-			click_button "Login"
+      fill_in "session[username]", with: user.username
+      fill_in "session[password]", with: user.password
+      click_button "Login"
 
-			visit cart_path
+      visit cart_path
 
-			click_on "Checkout"
+      click_on "Checkout"
 
-			expect(current_path).to eq(orders_path)
+      expect(current_path).to eq(orders_path)
 
-			expect(page).to have_content("Order was successfully placed")
-			expect(page).to have_content("Order id: #{Order.last.id}")
-			expect(page).to have_content("ordered")
+      expect(page).to have_content("Order was successfully placed")
+      expect(page).to have_content("#{Order.last.id}")
+      expect(page).to have_content("ordered")
     end
   end
 end
-
-
