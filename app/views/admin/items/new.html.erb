@@ -1,21 +1,4 @@
 <div class="new-item-wrapper">
   <h1>Add a New Item</h1>
-  <%= form_for [:admin, @item] do |f| %>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-
-    <p><%= f.label :price %>
-    $<%= f.number_field :price %></p>
-
-    <%= f.label :category %>
-    <%= f.select :category_id, Category.all.collect { |c| [ c.title, c.id ] }, include_blank: false %>
-
-    <%= f.label :image %>
-    <%= f.text_field :image %>
-
-    <%= f.submit "Submit" %>
-  <% end %>
+  <%= render partial: "form" %>
 </div>

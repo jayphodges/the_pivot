@@ -62,10 +62,7 @@ RSpec.feature "User increases cart quantity of item" do
 
     expect(current_path).to eq cart_path
 
-    within(".item-#{item.id}") do
-      expect(page).to have_field("Quantity", with: "0")
-      expect(page).to have_content("Item Subtotal: $0.00")
-    end
+    expect(page).to_not have_content("#{item.title}")
 
     within(".item-#{item2.id}") do
       expect(page).to have_field("Quantity", with: "1")

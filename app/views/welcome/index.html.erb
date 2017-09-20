@@ -1,6 +1,21 @@
-<h1 class="center-text">THIS IS THE WELCOME INDEX PAGE</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
 
-<div class="container">
+  <link href="https://fonts.googleapis.com/css?family=Droid+Sans+Mono|Shrikhand" rel="stylesheet">
+
+  <style>
+  h1 {
+    font-family: 'Shrikhand', cursive;
+  }
+  h3 {
+    font-family: 'Droid Sans Mono', monospace;
+  }
+  </style>
+</head>
+<body>
+  <div class="container">
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -13,26 +28,26 @@
     <div class="carousel-inner">
 
       <div class="item active">
-        <img src="https://baconmockup.com/900/300/" alt="Los Angeles" style="width:100%;">
+        <%= image_tag("oldschoolmic.jpg") %>
         <div class="carousel-caption">
-          <h3>Los Angeles</h3>
-          <p>LA is always so much fun if you like breaking Starbucks windows out with shovels.</p>
+          <h1>Microphone!</h1>
+          <h3>Da best in today's microphones</h3>
         </div>
       </div>
 
       <div class="item">
-        <img src="https://baconmockup.com/900/300/" alt="Chicago" style="width:100%;">
+        <%= image_tag("jankypiani.jpg") %>
         <div class="carousel-caption">
-          <h3>Chicago</h3>
-          <p>Thank you, Chicago! Our national homicide rate is up massively becasue of your efforts.</p>
+          <h1>Piano KEYS!!!!</h1>
+          <h3>You want piano? Wez gots piani!</h3>
         </div>
       </div>
 
       <div class="item">
-        <img src="https://baconmockup.com/900/300/" alt="New York" style="width:100%;">
+        <%= image_tag("headphones.jpg") %>
         <div class="carousel-caption">
-          <h3>New York</h3>
-          <p>We love the Big Apple! But we hat actual apples. Thanks Monsanto!</p>
+          <h1>Headphones</h1>
+          <h3>We aint got em!</h3>
         </div>
       </div>
 
@@ -49,3 +64,7 @@
     </a>
   </div>
 </div>
+
+</body>
+</html>
+

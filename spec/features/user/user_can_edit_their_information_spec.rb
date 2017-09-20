@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 describe 'User can edit their information' do
   context 'user can log in' do
     context 'user can visit their edit page' do
@@ -21,8 +23,9 @@ describe 'User can edit their information' do
 
         fill_in "Full Name", with: "Joel Lindow"
         fill_in "Address", with: "1122 Booger Booger Avenue"
+        fill_in "Password", with: user.password
 
-        click_on "Update"
+        click_on "Submit"
 
         expect(current_path).to eq(dashboard_path)
         expect(page).to have_content("1122 Booger Booger Avenue")

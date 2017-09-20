@@ -31,6 +31,7 @@ gem 'chart-js-rails'
 gem 'jquery-rails'
 gem 'groupdate'
 gem 'chartkick'
+gem 'paperclip'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

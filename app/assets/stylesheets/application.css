@@ -13,17 +13,30 @@
 *= require_tree .
 *= require_self
 */
+body {
+  min-height: 100%;
+
+  /* Equal to height of footer */
+  /* But also accounting for potential margin-bottom of last child */
+  margin-bottom: -50px;
+}
 
 .navbar {
   border-radius: 0px;
   margin-bottom: 0px;
+  min-height: 60px;
 }
 .navbar-brand {
   font-size: 40px;
   letter-spacing: -3px;
 }
+body > header > nav > div > div.navbar-header > a > img {
+  margin-top: -10px;
+}
 .item-card-img {
-  width: 95%;
+  width: 250px;
+  height: 250px;
+  margin-left: 20px;
   border-radius: 5px;
 }
 .item-card {
@@ -97,7 +110,7 @@ body > div > div.metrics-wrapper > div {
 
 /* Footer Below */
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,300);
-footer { background-color:#0c1a1e; min-height:180px; font-family: 'Open Sans', sans-serif; }
+footer { background-color:#0c1a1e; font-family: 'Open Sans', sans-serif; position:absolute; width:100%;}
 .footerleft { margin-top:50px; padding:0 36px; }
 .logofooter { margin-bottom:10px; font-size:25px; color:#fff; font-weight:700;}
 
@@ -126,14 +139,14 @@ footer { background-color:#0c1a1e; min-height:180px; font-family: 'Open Sans', s
  .icon { float:left; margin-right:5px;}
 
 
- .copyright { min-height:40px; background-color:#000000;}
+ .copyright { position:absolute; width:100%; bottom:0px; position: fixed; background-color:#000000;}
  .copyright p { text-align:left; color:#FFF; padding:10px 0; margin-bottom:0px;}
  .heading7 { font-size:21px; font-weight:700; color:#d9d6d6; margin-bottom:22px;}
  .post p { font-size:12px; color:#FFF; line-height:20px;}
  .post p span { display:block; color:#8f8f8f;}
  .bottom_ul { list-style-type:none; float:right; margin-bottom:0px;}
  .bottom_ul li { float:left; line-height:40px;}
- .bottom_ul li:after { content:"/"; color:#FFF; margin-right:8px; margin-left:8px;}
+ .bottom_ul li:after { color:#FFF; margin-right:8px; margin-left:8px;}
  .bottom_ul li a { color:#FFF;  font-size:12px;}
 
 

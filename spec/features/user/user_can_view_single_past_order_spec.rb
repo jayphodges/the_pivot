@@ -18,6 +18,10 @@ describe "User can see individual past order" do
 		  item3 = order.items.create(title: "Cool Item3", description: "Descrip3",
 		  													 price: 35.99, image: "http://lorempixel.com/400/200",
 		  													 category: category)
+
+	  	OrdersItem.where(item_id: item1.id).update(unit_price: 35.0)
+		  OrdersItem.where(item_id: item2.id).update(unit_price: 35.50)
+		  OrdersItem.where(item_id: item3.id).update(unit_price: 35.99)
 		  
 		  allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
@@ -40,13 +44,13 @@ describe "User can see individual past order" do
 		  expect(page).to have_content(order.item_quantity(item3))
 		  expect(page).to have_content(order.item_subtotal(item3))
 
-		  expect(page).to have_selector(:link_or_button, 'View Item', count: 3)
+		  expect(page).to have_selector(:link_or_button, "#{item1.title}")
 
 		  expect(page).to have_content("Order Status: #{order.status}")
 			expect(page).to have_content(order.total_order_price)
-		  expect(page).to have_content(order.created_at)
+		  expect(page).to have_content(order.created_at.to_formatted_s(:long_ordinal))
 		  expect(page).to have_content("Order completed at")
-		  expect(page).to have_content(order.updated_at)
+		  expect(page).to have_content(order.updated_at.to_formatted_s(:long_ordinal))
     end
 	end
 end

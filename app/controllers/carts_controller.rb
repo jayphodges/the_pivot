@@ -17,9 +17,18 @@ class CartsController < ApplicationController
   end
 
   def update
-    item = Item.find(params[:item_id])
-    @cart.update_item(item.id, params[:Quantity])
-    redirect_to cart_path
+    if params[:Quantity] <= '-1'
+      flash[:failure] = "Cannot enter negative number!"
+      redirect_to cart_path
+    elsif params[:Quantity] == '0'
+      item = Item.find(params[:item_id])
+      session[:cart].delete(item.id.to_s)
+      redirect_to cart_path
+    else
+      item = Item.find(params[:item_id])
+      @cart.update_item(item.id, params[:Quantity])
+      redirect_to cart_path
+    end
   end
 
   def destroy
