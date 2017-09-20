@@ -30,8 +30,8 @@ describe "Admin changing price does not change order price info" do
 
 	      click_on "View Order"
 
-	      expect(page).to have_content("Price: $10.00 Each")
-	      expect(page).to have_content("Subtotal: $10.00")
+	      expect(page).to have_content("$10.00 each")
+	      expect(page).to have_content("$10.00")
 	      expect(page).to have_content("Total Price: $30.00")
 
         item1.update(price: 1000.0)
@@ -40,8 +40,8 @@ describe "Admin changing price does not change order price info" do
 
         click_on "View Order"
 
-	      expect(page).to have_content("Price: $10.00 Each")
-	      expect(page).to have_content("Subtotal: $10.00")
+	      expect(page).to have_content("$10.00 each")
+	      expect(page).to have_content("$10.00")
 	      expect(page).to have_content("Total Price: $30.00")
       end
     end
