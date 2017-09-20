@@ -26,10 +26,9 @@ describe 'Admin visits admin/items' do
 
         expect(current_path).to eq(edit_admin_item_path(item))
 
-        fill_in "Title", with: "whatever"
-        fill_in "Description", with: "something else"
-        attach_file("Image", './app/assets/images/logo-header.png')
-        select "retired", from: "Status"
+        fill_in "item-title", with: "whatever"
+        fill_in "item-description", with: "something else"
+        attach_file("item-image", './app/assets/images/logo-header.png')
 
         click_on ("Submit")
 
@@ -37,7 +36,6 @@ describe 'Admin visits admin/items' do
 
         expect(page).to have_content("whatever")
         expect(page).to have_content("something else")
-        expect(page).to have_content("retired")
       end
     end
   end

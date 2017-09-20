@@ -159,6 +159,15 @@ body > div > div.metrics-wrapper > div {
   padding-top: 20px;
 }
 
+.form-item {
+  width: 100%;
+}
+
+.form-label {
+  font-weight: bold;
+  margin-top: 5px;
+}
+
 
 
 
