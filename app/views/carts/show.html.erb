@@ -36,13 +36,13 @@
       <% end %>
     </table>
   </div>
-  <div class="col-md-3">
+  <div class="col-md-3 cart-total-col">
     <h3 class="h-tag-no-top-margin-title center-text">Cart Total: $<%= @cart.total %></h3>
     <div class="cart_checkout center-text">
       <% if current_user %>
-      <%= link_to "Checkout", orders_path, method: :post %>
+      <%= link_to "Checkout", orders_path, method: :post, class: "btn btn-default" %>
       <% else %>
-      <%= link_to "Login or Create Account to Checkout", login_path %>
+      <%= link_to "Login or Create Account to Checkout", login_path, class: "btn btn-default" %>
       <% end %>
     </div>
   </div>
