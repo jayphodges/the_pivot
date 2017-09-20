@@ -14,7 +14,7 @@
     <% @items.each do |item| %>
     <tr>
       <th><img class="admin-item-thumb" src="<%= item.image %>" alt=""></th>
-      <td><%= item.title %></td>
+      <td><%= link_to item.title, item_path(item) %></td>
       <td><%= item.description %></td>
       <td>$<%= item.formatted_price %></td>
       <td><%= item.status %></td>
