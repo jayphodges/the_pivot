@@ -1,107 +1,81 @@
-![Logo of the project](https://raw.githubusercontent.com/jehna/readme-best-practices/master/sample-logo.png)
+![Logo of the project](https://i.imgur.com/KV79Of9.png)
 
-# Name of the project
-> Additional information or tagline
+# Music Emporium
+> An customizable eCommerce app
 
-A brief description of your project, what it is used for and how does life get
-awesome when someone starts to use it.
+This app lets users add items to a cart and checkout. There is also admin functionality complete with a suite to add items, view metrics, and view orders.
 
 ## Installing / Getting started
 
-A quick introduction of the minimal setup you need to get a hello world up &
-running.
+A quick introduction of the minimal setup you need to get this setup:
+
+First, clone the repo
 
 ```shell
-packagemanager install awesome-project
-awesome-project start
-awesome-project "Do something!"  # prints "Nah."
+git clone git@github.com:amhursh/music_shop.git
 ```
 
-Here you should say what actually happens when you execute the code above.
+Next, run
+
+```shell
+bundle install
+```
+
+Note: You may have to run that with `bundle exec`
+
+After you've bundled you will need to create the database and migrations
+
+```shell
+rake db:create
+rake db:migrate
+```
+
+If you would like an example set of data, run
+```shell
+rake db:seed
+```
+This seed will create an administrator account with the username `admin` and password `admin`
+
+Finally, launch the server with `rails s`
+
+You can visit the application locally at http://localhost:3000/
 
 ## Developing
 
-Here's a brief intro about what a developer must do in order to start developing
-the project further:
-
-```shell
-git clone https://github.com/your/awesome-project.git
-cd awesome-project/
-packagemanager install
-```
-
-And state what happens step-by-step.
-
-### Building
-
-If your project needs some additional steps for the developer to build the
-project after some code changes, state them here:
-
-```shell
-./configure
-make
-make install
-```
-
-Here again you should state what actually happens when the code above gets
-executed.
+To develop the project simply clone the repo and follow the installation steps above. The image assets are stored in `/app/assets/images`
 
 ### Deploying / Publishing
 
-In case there's some step you have to take that publishes this project to a
-server, this is the right time to state it.
-
+To deploy this to Heroku, simple create a new Heroku app with
 ```shell
-packagemanager deploy awesome-project -s server.com -u username -p password
+heroku create
 ```
 
-And again you'd need to tell what the previous code actually does.
+And upload the master branch
+```shell
+git push heroku master
+```
+
+After that, migrate and seed if you so wish.
 
 ## Features
 
-What's all the bells and whistles this project can perform?
-* What's the main functionality
-* You can also do another thing
-* If you get really randy, you can even do this
-
-## Configuration
-
-Here you should write what are all of the configurations a user can enter when
-using the project.
-
-#### Argument 1
-Type: `String`  
-Default: `'default value'`
-
-State what an argument does and how you can use it. If needed, you can provide
-an example below.
-
-Example:
-```bash
-awesome-project "Some other value"  # Prints "You're nailing this readme!"
-```
-
-#### Argument 2
-Type: `Number|Boolean`  
-Default: 100
-
-Copy-paste as many of these as you need.
+This application features
+* Many to many relationship between categories and items
+* Full admin functionality for creating, editing, and destroying accounts, orders, and items
+* Administrator metrics
 
 ## Contributing
 
-When you publish something open source, one of the greatest motivations is that
-anyone can just jump in and start contributing to your project.
+What we would like to implement:
+* Rating system
+* Paypal integration
+* oAuth
+* Review system
 
-These paragraphs are meant to welcome those kind souls to feel that they are
-needed. You should state something like:
+Please make a PR to this repo with your code. 
 
-"If you'd like to contribute, please fork the repository and use a feature
-branch. Pull requests are warmly welcome."
-
-If there's anything else the developer needs to know (e.g. the code style
-guide), you should link it here. If there's a lot of things to take into
-consideration, it is common to separate this section to its own file called
-`CONTRIBUTING.md` (or similar). If so, you should say that it exists here.
+Thank you!
 
 ## Licensing
 
