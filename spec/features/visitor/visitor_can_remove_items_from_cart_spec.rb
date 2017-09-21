@@ -7,10 +7,10 @@ describe "Visitor views item index" do
           category = create(:category)
           item = create(:item, category: category)
           visit items_path
-          # save_and_open_page
+
           click_on "Add to Cart"
           click_on "View Cart"
-          # save_and_open_page
+
           expect(page).to have_content(item.title)
           click_on "Remove Item"
 

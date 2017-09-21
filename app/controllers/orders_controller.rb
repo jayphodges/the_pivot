@@ -1,6 +1,5 @@
 class OrdersController < ApplicationController
 	before_action :require_user
-	# before_save 
 
 	def index
 	end
