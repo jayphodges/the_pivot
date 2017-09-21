@@ -17,8 +17,7 @@ describe "Visitor views items index" do
         expect(current_path).to eq('/cart')
         expect(page).to have_xpath("//img[@src='#{item.image}']")
         expect(page).to have_content(item.title)
-        # save_and_open_page
-        # expect(page).to have_content(item.description)
+
         expect(page).to have_content(item.price)
         expect(page).to have_content("Total: $#{item.price}")
       end

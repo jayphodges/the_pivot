@@ -16,7 +16,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    user = current_user
+    if !current_user.nil?
+      user = current_user
+    else
+      not_found
+    end
   end
 
   def edit
