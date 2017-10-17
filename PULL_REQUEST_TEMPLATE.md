@@ -1,5 +1,6 @@
-Related Issue:
+#
 
-Summary:
+Description of Changes Made:
 
-Author(s):
+Anticipated Code Effects:
+(Would this merge affect any other piece of our code?)
