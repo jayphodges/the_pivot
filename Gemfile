@@ -32,6 +32,8 @@ gem 'jquery-rails'
 gem 'groupdate'
 gem 'chartkick'
 gem 'paperclip'
+gem 'rubycritic'
+gem 'brakeman'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
