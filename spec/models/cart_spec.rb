@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 describe Cart do
   context "instance methods" do
     before(:each) do
