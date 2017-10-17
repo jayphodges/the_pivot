@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :item do
-    
+
     sequence :title do |i|
     	"title#{i}"
     end
@@ -8,10 +8,10 @@ FactoryGirl.define do
     sequence :description do |i|
     	"descrip#{i}"
     end
-    
+
     price {rand(100.0)}
-    
-    image "http://lorempixel.com/400/200"
+
+    image { File.new("#{Rails.root}/spec/support/fixtures/no_image_placeholder.png") }
 
     category
   end
