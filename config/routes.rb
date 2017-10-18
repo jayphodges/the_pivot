@@ -21,8 +21,9 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :show, :update, :edit]
 
+  # get '/category/:category_name', path: '/category', to: 'categories#show'
+  resources :categories, path: '/category', only: [:show]
   get '/:store_name', params: :store_name, to: 'stores#show'
-  resources :categories, path: '/', only: [:show]
 
   namespace :stores, as: :store, path: ":store_name" do
     resources :orders, only: [:index]

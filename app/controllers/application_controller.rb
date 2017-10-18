@@ -31,6 +31,7 @@ class ApplicationController < ActionController::Base
   end
 
   def not_found
+    binding.pry
     render file: "/public/404"
   end
 end
