@@ -31,17 +31,18 @@ RSpec.describe Order, type: :model do
     context "instance methods" do
       it '#total_order_price' do
         user = create(:user)
+        store = create(:store)
         order = create(:order, user: user, status: 1)
         category = create(:category)
         item_1 = order.items.create(title: "Cool Item", description: "Descrip",
                                     price: 35.0, image: "http://lorempixel.com/400/200",
-                                    category: category)
+                                    category: category, store: store)
         item2 = order.items.create(title: "Cool Item2", description: "Descrip2",
                                    price: 35.50, image: "http://lorempixel.com/400/200",
-                                   category: category)
+                                   category: category, store: store)
         item3 = order.items.create(title: "Cool Item3", description: "Descrip3",
                                    price: 35.99, image: "http://lorempixel.com/400/200",
-                                   category: category)
+                                   category: category, store: store)
 
         OrdersItem.where(item_id: item_1.id).update(unit_price: 35.0)
         OrdersItem.where(item_id: item2.id).update(unit_price: 35.50)
@@ -53,16 +54,17 @@ RSpec.describe Order, type: :model do
       it '#item_quantity' do
         user = create(:user)
         order = create(:order, user: user, status: 1)
+        store = create(:store)
         category = create(:category)
         item_1 = order.items.create(title: "Cool Item", description: "Descrip",
                                     price: 35.0, image: "http://lorempixel.com/400/200",
-                                    category: category)
+                                    category: category, store: store)
         item2 = order.items.create(title: "Cool Item2", description: "Descrip2",
                                    price: 35.50, image: "http://lorempixel.com/400/200",
-                                   category: category)
+                                   category: category, store: store)
         item3 = order.items.create(title: "Cool Item3", description: "Descrip3",
                                    price: 35.99, image: "http://lorempixel.com/400/200",
-                                   category: category)
+                                   category: category, store: store)
         4.times do
           order.items << item_1
         end
@@ -73,16 +75,17 @@ RSpec.describe Order, type: :model do
       it '#item_subtotal' do
         user = create(:user)
         order = create(:order, user: user, status: 1)
+        store = create(:store)
         category = create(:category)
         item_1 = order.items.create(title: "Cool Item", description: "Descrip",
                                     price: 35.0, image: "http://lorempixel.com/400/200",
-                                    category: category)
+                                    category: category, store: store)
         item2 = order.items.create(title: "Cool Item2", description: "Descrip2",
                                    price: 35.50, image: "http://lorempixel.com/400/200",
-                                   category: category)
+                                   category: category, store: store)
         item3 = order.items.create(title: "Cool Item3", description: "Descrip3",
                                    price: 35.99, image: "http://lorempixel.com/400/200",
-                                   category: category)
+                                   category: category, store: store)
 
 
         4.times do
@@ -99,10 +102,11 @@ RSpec.describe Order, type: :model do
       it '#add_items' do
         user = create(:user)
         order = create(:order, user: user, status: 1)
+        store = create(:store)
         category = create(:category)
         item_1 = order.items.create(title: "Cool Item", description: "Descrip",
                                     price: 35.0, image: "http://lorempixel.com/400/200",
-                                    category: category)
+                                    category: category, store: store)
         cart = Cart.new({item_1.id => 10})
 
 
@@ -114,11 +118,13 @@ RSpec.describe Order, type: :model do
       it '.orders_by_month' do
         user = create(:user)
         order = create(:order, user: user, status: 1)
+        store = create(:store)
         c = Category.create(title: "Guitars")
         10.times do
           order.items.create(title: "Cool Item", description: "Descrip",
                              price: 35.0, image: "http://lorempixel.com/400/200",
-                             category: c, created_at: rand(1.years).seconds.ago)
+                             category: c, store: store,
+                             created_at: rand(1.years).seconds.ago)
         end
 
         expect(Order.orders_by_month.values).to be_a(Array)
@@ -127,11 +133,13 @@ RSpec.describe Order, type: :model do
       it '.orders_by_month' do
         user = create(:user)
         order = create(:order, user: user, status: 1)
+        store = create(:store)
         c = Category.create(title: "Guitars")
         10.times do
           order.items.create(title: "Cool Item", description: "Descrip",
                              price: 35.0, image: "http://lorempixel.com/400/200",
-                             category: c, created_at: rand(1.years).seconds.ago)
+                             category: c, store: store,
+                             created_at: rand(1.years).seconds.ago)
         end
 
         expect(Order.orders_by_day_of_week.values).to be_a(Array)
