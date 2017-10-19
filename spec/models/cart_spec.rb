@@ -4,8 +4,10 @@ describe Cart do
   context "instance methods" do
     before(:each) do
       @c = Category.create(title: "Guitars")
+      @store = Store.create(name: "Shop", status: 0)
       @item = Item.create(title: 'title', description: "desc",
-        price: 5.5, image: 'http://lorempixel.com/400/200', category_id: @c.id)
+        price: 5.5, image: 'http://lorempixel.com/400/200',
+        category_id: @c.id, store_id: @store.id)
       @cart = Cart.new({})
     end
 
@@ -33,7 +35,8 @@ describe Cart do
 
     it '#total' do
       item_2 = Item.create(title: 'title2', description: "desc",
-        price: 10, image: 'http://lorempixel.com/400/200', category_id: @c.id)
+        price: 10, image: 'http://lorempixel.com/400/200',
+        category_id: @c.id, store_id: @store.id)
       @cart.add_item(@item.id)
       @cart.add_item(item_2.id)
 
