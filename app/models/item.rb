@@ -3,6 +3,7 @@ class Item < ApplicationRecord
   validates :description, :price, :category_id, presence: true
 
   belongs_to :category
+  belongs_to :store
   has_many :orders_items
   has_many :orders, through: :orders_items
 
