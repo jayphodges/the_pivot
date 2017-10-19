@@ -5,24 +5,26 @@ describe "User can see individual past order" do
 		scenario "user can see all order information" do
 		  user = create(:user)
 
+			store = create(:store)
+
 		  order = create(:order, user: user, status: 3)
 
 		  category = create(:category)
 
 		  item1 = order.items.create(title: "Cool Item", description: "Descrip",
 		  													 price: 35.0, image: "http://lorempixel.com/400/200",
-		  													 category: category)
+		  													 category: category, store: store)
 		  item2 = order.items.create(title: "Cool Item2", description: "Descrip2",
 		  													 price: 35.50, image: "http://lorempixel.com/400/200",
-		  													 category: category)
+		  													 category: category, store: store)
 		  item3 = order.items.create(title: "Cool Item3", description: "Descrip3",
 		  													 price: 35.99, image: "http://lorempixel.com/400/200",
-		  													 category: category)
+		  													 category: category, store: store)
 
 	  	OrdersItem.where(item_id: item1.id).update(unit_price: 35.0)
 		  OrdersItem.where(item_id: item2.id).update(unit_price: 35.50)
 		  OrdersItem.where(item_id: item3.id).update(unit_price: 35.99)
-		  
+
 		  allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
 		  visit '/orders'
