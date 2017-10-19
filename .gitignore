@@ -18,4 +18,6 @@
 /yarn-error.log
 
 .byebug_history
-/public/system/items/images/*
+
+#ignore things created by paperclip
+/public/system/items/*
