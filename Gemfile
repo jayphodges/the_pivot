@@ -36,8 +36,7 @@ gem 'rubycritic'
 gem 'brakeman'
 gem 'figaro'
 gem "mini_magick"
-gem 'fog'
-gem 'fog-aws'
+gem 'carrierwave-aws'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
