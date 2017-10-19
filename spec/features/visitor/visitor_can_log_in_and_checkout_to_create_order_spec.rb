@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "Visitor can log in and create order" do
   context "visitor adds items to cart and logs in" do
-    scenario "user clicks checkout to create order and can see order" do
+    xscenario "user clicks checkout to create order and can see order" do
       user = create(:user)
       category = create(:category)
       item1 = create(:item, category: category)

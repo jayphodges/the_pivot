@@ -14,5 +14,6 @@ FactoryGirl.define do
     image { File.new("#{Rails.root}/spec/support/fixtures/no_image_placeholder.png") }
 
     category
+    store
   end
 end
