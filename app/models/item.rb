@@ -9,8 +9,7 @@ class Item < ApplicationRecord
 
   enum status: %w(active retired)
 
-  has_attached_file :image, styles: { small: "64x64", med: "100x100", large: "200x200" }, :default_url => "/support/images/no_image_placeholder.png"
-  validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
+  mount_uploader :image, ImageUploader
 
   def formatted_price
     sprintf('%.2f', price)
