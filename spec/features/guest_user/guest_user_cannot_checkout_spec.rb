@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "Visitor visits multiple stores" do
   context "and can add items from each store" do
-    context "and views those items in their cart" do
+    context "and cannot see the checkout button in their cart" do
       store1, store2 = create_list(:store, 2)
       create_list(:item, 3, store: store1)
       create(:item, store: store2)
@@ -34,19 +34,18 @@ describe "Visitor visits multiple stores" do
       visit cart_path
 
       expect(current_path).to eq('/cart')
-      expect(page).not_to have_content(store1.items.last.title)
-      expect(page).to have_content(store1.items.first.title)
-      expect(page).to have_content(store1.items.second.title)
-      expect(page).to have_content(store2.items.first.title)
+      expect(page).not_to have_content("Checkout")
+
     end
   end
 end
 
-# Add items from multiple businesses into a single cart.
+
+# Log in or create an account before completing checkout.
 # When I visit ‘/:store-name1’
 # And add an item to my cart
-# And when I visit ‘/:store-name2’
-# And add an item to my cart
 # And I click on my cart
-# And my path should be ‘/cart’
-# I expect to have two items in my cart
+# I should see a link to login or create an account.
+# I should not see a checkout button
+# When I click on login my path should be ‘/login’
+# When I click on create an account my path should be ‘/users/new’
