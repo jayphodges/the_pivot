@@ -31,9 +31,12 @@ gem 'chart-js-rails'
 gem 'jquery-rails'
 gem 'groupdate'
 gem 'chartkick'
-gem 'paperclip'
+gem 'carrierwave', '~> 1.0'
 gem 'rubycritic'
 gem 'brakeman'
+gem 'figaro'
+gem "mini_magick"
+gem 'carrierwave-aws'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

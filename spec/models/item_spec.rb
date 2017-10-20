@@ -5,6 +5,7 @@ RSpec.describe Item, type: :model do
     context "invalid attributes" do
       it 'is invalid without a title' do
         category = Category.create(title: "Guitars")
+        store = Store.create(name: "Shop")
         item = Item.create(description: "desc",
           price: 5.5, category_id: category.id)
 
@@ -49,8 +50,9 @@ RSpec.describe Item, type: :model do
     context "valid attributes" do
       it "is valid with valid attributes" do
         c = Category.create(title: "Guitars")
+        s = Store.create(name: "Shop", status: 0)
         item = Item.create(title: 'title', description: "desc",
-          price: 5.5, category_id: c.id)
+          price: 5.5, category_id: c.id, store_id: s.id)
 
 
         expect(item).to be_valid
@@ -62,8 +64,9 @@ RSpec.describe Item, type: :model do
     context "price sanitization" do
       it '#formatted_price' do
         c = Category.create(title: "Guitars")
+        s = Store.create(name: "Shop", status: 0)
         item = Item.create(title: 'title', description: "desc",
-          price: 1.1, category_id: c.id)
+          price: 1.1, category_id: c.id, store_id: s.id)
 
         expect(item.formatted_price).to eq('1.10')
       end

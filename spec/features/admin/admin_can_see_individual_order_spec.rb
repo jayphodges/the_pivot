@@ -8,6 +8,8 @@ describe "Admin can view individual order" do
 
 	      user = create(:user)
 
+        store = create(:store)
+
 	      order1 = create(:order, user: user)
 	      order1.paid!
 
@@ -15,13 +17,13 @@ describe "Admin can view individual order" do
 
 			  item1 = order1.items.create(title: "Cool Item", description: "Descrip",
 			  													 price: 35.0, image: "http://lorempixel.com/400/200",
-			  													 category: category)
+			  													 category: category, store: store)
 			  item2 = order1.items.create(title: "Cool Item2", description: "Descrip2",
 			  													 price: 35.50, image: "http://lorempixel.com/400/200",
-			  													 category: category)
+			  													 category: category, store: store)
 			  item3 = order1.items.create(title: "Cool Item3", description: "Descrip3",
 			  													 price: 35.99, image: "http://lorempixel.com/400/200",
-			  													 category: category)
+			  													 category: category, store: store)
 
 			  OrdersItem.where(item_id: item1.id).update(unit_price: 35.0)
 			  OrdersItem.where(item_id: item2.id).update(unit_price: 35.50)

@@ -13,11 +13,12 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+/public/uploads/*
 
 /node_modules
 /yarn-error.log
 
 .byebug_history
 
-#ignore things created by paperclip
-/public/system/items/*
+# Ignore application configuration
+/config/application.yml
