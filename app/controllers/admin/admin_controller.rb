@@ -1,5 +1,5 @@
 class Admin::AdminController < Admin::BaseController
-  before_action :require_admin
+  #before_action :require_admin
 
   def show
     if params[:orders] == 'ordered'
@@ -17,8 +17,8 @@ class Admin::AdminController < Admin::BaseController
 
   private
 
-  def require_admin
-    render file: "/public/404" unless current_admin?
-  end
+  #def require_admin
+    #render file: "/public/404" unless current_admin?
+  #end
 
 end

@@ -1,0 +1,31 @@
+  <div class="dashboard_orders">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Created</th>
+          <th>Updated</th>
+          <th>Status</th>
+          <th>View</th>
+          <th>Cancel</th>
+          <th>Mark Paid</th>
+          <th>Mark Complete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @orders.each do |order| %>
+        <tr class="admin_index_order<%= order.id %>">
+          <td>Id: <%= order.id %></td>
+          <td><%= order.created_at.to_formatted_s(:long_ordinal) %></td>
+          <td><%= order.updated_at.to_formatted_s(:long_ordinal) %></td>
+          <td><%= order.status %></td>
+          <td><%= link_to "View Order", order_path(order) %></td>
+          <td><%= link_to "Cancel", order_path(id: order.id, status: 'cancelled'), method: :patch if (order.paid? || order.ordered?) %></td>
+          <td><%= link_to "Mark as Paid", order_path(id: order.id, status: 'paid'), method: :patch if order.ordered? %></td>
+          <td><%= link_to "Mark as Completed", order_path(id: order.id, status: 'complete'), method: :patch if order.paid? %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
