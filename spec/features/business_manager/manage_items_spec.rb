@@ -15,6 +15,14 @@ require 'rails_helper'
 
 describe "As a Business Manager" do
   scenario "I can edit items for my store" do
+      admin = create(:user, role: 1)
+
+      visit login_path
+
+      fill_in "session[username]", with: admin.username
+      fill_in "session[password]", with: admin.password
+      click_button "Login"
+
 
     #store setup
     store = Store.create(name: "Ricky's Hoop Shop")
@@ -31,16 +39,16 @@ describe "As a Business Manager" do
 
     expect(current_path).to eq("/admin/items/#{item1.id}/edit")
 
-        fill_in "item-title", with: "whatever"
-        fill_in "item-description", with: "something else"
-        attach_file("item-image", './app/assets/images/logo-header.png')
+    fill_in "item-title", with: "whatever"
+    fill_in "item-description", with: "something else"
+    attach_file("item-image", './app/assets/images/logo-header.png')
 
-        click_on ("Submit")
+    click_on ("Submit")
 
-        expect(current_path).to eq(admin_items_path)
+    expect(current_path).to eq(admin_items_path)
 
-        expect(page).to have_content("whatever")
-        expect(page).to have_content("something else")
+    expect(page).to have_content("whatever")
+    expect(page).to have_content("something else")
 
 
   end
