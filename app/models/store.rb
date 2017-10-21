@@ -1,6 +1,7 @@
 class Store < ApplicationRecord
   has_many :user_roles
   has_many :users, through: :user_roles
+  has_many :items
   validates :name, uniqueness: true
   validates :slug, uniqueness: true
 
@@ -8,7 +9,7 @@ class Store < ApplicationRecord
 
   before_validation :generate_slug
 
-  def genrate_slug
+  def generate_slug
     self.slug = name.parameterize
   end
 

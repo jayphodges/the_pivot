@@ -18,26 +18,30 @@ describe "As a Business Manager" do
 
     #store setup
     store = Store.create(name: "Ricky's Hoop Shop")
-		item1 = store.items.create(title: "Cool Item1", description: "Descrip1",
-		  													 price: 35.50, image: "http://lorempixel.com/400/200",
-		item2 = store.items.create(title: "Cool Item2", description: "Descrip2",
-		  													 price: 35.50, image: "http://lorempixel.com/400/200",
+    category = create(:category, title: "Guitars")
+		item1 = store.items.create!(title: "Cool Item1", description: "Descrip1",
+                                price: 35.50, image: "http://lorempixel.com/400/200", category_id: category.id)
 
-    visit "/rickys-hoop-shop/admin/items'"
-    require 'pry'; binding.pry
+    visit "/ricky-s-hoop-shop/admin/items"
+
 
     expect(page).to have_content("Cool Item1")
-    expect(page).to have_content("Cool Item2")
 
-    first(:item).click
+    click_on ("Edit")
 
-    expect(current_path).to eq("/items/#{item1.id}/edit")
+    expect(current_path).to eq("/admin/items/#{item1.id}/edit")
 
-    #edit the item
-    #
-    click_on "Submit"
+        fill_in "item-title", with: "whatever"
+        fill_in "item-description", with: "something else"
+        attach_file("item-image", './app/assets/images/logo-header.png')
 
-    expect(page).to have_content("Edited item")
+        click_on ("Submit")
+
+        expect(current_path).to eq(admin_items_path)
+
+        expect(page).to have_content("whatever")
+        expect(page).to have_content("something else")
+
 
   end
 end
