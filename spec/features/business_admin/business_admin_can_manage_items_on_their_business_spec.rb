@@ -26,11 +26,11 @@ end
     within first('.item') do
       expect(page).to have_link "Edit"
       expect(page).to have_content("Wand")
+
       click_on "Edit"
     end
 
-    expect(current_path).to eq("/items/#{item.id}/edit")
-
+    expect(current_path).to eq("/admin/items/#{item.id}/edit")
     fill_in "item[name]", with: "Power Stick"
     click_on "Submit Changes"
 
