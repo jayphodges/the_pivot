@@ -14,14 +14,20 @@ require 'rails_helper'
 
 
 describe "As a Business Manager" do
-  scenario "I can edit items for my stores" do
+  scenario "I can edit items for my store" do
 
     #store setup
+    store = Store.create(name: "Ricky's Hoop Shop")
+		item1 = store.items.create(title: "Cool Item1", description: "Descrip1",
+		  													 price: 35.50, image: "http://lorempixel.com/400/200",
+		item2 = store.items.create(title: "Cool Item2", description: "Descrip2",
+		  													 price: 35.50, image: "http://lorempixel.com/400/200",
 
     visit "/rickys-hoop-shop/admin/items'"
+    require 'pry'; binding.pry
 
-    expect(page).to have_content("Big Hoop")
-    expect(page).to have_content("Small Hoop")
+    expect(page).to have_content("Cool Item1")
+    expect(page).to have_content("Cool Item2")
 
     first(:item).click
 
