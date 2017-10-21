@@ -1,7 +1,6 @@
 require "rails_helper"
 
 describe "Business Admin can manage" do
-end
   context "Admin visits /dashboard" do
     scenario "admin manages an item for their business" do
       store = create(:store)
@@ -26,11 +25,11 @@ end
     within first('.item') do
       expect(page).to have_link "Edit"
       expect(page).to have_content("Wand")
-
       click_on "Edit"
     end
 
     expect(current_path).to eq("/admin/items/#{item.id}/edit")
+
     fill_in "item[name]", with: "Power Stick"
     click_on "Submit Changes"
 
@@ -39,6 +38,8 @@ end
     within first('.item') do
       expect(page).to_not have_content("Wand")
       expect(page).to have_content("Power Stick")
+    end
+
     end
   end
 end
