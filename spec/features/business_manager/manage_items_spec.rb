@@ -13,4 +13,25 @@ require 'rails_helper'
 #I should see the new edits to the item
 
 
+describe "As a Business Manager" do
+  scenario "I can edit items for my stores" do
 
+    #store setup
+
+    visit "/rickys-hoop-shop/admin/items'"
+
+    expect(page).to have_content("Big Hoop")
+    expect(page).to have_content("Small Hoop")
+
+    first(:item).click
+
+    expect(current_path).to eq("/items/#{item1.id}/edit")
+
+    #edit the item
+    #
+    click_on "Submit"
+
+    expect(page).to have_content("Edited item")
+
+  end
+end
