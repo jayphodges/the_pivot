@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "Admin can view individual order" do
+xdescribe "Admin can view individual order" do
   context "admin visits individual order page" do
     context "and admin can see order information" do
       scenario "and also see that orders items information" do
