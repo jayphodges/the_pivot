@@ -1,7 +1,7 @@
 require "rails_helper"
 
-describe "Business Admin can manage" do
-  context "Admin visits /dashboard" do
+describe "Business Admin can manage items" do
+  context "Business Admin visits /dashboard" do
     scenario "admin manages an item for their business" do
       store = create(:store)
       category = create(:category)
