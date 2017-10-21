@@ -19,7 +19,7 @@ end
                          category: category,
                          store: store)
 
-    visit store_admin_items_path(store)
+    visit store_admin_items_path(store.name)
     expect(current_path).to eq("/#{store.name}/admin/items")
 
     expect(page).to have_css('.item')
