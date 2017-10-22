@@ -181,5 +181,15 @@ body > div > div.metrics-wrapper > div {
 
 .cart-pad {
   margin-bottom: 30%;
+}
 
+.stores-table {
+  width: 60%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.stores-table > .btn {
+  display: inline;
+  margin: 0 auto;
 }

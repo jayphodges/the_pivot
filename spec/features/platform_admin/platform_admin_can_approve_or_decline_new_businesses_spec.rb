@@ -1,14 +1,7 @@
 require 'rails_helper'
 
 describe 'As a platform admin' do
-  before(:each) do
-  #   pa = create(:user)
-  #   role = create(:role, name: 'platform_admin')
-  #   pa.roles << role
-  #   allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(pa)
-  end
-
-  it 'admin can approve pending businesses' do
+  it 'admin can approve pending stores' do
     pa = create(:user)
     store = create(:store, name: 'Test Store1', status: 0)
     role = create(:role, name: 'platform_admin')
@@ -27,7 +20,7 @@ describe 'As a platform admin' do
     expect(page).to have_content('Test Store1 has been approved.')
   end
 
-  it 'admin can decline pending businesses' do
+  it 'admin can decline pending stores' do
     pa = create(:user)
     store = create(:store, name: 'Test Store2', status: 0)
     role = create(:role, name: 'platform_admin')
