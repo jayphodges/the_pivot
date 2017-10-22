@@ -1,3 +1,4 @@
+start_time = Time.now
 puts "Creating Categories"
 guitar = Category.create!(title: "Guitar")
 bass = Category.create!(title: "Bass")
@@ -48,7 +49,7 @@ aaron_order1 = aaron.orders.create(status: 0, created_at: DateTime.strptime("03/
 aaron_order2 = aaron.orders.create(status: 0, created_at: DateTime.strptime("05/16/2017 8:00", "%m/%d/%Y %H:%M"), store: store1)
 
 puts "Created #{Order.count} of 8 orders"
-
+puts "Creating curated OrdersItems"
 randy_order1.items.create(store: store1, title: "Gibson", description: "When the double-cutaway SG was unveiled as the (temporary) replacement for the original single-cutaway Les Paul in 1961 it quickly proved itself far more than just a stand-in. An overnight success, this innovative guitar quickly became a favorite with rock, blues and jazz players and more. The flagship of the SG range, the SG Standard 2017 T represents a superb blend of historic looks, tone, contemporary versatility and playability. Its iconic asymmetrical double-horned body styling and smaller 'teardrop' pickguard harken back to the originals of the early ’60s, and the Classic ’57 humbuckers likewise take you straight back to those hallowed PAF tones. When uncompromising performance matters, locking Grover kidney-button tuners, a slim-taper neck and rosewood fingerboard with rolled binding, Gibson's finest modern aluminum Tune-O-Matic bridge and stop bar tailpiece with elegant chrome plating provide a stylish and modern SG playing experience. The SG Standard 2017 T is delivered in a classic Gibson hardshell case with a Gibson multi-tool, a premium leather strap and a polishing cloth.",
 													price: 1300.0, category_id: guitar.id, image: File.open(Rails.root.join('app/assets/images', 'gibson_sg.png')))
 OrdersItem.where(item_id: 1).update(unit_price: 1300.0)
@@ -126,16 +127,16 @@ aaron_order2.items.create(store: store2, title: "Numark", description: "The Numa
 OrdersItem.where(item_id: 24).update(unit_price: 998.0)
 
 puts "Created #{Item.count} of 24 items with #{OrdersItem.count} join rows"
+puts "Curated items complete"
 
-# 10 categories
-# 50 items per category
+# Comment out after this part for a faster loading partial data set
 
 # Users
-995.times do |users|
+until User.count == 997 do
   first_name = Faker::Name.first_name
 	last_name = Faker::Name.last_name
 	full_name = "#{first_name} #{last_name}"
-  username = "#{first_name.gsub(/\s+/, "").downcase}"
+  username = "#{full_name.gsub(/\s+/, "").downcase}"
 	address = Faker::Address.street_address
   User.create(username: username, password: "password", full_name: full_name, address: address, role: 0)
   puts "Created #{full_name}'s account"
@@ -174,8 +175,11 @@ def music
  }
 end
 
+# 10 categories
+# 50 items per category
+
 Category.all.each do |category|
-  50.times do
+  until category.items.count == 50 do
     insturment = music[category.title.to_sym]
     name = "#{adjective} #{material} #{insturment.sample}"
     description = Faker::Lorem.paragraph
@@ -186,7 +190,7 @@ Category.all.each do |category|
   end
 end
 
-# 10-20 orders per registered customer
+
 def weighed_number(weights)
   raise 'Probabilities must sum up to 1' unless weights.values.inject(&:+) == 1.0
   u = 0.0
@@ -195,15 +199,16 @@ def weighed_number(weights)
   ranges.find{ |p, _| p > u }.last
 end
 
+# 10-20 orders per registered customer
 User.all.each do |user|
-  # weights need to be adjusted
   puts "Adding Orders to #{user.full_name}"
-	(rand(1..20)).times do |order|
+	random = weighed_number({1 => 0.25, 2 => 0.3, 3 => 0.2, 4 => 0.15, 5 => 0.1})
+	(random * 5).times do |order|
 		t1 = Time.parse("2012-11-16 12:00:00")
 		t2 = Time.parse("2018-09-15 12:00:00")
 		store = Store.all.sample
 		created = Order.create(user_id: user.id, status: weighed_number({0 => 0.2, 1 => 0.1, 2 => 0.1, 3 => 0.6 }), created_at: rand(t1..t2), updated_at: Time.now, store: store)
-		(rand(1..10)).times do |add_item|
+		(random).times do |add_item|
       item = Item.all.sample
 			created.items << item
       OrdersItem.last.update(unit_price: item.price)
@@ -223,3 +228,4 @@ User.create(username: 'ian@turing.io', password: 'password', full_name: 'Ian Dou
 # Username: cory@turing.io
 # Password: password
 User.create(username: 'cory@turing.io', password: 'password', full_name: 'Cory Westerfield', address: 'Somewhere in the Turing Basement')
+puts "Seeding completed after #{((Time.now - start)/60).round(2)} minutes"
