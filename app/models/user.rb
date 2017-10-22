@@ -9,6 +9,4 @@ class User < ApplicationRecord
   validates :password, presence: :true
   validates :address, presence: :true
   validates :full_name, presence: :true
-
-  enum role: %w(default admin)
 end
