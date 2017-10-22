@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "Admin can see and manipulate all orders" do
+xdescribe "Admin can see and manipulate all orders" do
   context "admin visits dashboard and can see all orders" do
     scenario "and can filter orders and transition status" do
       category = create(:category)

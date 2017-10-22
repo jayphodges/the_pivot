@@ -13,9 +13,9 @@ require 'rails_helper'
 #I should see the new edits to the item
 
 
-describe "As a Business Manager" do
+xdescribe "As a Business Manager" do
   scenario "I can edit items for my store" do
-      admin = create(:user, role: 1)
+      admin = create(:user)
 
       visit login_path
 
