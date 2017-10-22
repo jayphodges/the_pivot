@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "Admin can see dashboard" do
+xdescribe "Admin can see dashboard" do
   context "User visits /admin/dashboard" do
     scenario "User can not see Admin Dashboard and gets a 404" do
       user = create(:user)

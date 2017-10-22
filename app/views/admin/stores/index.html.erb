@@ -1,0 +1,46 @@
+<div class="category-show-title-div">
+  <h3 class="category-show-title center-text">MANAGE STORES</h3>
+</div>
+<hr>
+
+<div class="center-text">
+  <h4>Pending Stores</h4>
+</div>
+<table class="table stores-table">
+  <% @stores.each do |store| %>
+    <% if store.status == 'Pending' %>
+      <tr class="store">
+        <td>
+          <%= store.name %>
+        </td>
+        <td>
+          <%= store.status %>
+        </td>
+        <td>
+          <%= link_to "Approve", admin_store_path(store, approve: true), class: "btn btn-primary", method: :patch %>
+          <%= link_to "Decline", admin_store_path(store, decline: true), class: "btn btn-danger", method: :patch %>
+        </td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>
+<hr>
+<div class="center-text">
+  <h4>Active Stores</h4>
+</div>
+<table class="table stores-table">
+  <% @stores.each do |store| %>
+    <tr class="store">
+      <td>
+        <%= store.name %>
+      </td>
+      <td>
+        <%= store.status %>
+      </td>
+      <td>
+        <%= link_to "Take Offline", admin_store_path(store, take_offline: true), class: "btn btn-primary", method: :patch %>
+        <%= link_to "Put Online", admin_store_path(store, put_online: true), class: "btn btn-danger", method: :patch %>
+      </td>
+    </tr>
+  <% end %>
+</table>

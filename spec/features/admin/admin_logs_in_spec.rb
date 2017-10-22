@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "Admin visits site" do
+xdescribe "Admin visits site" do
   scenario "Admin can log in" do
     admin = create(:user, role: 1)
 

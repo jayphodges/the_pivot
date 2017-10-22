@@ -1,16 +1,16 @@
 class OrdersController < ApplicationController
-	before_action :require_user
+  #before_action :require_user
 
 	def index
 	end
 
 	def show
-		if Order.find(params[:id]).user_id == current_user.id || current_admin?
+		#if Order.find(params[:id]).user_id == current_user.id || current_admin?
 			@order = Order.find(params[:id])
 			@items = @order.items.distinct
-		else
-			not_found
-		end
+		#else
+			#not_found
+		#end
 	end
 
 	def create
