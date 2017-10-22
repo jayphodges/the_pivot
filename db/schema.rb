@@ -30,10 +30,6 @@ ActiveRecord::Schema.define(version: 20171021204019) do
     t.datetime "updated_at", null: false
     t.bigint "category_id"
     t.integer "status", default: 0
-    t.string "image_file_name"
-    t.string "image_content_type"
-    t.integer "image_file_size"
-    t.datetime "image_updated_at"
     t.bigint "store_id"
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["store_id"], name: "index_items_on_store_id"
@@ -91,7 +87,6 @@ ActiveRecord::Schema.define(version: 20171021204019) do
     t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "role", default: 0
   end
 
   add_foreign_key "items", "categories"

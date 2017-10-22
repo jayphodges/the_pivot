@@ -8,8 +8,9 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       session[:user_id] = user.id
       flash[:success] = "Logged in as #{user.username}"
-      redirect_to dashboard_path if current_user.default?
-      redirect_to admin_dashboard_path if current_user.admin?
+      # redirect_to dashboard_path if current_user.default?
+      # redirect_to admin_dashboard_path if current_user.admin?
+      redirect_to dashboard_path if current_user
     else
       redirect_to login_path
     end

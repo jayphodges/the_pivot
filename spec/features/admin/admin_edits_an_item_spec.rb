@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Admin visits admin/items' do
+xdescribe 'Admin visits admin/items' do
   context 'admin clicks edit' do
     context 'admin is taken to the edit item path' do
       scenario 'admin can update item information' do

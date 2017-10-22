@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "Admin visits /admin/dashboard" do
+xdescribe "Admin visits /admin/dashboard" do
   context "and Admin clicks link to view all items" do
     context "Admin should see a table with all items" do
       scenario "Admin should see all attributes of all items with option to edit" do
