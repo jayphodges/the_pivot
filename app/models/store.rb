@@ -6,7 +6,7 @@ class Store < ApplicationRecord
   validates :name, uniqueness: true
   validates :slug, uniqueness: true
 
-  enum status: %w(pending approved declined)
+  enum status: %w(Pending Approved Declined)
 
   before_validation :generate_slug
 
@@ -14,4 +14,11 @@ class Store < ApplicationRecord
     self.slug = name.parameterize
   end
 
+  def self.approve_store(store)
+    store.update(status: 'Approved')
+  end
+
+  def self.decline_store(store)
+    store.update(status: 'Declined')
+  end
 end
