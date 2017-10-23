@@ -30,8 +30,8 @@ describe "Business Admin can manage items" do
 
     expect(current_path).to eq("/admin/items/#{item.id}/edit")
 
-    fill_in "item[name]", with: "Power Stick"
-    click_on "Submit Changes"
+    fill_in "item[title]", with: "Power Stick"
+    click_on "Submit"
 
     expect(current_path).to eq("/#{store.name}/admin/items")
     expect(page).to have_css('.item')
