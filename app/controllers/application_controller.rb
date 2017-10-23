@@ -33,4 +33,9 @@ class ApplicationController < ActionController::Base
   def not_found
     render file: "/public/404"
   end
+
+  def authorize!
+    permission = PermissionsService.new(current_user, params[:controller], params[:action])
+    raise ActionController::RoutingError.new('Not Found') unless permission.authorized?
+  end
 end
