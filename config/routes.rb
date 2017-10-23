@@ -34,6 +34,9 @@ Rails.application.routes.draw do
 
 
   resources :stores, path: "stores", only: [:index]
+
+  get '/auth/twitter', as: 'twitter_login'
+  get '/auth/twitter/callback', to: 'sessions#oauth_login'
   # get '/:store_name', param: :slug, to: 'stores#show'
   # resources :stores, only: [:index]
 end
