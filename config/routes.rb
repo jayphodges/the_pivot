@@ -36,4 +36,10 @@ Rails.application.routes.draw do
   resources :stores, path: "stores", only: [:index]
   # get '/:store_name', param: :slug, to: 'stores#show'
   # resources :stores, only: [:index]
+
+  namespace :api do
+    namespace :v1 do
+      resources :login, only: [:index]
+    end
+  end
 end
