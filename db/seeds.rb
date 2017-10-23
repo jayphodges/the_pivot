@@ -28,11 +28,11 @@ puts "Creating curated Items"
 store1 = Store.first
 store2 = Store.second
 
-sam = User.create(username: 'sam', password: 'sam', full_name: 'sam lim', address: 'sams incubator', role: 0)
-joel = User.create(username: 'joel', password: 'joel', full_name: 'joel lindow', address: 'joels daycare', role: 0)
-randy = User.create(username: 'randy', password: 'randy', full_name: 'randy springer', address: 'randys campervan', role: 0)
-aaron = User.create(username: 'aaron', password: 'aaron', full_name: 'aaron hursh', address: 'aarons beard-grooming den', role: 0)
-admin = User.create(username: 'admin', password: 'admin', full_name: 'admin admin', address: 'admins administrator space of admin', role: 1)
+sam = User.create(username: 'sam', password: 'sam', full_name: 'sam lim', address: 'sams incubator')
+joel = User.create(username: 'joel', password: 'joel', full_name: 'joel lindow', address: 'joels daycare')
+randy = User.create(username: 'randy', password: 'randy', full_name: 'randy springer', address: 'randys campervan')
+aaron = User.create(username: 'aaron', password: 'aaron', full_name: 'aaron hursh', address: 'aarons beard-grooming den')
+admin = User.create(username: 'admin', password: 'admin', full_name: 'admin admin', address: 'admins administrator space of admin')
 
 puts "Created #{User.count} of 5 users"
 
@@ -138,7 +138,7 @@ until User.count == 997 do
 	full_name = "#{first_name} #{last_name}"
   username = "#{full_name.gsub(/\s+/, "").downcase}"
 	address = Faker::Address.street_address
-  User.create(username: username, password: "password", full_name: full_name, address: address, role: 0)
+  User.create(username: username, password: "password", full_name: full_name, address: address)
   puts "Created #{full_name}'s account"
 end
 
@@ -185,7 +185,7 @@ Category.all.each do |category|
     description = Faker::Lorem.paragraph
     price = rand(200..2000)
 		store = Store.all.sample
-    item = Item.create(title: name, description: description, price: price, category: category, store: store)
+    item = Item.create(title: name, description: description, price: price, category: category, store: store, image: File.open(Rails.root.join("app/assets/images", "#{category.title.parameterize.underscore}.jpg")))
     puts "Creating #{category.title}: Item: #{item.title}"
   end
 end
@@ -201,7 +201,7 @@ end
 
 # 10-20 orders per registered customer
 User.all.each do |user|
-  puts "Adding Orders to #{user.full_name}"
+  puts "Adding Orders to #{user.full_name} ID: #{user.id}"
 	random = weighed_number({1 => 0.25, 2 => 0.3, 3 => 0.2, 4 => 0.15, 5 => 0.1})
 	(random * 5).times do |order|
 		t1 = Time.parse("2012-11-16 12:00:00")
@@ -228,4 +228,4 @@ User.create(username: 'ian@turing.io', password: 'password', full_name: 'Ian Dou
 # Username: cory@turing.io
 # Password: password
 User.create(username: 'cory@turing.io', password: 'password', full_name: 'Cory Westerfield', address: 'Somewhere in the Turing Basement')
-puts "Seeding completed after #{((Time.now - start)/60).round(2)} minutes"
+puts "Seeding completed after #{((Time.now - start_time)/60).round(2)} minutes"
