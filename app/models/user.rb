@@ -11,4 +11,24 @@ class User < ApplicationRecord
   validates :full_name, presence: :true
 
   enum role: %w(default admin)
+
+  def registered?
+    roles.exists?(name: "registered")
+  end
+
+  def business_manager?
+    roles.exists?(name: "business manager")
+  end
+
+  def business_admin?
+    roles.exists?(name: "business admin")
+  end
+
+  def platform_admin?
+    roles.exists?(name: "platform admin")
+  end
+
+  def top_level_role
+    roles.pluck[:name].last  #with this strategy, roles table must be ordered with platform admin last
+  end
 end
