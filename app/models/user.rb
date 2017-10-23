@@ -30,5 +30,5 @@ class User < ApplicationRecord
 
   def top_level_role
     roles.pluck[:name].last  #with this strategy, roles table must be ordered with platform admin last
-  end
+  end                        #this allows us to send to different partials based on permissions
 end
