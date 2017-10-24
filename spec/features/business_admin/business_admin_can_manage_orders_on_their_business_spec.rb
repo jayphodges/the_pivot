@@ -29,21 +29,15 @@ describe "A Business Admin can manage orders" do
 
       expect(page).to have_css('.order')
       within first('.order') do
-        expect(page).to have_link "Manage Order"
         expect(page).to have_content("#{order.id}")
         expect(page).to have_content("ordered")
-        click_on "Manage Order"
       end
-
-      expect(current_path).to eq("/orders/#{order.id}")
 
       expect(page).to have_content("Mark as Paid")
 
       click_on "Mark as Paid"
 
-      expect(current_path).to eq("/#{store.name}/orders")
       within first('.order') do
-        expect(page).to have_link "Manage Order"
         expect(page).to have_content("#{order.id}")
         expect(page).to have_content("paid")
       end
