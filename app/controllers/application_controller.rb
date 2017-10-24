@@ -33,4 +33,12 @@ class ApplicationController < ActionController::Base
   def not_found
     render file: "/public/404"
   end
+
+  def authenticate_api
+    authenticate_or_request_with_http_basic do |username, password|
+      user = User.find_by(username: username)
+      user && user.authenticate(password)
+    end
+  end
+
 end

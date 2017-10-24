@@ -323,6 +323,7 @@ DEPENDENCIES
   mini_magick
   orderly
   pg (~> 0.18)
+  pry
   pry-rails
   puma (~> 3.7)
   rails (~> 5.1.4)

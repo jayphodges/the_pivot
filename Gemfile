@@ -53,6 +53,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'orderly'
   gem 'faker'
+  gem 'pry'
 end
 
 group :development do
