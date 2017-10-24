@@ -24,8 +24,8 @@ describe "A Business Admin can manage orders" do
       order.orders_items.create(item: item,
                                 unit_price: item.price)
 
-      visit store_orders_path(store.name)
-      expect(current_path).to eq("/#{store.name}/orders")
+      visit store_orders_path(store.slug)
+      expect(current_path).to eq("/#{store.slug}/orders")
 
       expect(page).to have_css('.order')
       within first('.order') do
