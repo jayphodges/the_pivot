@@ -23,15 +23,16 @@ describe "Business Admin can manage other business admins" do
                          category: category,
                          store: store)
 
-      visit store_path(store.name)
-      expect(current_path).to eq("/#{store.name}")
+      visit "/#{store.slug}"
+      expect(current_path).to eq("/#{store.slug}")
 
       expect(page).to have_link "Manage Admins"
       click_on "Manage Admins"
 
-      expect(current_path).to eq("/#{store.name}/admins")
+      expect(current_path).to eq("/#{store.slug}/admins")
       expect(page).to have_css('.admin')
-      within last('.admin') do
+      last_css = all('tr.admin').last
+      within (last_css) do
         expect(page).to have_link "Edit"
         expect(page).to have_content "Freddie Mercury"
         expect(page).to have_content "Radio Gaga"
@@ -43,8 +44,9 @@ describe "Business Admin can manage other business admins" do
       fill_in "user[address]", with: "Under Pressure"
       click_on "Submit Changes"
 
-      expect(current_path).to eq("/#{store.name}/admins")
-      expect(page).to have_content("#{user2.name} has been modified")
+      expect(current_path).to eq("/#{store.slug}/admins")
+
+      expect(page).to have_content("#{user2.full_name} has been modified")
     end
   end
 end

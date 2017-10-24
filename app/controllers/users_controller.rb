@@ -24,14 +24,18 @@ class UsersController < ApplicationController
   end
 
   def edit
-    user = current_user
+    @store = Store.find(session[:store_id])
+    @user = User.find(params[:id])
   end
 
   def update
-    user = current_user
-    if user.update(user_params)
-      redirect_to dashboard_path
+    @user = User.find(params[:id])
+    store = Store.find(session[:store_id])
+    if @user.update(user_params)
+      flash[:success] = "#{@user.full_name} has been modified"
+      redirect_to store_admins_path(store.slug)
     else
+      flash[:message] = "That change was not successful"
       render :edit
     end
   end

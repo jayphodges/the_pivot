@@ -18,8 +18,8 @@ describe "Business Admin can manage items" do
                          category: category,
                          store: store)
 
-    visit store_admin_items_path(store.name)
-    expect(current_path).to eq("/#{store.name}/admin/items")
+    visit store_admin_items_path(store.slug)
+    expect(current_path).to eq("/#{store.slug}/admin/items")
 
     expect(page).to have_css('.item')
     within first('.item') do
@@ -33,7 +33,7 @@ describe "Business Admin can manage items" do
     fill_in "item[title]", with: "Power Stick"
     click_on "Submit"
 
-    expect(current_path).to eq("/#{store.name}/admin/items")
+    expect(current_path).to eq("/#{store.slug}/admin/items")
     expect(page).to have_css('.item')
     within first('.item') do
       expect(page).to_not have_content("Wand")
