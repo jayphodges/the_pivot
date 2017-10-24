@@ -29,7 +29,7 @@ class User < ApplicationRecord
     roles.exists?(name: "platform admin")
   end
 
-  def top_level_role
+  def top_level_role         #not being used, but could implement if we want to break out more partials for admins
     roles.pluck[:name].last
-  end                        #this allows us to send to different partials based on permissions, if we want
+  end
 end

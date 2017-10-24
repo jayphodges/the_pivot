@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user
   before_action :set_cart
+  before_action :authorize!
 
   def current_admin?
     current_user && current_user.admin?
@@ -36,6 +37,6 @@ class ApplicationController < ActionController::Base
 
   def authorize!
     permission = PermissionsService.new(current_user, params[:controller], params[:action])
-    raise ActionController::RoutingError.new('Not Found') unless permission.authorized?
+    not_found unless permission.authorized?
   end
 end
