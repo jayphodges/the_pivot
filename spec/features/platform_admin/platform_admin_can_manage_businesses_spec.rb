@@ -9,7 +9,7 @@ xdescribe "Platform Admin can manage stores" do
                        password: "Goblin King",
                        full_name: "Ziggy Stardust",
                        address: "Labyrinth")
-    @user_role = UserRole.create(store: @store, user: @user, role: @role)
+    @user_role = UserRole.create(user: @user, role: @role)
     @item = Item.create(title: "Wand",
                        description: "Power Tool",
                        price: 12.0,
