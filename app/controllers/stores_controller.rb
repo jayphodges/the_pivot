@@ -12,11 +12,10 @@ class StoresController < ApplicationController
     @store = Store.find_by(name: params[:store_name])
     if @store.update(name: params[:store][:name])
       flash[:success] = "#{@store.name} has been updated"
-
-      redirect_to "/#{@store.slug}"
+      redirect_to @store
     else
       flash[:message] = "Store has not been updated"
-      redirect_to "/#{@store.slug}/edit"
+      redirect_to @store
     end
   end
 
