@@ -3,7 +3,8 @@ class User < ApplicationRecord
   has_many :orders
   has_many :user_roles
   has_many :roles, through: :user_roles
-  has_many :stores, through: :user_roles
+  has_many :user_stores
+  has_many :stores, through: :user_stores
 
   validates :username, uniqueness: true, presence: true
   validates :password, presence: :true
