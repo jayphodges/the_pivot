@@ -40,6 +40,8 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :login, only: [:index]
+      get '/orders_by_month', to: 'orders#orders_by_month'
+      get '/orders_by_week', to: 'orders#orders_by_week'
     end
   end
 end
