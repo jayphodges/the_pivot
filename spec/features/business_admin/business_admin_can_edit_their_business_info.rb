@@ -18,18 +18,18 @@ describe "Business Admin can manage their business information" do
                          image: "imagestring",
                          category: category,
                          store: store)
-      visit store_path(store.name)
-      expect(current_path).to eq("/#{store.name}")
+
+      visit "/#{store.slug}"
       expect(page).to have_content("Edit Business")
 
       click_on "Edit Business"
 
-      expect(current_path).to eq("/stores/#{store.id}/edit")
+      expect(current_path).to eq("/#{store.slug}/edit")
 
-      fill_in "store[name]", with: "Test Name"
+      fill_in "store[name]", with: "Test"
       click_on "Submit Changes"
 
-      expect(current_path).to eq("/test-name")
+      expect(current_path).to eq("/test")
       expect(current_path).to_not eq("/#{name}")
     end
   end
