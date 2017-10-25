@@ -11,8 +11,8 @@ class PermissionsService
     if user.platform_admin?
       return true if platform_admin_permissions
     end
-    if user.store_admin?
-      store_admin_permissions
+    if user.business_admin?
+      return true if business_admin_permissions
     end
     if user.registered?
       return true if controller == 'items' && action.in?(%w(index show))
@@ -28,4 +28,9 @@ class PermissionsService
       return true if controller == 'orders' && action.in?(%w(index))
       return true if controller == 'items' && action.in?(%w(index show))
     end
+
+    # def business_admin_permissions
+    #   return true if controller == 'stores/admin'
+    # end
+
 end

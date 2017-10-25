@@ -4,7 +4,7 @@
   </div>
   <div class="col-md-4">
 
-    <%= form_for [:admin, @item], html: { multipart: true } do |f| %>
+    <%= form_for [@store], html: { multipart: true } do |f| %>
     <p class="form-label">Title</p>
     <%= f.text_field :title, class: "form-item", id: "item-title", placeholder: "ex: Really Rad Instrument" %><br>
 
@@ -28,7 +28,6 @@
     <p class="form-label">Upload Image</p>
     <%= f.file_field :image, id: "item-image" %>
     <hr>
-
     <%= f.submit "Submit", class: "btn btn-default" %>
     <% end %><br><br>
   </div>

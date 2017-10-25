@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   # get '/category/:category_name', path: '/category', to: 'categories#show'
   resources :categories, path: '/category', only: [:show]
   get '/:store_name', params: :store_name, to: 'stores#show'
+  get '/:store_name/edit', params: :store_name, to: 'stores#edit'
+  patch '/:store_name', params: :store_name, to: 'stores#update'
 
   namespace :stores, as: :store, path: ":store_name" do
     resources :orders, only: [:index]

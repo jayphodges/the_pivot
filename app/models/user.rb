@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :stores, through: :user_roles
 
   validates :username, uniqueness: true, presence: true
-  validates :password, presence: :true
+  validates :password, presence: :true, on: :create
   validates :address, presence: :true
   validates :full_name, presence: :true
 
