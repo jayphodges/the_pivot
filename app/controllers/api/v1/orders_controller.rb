@@ -10,5 +10,19 @@ class Api::V1::OrdersController < ApplicationController
   end
 
   # Average Order price
-  # Orders by status
+  def most_expensive_orders
+    Order.merge(Order.completed).joins(:orders_items).group('orders.id').order('sum_unit_price DESC').sum(:unit_price)
+  end
+  # Top selling merchants / by revenue
+  def top_selling_merchant
+    Store
+  end
+  # top selling items
+
+  # top item by revenue
+
+  # Most active customers
+
+  #
+
 end
