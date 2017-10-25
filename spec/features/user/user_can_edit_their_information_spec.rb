@@ -5,6 +5,7 @@ describe 'User can edit their information' do
     context 'user can visit their edit page' do
       scenario 'user can edit their information' do
         user = create(:user)
+        user.roles.create(name: "registered")
 
         visit root_path
 
@@ -15,8 +16,9 @@ describe 'User can edit their information' do
         fill_in "session[username]", with: user.username
         fill_in "session[password]", with: user.password
         click_button "Login"
+			  allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-        expect(current_path).to eq dashboard_path
+        expect(current_path).to eq(dashboard_path)
 
         click_on "Edit User"
         expect(current_path).to eq("/users/#{user.id}/edit")

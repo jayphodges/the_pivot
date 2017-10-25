@@ -52,6 +52,9 @@ class PermissionsService
       return true if controller == 'admin/admin' && action.in?(%w(show))
       return true if controller == 'admin/stores' && action.in?(%w(index))
       return true if controller == 'admin/items' && action.in?(%w(index create new edit update))
+      return true if controller == 'stores/orders' && action.in?(%w(index))
+      return true if controller == 'orders' && action.in?(%w(index show))
+
     end
 
     def registered_permissions
