@@ -54,7 +54,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'database_cleaner'
   gem 'pry-rails'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'orderly'
   gem 'faker'
 end

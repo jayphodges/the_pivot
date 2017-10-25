@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :store do
 
     sequence :name do |i|
