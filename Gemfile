@@ -38,6 +38,7 @@ gem 'figaro'
 gem "mini_magick"
 gem 'carrierwave-aws'
 gem "omniauth-twitter"
+gem 'twilio-ruby'
 # gem 'jwt'
 # gem 'simple_command'
 
