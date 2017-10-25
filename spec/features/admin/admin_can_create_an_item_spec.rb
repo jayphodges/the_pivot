@@ -2,8 +2,8 @@ require 'rails_helper'
 
 describe "Admin can add items" do
   context "Admin visits /admin/items/new" do
-    xscenario "Admin adds a new item for sale" do
-      admin = create(:user, role: 'admin')
+    scenario "Admin adds a new item for sale" do
+      admin = create(:user)
       category = create(:category, title: "Guitars")
 
       visit login_path
