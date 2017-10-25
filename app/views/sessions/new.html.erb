@@ -1,4 +1,5 @@
 <div class="login-wrapper profile center-text">
+	<%= link_to "Login with Twitter", twitter_login_path %>
 	<h3>User Login</h3>
 	<%= form_for(:session, url: login_path) do |f| %>
 			<%= f.label :username %><br>

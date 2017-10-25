@@ -32,4 +32,16 @@ class User < ApplicationRecord
   def top_level_role         #not being used, but could implement if we want to break out more partials for admins
     roles.pluck[:name].last
   end
+
+  def self.from_omniauth(auth_info)
+    where(uid: auth_info[:uid]).first_or_create do |new_user|
+      new_user.uid                = auth_info.uid
+      new_user.username           = auth_info.extra.raw_info.screen_name
+      new_user.password           = auth_info.credentials.token
+      new_user.full_name          = auth_info.extra.raw_info.name
+      new_user.address            = auth_info.extra.raw_info.location
+      new_user.oauth_token        = auth_info.credentials.token
+      new_user.oauth_token_secret = auth_info.credentials.secret
+    end
+  end
 end

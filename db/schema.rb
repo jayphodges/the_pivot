@@ -94,6 +94,10 @@ ActiveRecord::Schema.define(version: 20171024125209) do
     t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "screen_name"
+    t.string "uid"
+    t.string "oauth_token"
+    t.string "oauth_token_secret"
   end
 
   add_foreign_key "items", "categories"
