@@ -22,11 +22,16 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :show, :update, :edit]
 
+  get '/password-reset', to: 'passwords#new', as: 'new_password_reset'
+  post '/password-reset', to: 'passwords#create', as: 'password_reset'
+  get '/password-confirmation', to: 'confirmations#new', as: 'new_password'
+  post 'password-confirmation', to: 'passwords#update', as: 'update_password'
   # get '/category/:category_name', path: '/category', to: 'categories#show'
   resources :categories, path: '/category', only: [:show]
   get '/:store_name', params: :store_name, to: 'stores#show'
   get '/:store_name/edit', params: :store_name, to: 'stores#edit'
   patch '/:store_name', params: :store_name, to: 'stores#update'
+
 
   namespace :stores, as: :store, path: ":store_name" do
     resources :orders, only: [:index]

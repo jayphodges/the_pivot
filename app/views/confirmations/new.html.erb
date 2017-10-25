@@ -1,0 +1,14 @@
+<p>We have sent a five digit code to the phone number on file</p>
+<p>for the account <%= @user.username %></p>
+<p>Please enter the code and your new password below.</p>
+
+<%= form_tag(update_password_path, method: 'update') do %>
+  <%= label_tag(:reset_code, 'Reset Code:') %>
+  <%= text_field_tag(:reset_code) %>
+  <%= label_tag(:password) %>
+  <%= password_field_tag(:password) %>
+  <%= label_tag(:password_confirmation) %>
+  <%= password_field_tag(:password_confirmation) %>
+  <%= hidden_field_tag(:username, @user.username) %>
+  <%= submit_tag('Submit') %>
+<% end %>
