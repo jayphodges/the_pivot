@@ -26,6 +26,12 @@ describe "Registered User can make purchases on any business" do
                        category: category,
                        store: store_2)
 
+    visit login_path
+
+     fill_in "session[username]", with: user.username
+     fill_in "session[password]", with: user.password
+     click_button "Login"
+
     expect(Order.all.count).to eq(0)
     visit "/#{store.slug}"
     expect(current_path).to eq("/#{store.slug}")
@@ -40,15 +46,15 @@ describe "Registered User can make purchases on any business" do
       click_on "Add to Cart"
     end
 
-    click_on "Cart"
+    click_on "View Cart"
 
     expect(current_path).to eq("/cart")
 
     click_on "Checkout"
 
-    expect(current_path).to eq("/users/#{user.id}/orders")
+    expect(current_path).to eq("/orders/#{Order.first.id}")
     expect(page).to have_css('.order')
-    within first('.iorder') do
+    within first('.order') do
       expect(page).to have_content("Wand")
       expect(page).to have_content("Sword")
     end
