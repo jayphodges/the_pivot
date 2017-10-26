@@ -28,7 +28,7 @@ class Store < ApplicationRecord
 
   def self.top_selling_stores
     joins(orders: [:orders_items])
-    .group('stores.id')
+    .group('stores.name')
     .order('sum_unit_price DESC')
     .sum(:unit_price)
   end

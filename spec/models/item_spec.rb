@@ -90,8 +90,8 @@ RSpec.describe Item, type: :model do
 
         result = Item.top_selling_items
 
-        expect(result.first[0]).to eq(item1.id)
-        expect(result.keys[1]).to eq(item2.id)
+        expect(result.first[0]).to eq(item1.title)
+        expect(result.keys[1]).to eq(item2.title)
       end
     end
 
@@ -116,8 +116,8 @@ RSpec.describe Item, type: :model do
 
         result = Item.most_sold_items
 
-        expect(result.first[0]).to eq(item1.id)
-        expect(result.keys[1]).to eq(item2.id)
+        expect(result.first[0]).to eq(item1.title)
+        expect(result.keys[1]).to eq(item2.title)
       end
     end
   end
