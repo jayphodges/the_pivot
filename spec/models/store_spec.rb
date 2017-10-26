@@ -46,7 +46,7 @@ RSpec.describe Store, type: :model do
         order2.items << item2
         OrdersItem.last.update(unit_price: item2.price)
 
-        expect(Store.top_selling_stores.first[0]).to eq(store2.id)
+        expect(Store.top_selling_stores.first[0]).to eq(store2.name)
       end
     end
   end

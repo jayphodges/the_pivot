@@ -17,7 +17,7 @@ class User < ApplicationRecord
   def self.most_active_customer
     joins(orders: [:orders_items])
     .merge(Order.completed)
-    .group('users.id')
+    .group('users.full_name')
     .order('sum_orders_items_unit_price DESC')
     .sum('orders_items.unit_price')
   end
