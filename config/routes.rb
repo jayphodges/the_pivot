@@ -46,4 +46,16 @@ Rails.application.routes.draw do
   get '/auth/twitter/callback', to: 'sessions#oauth_login'
   # get '/:store_name', param: :slug, to: 'stores#show'
   # resources :stores, only: [:index]
+
+  namespace :api do
+    namespace :v1 do
+      get '/orders_by_month', to: 'orders#orders_by_month'
+      get '/orders_by_week', to: 'orders#orders_by_week'
+      get '/most_active_customers', to: 'most_active_customer#index'
+      get '/most_expensive_orders', to: 'most_expensive_orders#index'
+      get '/most_sold_items', to: 'most_sold_items#index'
+      get '/top_selling_items', to: 'top_selling_items#index'
+      get '/top_selling_stores', to: 'top_selling_stores#index'
+    end
+  end
 end

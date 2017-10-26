@@ -153,6 +153,31 @@ RSpec.describe Order, type: :model do
 
         expect(Order.orders_by_day_of_week.values).to be_a(Array)
       end
+
+      it '.most_expensive_orders' do
+        role = Role.create(name: "registered")
+        user = create(:user)
+        store = create(:store)
+        order1 = create(:order, user: user, status: 3, store: store)
+        order2 = create(:order, user: user, status: 3, store: store)
+        c = Category.create(title: "Guitars")
+        item1 = create(:item, category_id: c.id, store: store, price: 50)
+        item2 = create(:item, category_id: c.id, store: store, price: 200)
+
+        order1.items << item1
+        OrdersItem.last.update(unit_price: item1.price)
+        order1.items << item1
+        OrdersItem.last.update(unit_price: item1.price)
+        order1.items << item1
+        OrdersItem.last.update(unit_price: item1.price)
+        order2.items << item2
+        OrdersItem.last.update(unit_price: item2.price)
+
+        result = Order.most_expensive_orders
+
+        expect(result.first[0]).to eq(order2.id)
+        expect(result.keys[1]).to eq(order1.id)
+      end
     end
   end
 end

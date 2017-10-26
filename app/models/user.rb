@@ -14,6 +14,14 @@ class User < ApplicationRecord
 
   enum role: %w(default admin)
 
+  def self.most_active_customer
+    joins(orders: [:orders_items])
+    .merge(Order.completed)
+    .group('users.id')
+    .order('sum_orders_items_unit_price DESC')
+    .sum('orders_items.unit_price')
+  end
+
   def registered?
     roles.exists?(name: "registered")
   end
@@ -51,5 +59,8 @@ class User < ApplicationRecord
     def default_user_role_to_registered
       role = Role.find_by(name: "registered")
       self.user_roles.create(role_id: role.id)
+
+      # self.user_roles.create(role_id: 0)
     end
+
 end
