@@ -12,6 +12,7 @@ class Stores::ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    @item.store = Store.find_by(slug: params[:store_name])
     if @item.save
       flash[:success] = "#{@item.title} has been created."
       redirect_to item_path(@item)
@@ -24,7 +25,7 @@ class Stores::ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:title, :description, :price, :category_id, :image, :status, :store_id)
+    params.require(:item).permit(:title, :description, :price, :category_id, :image, :status, :store_name)
   end
 
 end

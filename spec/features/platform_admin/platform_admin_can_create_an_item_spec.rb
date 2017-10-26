@@ -20,7 +20,7 @@ describe "Business Admin can add items" do
 
       visit "/#{store.slug}/admins/items/new"
 
-      expect(current_path).to eq('/name-1/admins/items/new')
+      expect(current_path).to eq("/#{store.slug}/admins/items/new")
 
       fill_in "item-title", with: "A Product"
       fill_in "item-description", with: "Product description. It's good"
