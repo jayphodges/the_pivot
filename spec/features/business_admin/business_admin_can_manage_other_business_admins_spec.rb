@@ -44,7 +44,6 @@ describe "Business Admin can manage other business admins" do
       end
 
       expect(current_path).to eq("/users/#{user2.id}/edit")
-      save_and_open_page
 
       fill_in "user[address]", with: "Under Pressure"
       click_on "Submit Changes"
@@ -55,17 +54,3 @@ describe "Business Admin can manage other business admins" do
     end
   end
 end
-
-# Manage other business admins for your store
-# When I visit ‘/:store-name’
-# I should see a manage business admins button
-# When I click on the button
-# My path should be ‘/:store-name/admins’
-# I should see a list of all current business admins for this store
-# I should see a button to edit an individual business admin
-# When I click on this button
-# I should be on '/users/:id/edit'
-# I should be able fill out form fields
-# When I click submit,
-# I should be back at ‘/:store-name/admins.
-# I should see a flash message that :admin was edited
