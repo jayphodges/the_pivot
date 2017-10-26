@@ -219,13 +219,17 @@ end
 # 1 business manager per business with the following data:
 # Username: josh@turing.io
 # Password: password
-User.create(username: 'josh@turing.io', password: 'password', full_name: 'Josh Mejia', address: 'Somewhere in the Turing Basement')
+josh = User.create(username: 'josh@turing.io', password: 'password', full_name: 'Josh Mejia', address: 'Somewhere in the Turing Basement')
+josh.roles << Role.find_by(name: "business manager")
 # 1 business admin per business, one with the following data:
 # Username: ian@turing.io
 # Password: password
-User.create(username: 'ian@turing.io', password: 'password', full_name: 'Ian Douglas', address: 'Somewhere in the Turing Basement')
+ian = User.create(username: 'ian@turing.io', password: 'password', full_name: 'Ian Douglas', address: 'Somewhere in the Turing Basement')
+ian.roles << Role.find_by(name: "business admin")
 # 1 platform administrators
 # Username: cory@turing.io
 # Password: password
-User.create(username: 'cory@turing.io', password: 'password', full_name: 'Cory Westerfield', address: 'Somewhere in the Turing Basement')
+cory = User.create(username: 'cory@turing.io', password: 'password', full_name: 'Cory Westerfield', address: 'Somewhere in the Turing Basement')
+cory.roles << Role.find_by(name: "platform admin")
+
 puts "Seeding completed after #{((Time.now - start_time)/60).round(2)} minutes"

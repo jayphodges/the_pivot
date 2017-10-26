@@ -5,9 +5,7 @@ FactoryBot.define do
     	"Username#{i}"
     end
 
-    sequence :password do |i|
-    	"password#{i}"
-    end
+    password 'password'
 
     sequence :full_name do |i|
     	"firstname lastname #{i}"
