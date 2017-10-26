@@ -42,10 +42,10 @@
               </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <% if !current_user.nil? && !current_user.admin? %>
+              <% if !current_user.nil? && (!current_user.business_admin? || !current_user.business_manager? || !current_user.platform_admin?) %>
               <li><%= link_to "View Profile", user_path(current_user) %></li>
               <% end %>
-              <% if !current_user.nil? && current_user.admin? %>
+              <% if !current_user.nil? && (current_user.business_admin? || current_user.business_manager? || current_user.platform_admin?) %>
               <li><%= link_to "Admin Dashboard", admin_dashboard_path %></li>
               <% end %>
               <li><a href="/cart">View Cart</a></li>

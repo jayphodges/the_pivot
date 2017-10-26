@@ -5,12 +5,13 @@ describe "Business Admin can add items" do
     scenario "Business Admin adds a new item for sale" do
       category = create(:category, title: "Guitars")
       store = create(:store)
-      role = Role.create(name: "Business Admin")
+      Role.create(name: "registered")
+      role = Role.create(name: "business admin")
       user = User.create(username: "David Bowie",
                          password: "Goblin King",
                          full_name: "Ziggy Stardust",
                          address: "Labyrinth")
-      user_role = UserRole.create(store: store, user: user, role: role)
+      user_role = UserRole.create(user: user, role: role)
 
       visit login_path
 
