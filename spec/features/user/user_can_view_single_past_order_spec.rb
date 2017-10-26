@@ -4,7 +4,7 @@ describe "User can see individual past order" do
 	context "user visits /orders and clicks on order link" do
 		scenario "user can see all order information" do
 		  user = create(:user)
-
+      user.roles.create(name: "registered")
 			store = create(:store)
 
 		  order = create(:order, user: user, status: 3)

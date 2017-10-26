@@ -29,6 +29,8 @@ class PermissionsService
   private
     attr_reader :user, :controller, :action
 
+                            #refactbor below to dry up
+
     def platform_admin_permissions
       return true if controller == 'users' && action.in?(%w(index show edit))
       return true if controller == 'orders' && action.in?(%w(index))
@@ -59,11 +61,13 @@ class PermissionsService
 
     def registered_permissions
       return true if controller == 'users' && action.in?(%w(show index create new edit update))
+      return true if controller == 'orders' && action.in?(%w(index show))
     end
 
     def guest_permissions
       return true if controller == 'sessions'
       return true if controller == 'stores' && action.in?(%w(index show))
       return true if controller == 'items' && action.in?(%w(index show))
+      return true if controller == 'users' && action.in?(%w(new create))
     end
 end

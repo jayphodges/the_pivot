@@ -12,13 +12,14 @@ describe "Visitor can create an account" do
 
         click_on("Create Account")
 
-        fill_in "Username", with: "Joel"
-        fill_in "Password", with: "password"
-        fill_in "Full Name", with: "Joel Lindow"
-        fill_in "Address", with: "1122 Booger Booger Avenue"
-        click_on "Submit"
+        fill_in "user[username]", with: "Joel"
+        fill_in "user[password]", with: "password"
+        fill_in "user[full_name]", with: "Joel Lindow"
+        fill_in "user[address]", with: "1122 Booger Booger Avenue"
+        click_on "Submit"                                           #need create a user role on creation of new user (callback?)
 
         expect(current_path).to eq("/dashboard")
+
         expect(page).to have_content("Logged in as Joel")
         expect(page).to have_content("Joel")
         expect(page).to have_content("1122 Booger Booger Avenue")
