@@ -39,8 +39,7 @@ gem "mini_magick"
 gem 'carrierwave-aws'
 gem "omniauth-twitter"
 gem 'twilio-ruby'
-# gem 'jwt'
-# gem 'simple_command'
+gem 'faker'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -56,7 +55,6 @@ group :development, :test do
   gem 'pry-rails'
   gem 'factory_bot_rails'
   gem 'orderly'
-  gem 'faker'
   gem 'pry'
 end
 
@@ -64,7 +62,6 @@ group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'faker'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
