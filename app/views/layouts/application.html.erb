@@ -45,7 +45,10 @@
               <% if !current_user.nil? && (!current_user.business_admin? || !current_user.business_manager? || !current_user.platform_admin?) %>
               <li><%= link_to "View Profile", user_path(current_user) %></li>
               <% end %>
-              <% if !current_user.nil? && (current_user.business_admin? || current_user.business_manager? || current_user.platform_admin?) %>
+              <% if !current_user.nil? && current_user.platform_admin? %>
+              <li><%= link_to 'View Reports', admin_reports_path %></li>
+              <% end %>
+              <% if !current_user.nil? && (current_user.business_admin? || current_user.platform_admin? || current_user.business_manager?)%>
               <li><%= link_to "Admin Dashboard", admin_dashboard_path %></li>
               <% end %>
               <li><a href="/cart">View Cart</a></li>
@@ -100,4 +103,5 @@
           </div>
         </div>
       </div>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </html>
