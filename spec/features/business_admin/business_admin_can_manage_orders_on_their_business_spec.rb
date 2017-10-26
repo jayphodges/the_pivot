@@ -3,15 +3,16 @@ require "rails_helper"
 describe "A Business Admin can manage orders" do
   context "Business Admin visits /dashboard" do
     scenario "admin manages an order for their business" do
+      Role.create(name: "registered")
       store = create(:store)
       category = create(:category)
       customer = create(:user)
-      role  = Role.create(name: "Business Admin")
+      role  = Role.create(name: "business admin")
       user = User.create(username: "David Bowie",
                          password: "Goblin King",
                          full_name: "Ziggy Stardust",
                          address: "Labyrinth")
-      user_role = UserRole.create(store: store, user: user, role: role)
+      user_role = UserRole.create(user: user, role: role)
       item = Item.create(title: "Wand",
                          description: "Power Tool",
                          price: 12.0,
@@ -23,6 +24,7 @@ describe "A Business Admin can manage orders" do
                           )
       order.orders_items.create(item: item,
                                 unit_price: item.price)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       visit store_orders_path(store.slug)
       expect(current_path).to eq("/#{store.slug}/orders")

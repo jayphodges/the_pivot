@@ -14,8 +14,8 @@ xdescribe "Business Admin can manage other business admins" do
                         password: "Bohemian Rhapsody",
                         full_name: "The King of Queen",
                         address: "Radio Gaga")
-      user_role = UserRole.create(store: store, user: user, role: role)
-      user_role2 = UserRole.create(store: store, user: user2, role: role)
+      user_role = UserRole.create(user: user, role: role)
+      user_role2 = UserRole.create(user: user2, role: role)
       item = Item.create(title: "Wand",
                          description: "Power Tool",
                          price: 12.0,

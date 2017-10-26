@@ -3,11 +3,12 @@ require 'rails_helper'
 describe "Visitor can log in and see logged in options in cart" do
 	context "visitor can see cart but cannot checkout" do
 		scenario "Visitor can login as auth user and see checkout option" do
+      Role.create(name: "registered")
 			user = create(:user)
 			category = create(:category)
 	    item = create(:item, category: category)
 	    item2 = create(:item, category: category)
-	    
+
 	    visit '/items'
 
 	    within(".index_item_#{item.id}") do
