@@ -36,7 +36,7 @@ describe "Visitor can log in and create order" do
 
       click_on "Checkout"
 
-      expect(current_path).to eq(order_path(1))
+      expect(current_path).to eq(order_path(Order.all.first))
 
       expect(page).to have_content("Order was successfully placed")
       expect(page).to have_content("#{Order.last.id}")
