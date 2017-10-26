@@ -50,8 +50,6 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      get '/orders_by_month', to: 'orders#orders_by_month'
-      get '/orders_by_week', to: 'orders#orders_by_week'
       get '/most_active_customers', to: 'most_active_customer#index'
       get '/most_expensive_orders', to: 'most_expensive_orders#index'
       get '/most_sold_items', to: 'most_sold_items#index'

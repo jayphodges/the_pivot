@@ -1,5 +1,7 @@
 start_time = Time.now
 puts "Creating Categories"
+User.destroy_all
+Store.destroy_all
 guitar = Category.create!(title: "Guitar")
 bass = Category.create!(title: "Bass")
 amps = Category.create!(title: "Amps and Effects")
@@ -27,7 +29,7 @@ puts "Created #{Store.all.count} stores"
 puts "Creating curated Items"
 store1 = Store.first
 store2 = Store.second
-
+Role.create(name: "registered")
 sam = User.create(username: 'sam', password: 'sam', full_name: 'sam lim', address: 'sams incubator')
 joel = User.create(username: 'joel', password: 'joel', full_name: 'joel lindow', address: 'joels daycare')
 randy = User.create(username: 'randy', password: 'randy', full_name: 'randy springer', address: 'randys campervan')
@@ -219,13 +221,17 @@ end
 # 1 business manager per business with the following data:
 # Username: josh@turing.io
 # Password: password
-User.create(username: 'josh@turing.io', password: 'password', full_name: 'Josh Mejia', address: 'Somewhere in the Turing Basement')
+josh = User.create(username: 'josh@turing.io', password: 'password', full_name: 'Josh Mejia', address: 'Somewhere in the Turing Basement')
+josh.roles << Role.find_by(name: "business manager")
 # 1 business admin per business, one with the following data:
 # Username: ian@turing.io
 # Password: password
-User.create(username: 'ian@turing.io', password: 'password', full_name: 'Ian Douglas', address: 'Somewhere in the Turing Basement')
+ian = User.create(username: 'ian@turing.io', password: 'password', full_name: 'Ian Douglas', address: 'Somewhere in the Turing Basement')
+ian.roles << Role.find_by(name: "business admin")
 # 1 platform administrators
 # Username: cory@turing.io
 # Password: password
-User.create(username: 'cory@turing.io', password: 'password', full_name: 'Cory Westerfield', address: 'Somewhere in the Turing Basement')
+cory = User.create(username: 'cory@turing.io', password: 'password', full_name: 'Cory Westerfield', address: 'Somewhere in the Turing Basement')
+cory.roles << Role.find_by(name: "platform admin")
+
 puts "Seeding completed after #{((Time.now - start_time)/60).round(2)} minutes"
