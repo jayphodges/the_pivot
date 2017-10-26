@@ -60,5 +60,8 @@ class User < ApplicationRecord
       role = Role.find_by(name: "registered")
       self.user_roles.create(role_id: role.id)
     end
+<<<<<<< HEAD
 
+=======
+>>>>>>> a9fcccf8b0a7ccf5e532f99434d3063286a4d912
 end

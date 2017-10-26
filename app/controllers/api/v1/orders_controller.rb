@@ -8,16 +8,4 @@ class Api::V1::OrdersController < ApplicationController
   def orders_by_week
     render json: Order.orders_by_day_of_week
   end
-
-  # Most expensive orders = done / orders
-
-  # Top selling merchants / by revenue = done / store
-
-  # top selling items by revenue = done / items
-
-  # most sold items = done / items
-
-  # Most active customers by orders = done / user
-
-
 end
