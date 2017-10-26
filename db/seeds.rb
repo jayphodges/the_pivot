@@ -27,7 +27,7 @@ puts "Created #{Store.all.count} stores"
 puts "Creating curated Items"
 store1 = Store.first
 store2 = Store.second
-
+Role.create(name: "registered")
 sam = User.create(username: 'sam', password: 'sam', full_name: 'sam lim', address: 'sams incubator')
 joel = User.create(username: 'joel', password: 'joel', full_name: 'joel lindow', address: 'joels daycare')
 randy = User.create(username: 'randy', password: 'randy', full_name: 'randy springer', address: 'randys campervan')
