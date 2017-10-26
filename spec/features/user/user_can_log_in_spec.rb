@@ -3,6 +3,8 @@ require 'rails_helper'
 describe "Registered user can log in" do
 	context "user visits '/' and clicks on Login link" do
 		scenario "user can fill in information to log in and see dashboard" do
+        create(:store)
+        create(:store)
       Role.create(name: "registered")
 			user = create(:user)
 
