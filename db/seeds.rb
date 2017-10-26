@@ -1,3 +1,4 @@
+require 'faker'
 start_time = Time.now
 puts "Creating Categories"
 User.destroy_all
