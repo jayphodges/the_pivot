@@ -71,5 +71,23 @@ RSpec.describe Item, type: :model do
         expect(item.formatted_price).to eq('1.10')
       end
     end
+
+    context "top selling items" do
+      it 'returns most sold items' do
+        c = Category.create(title: "Guitars")
+        s = Store.create(name: "Shop", status: 0)
+        item1, item2 = create_list(:item, 2, category_id: c.id, store_id: s.id)
+        order = create(:order, status: 3)
+
+        order.items << item1
+        order.items << item1
+        order.items << item2
+
+        result = Item.top_selling_items
+
+        expect(result.first[0]).to eq(item1.id)
+        expect(result.keys[1]).to eq(item2.id)
+      end
+    end
   end
 end
