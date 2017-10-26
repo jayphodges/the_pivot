@@ -3,6 +3,7 @@ require "rails_helper"
 describe "Business Admin can manage items" do
   context "Business Admin visits /dashboard" do
     scenario "admin manages an item for their business" do
+      Role.create(name: "registered")
       store = create(:store)
       category = create(:category)
       role  = Role.create(name: "Business Admin")
@@ -10,7 +11,7 @@ describe "Business Admin can manage items" do
                          password: "Goblin King",
                          full_name: "Ziggy Stardust",
                          address: "Labyrinth")
-      user_role = UserRole.create(store: store, user: user, role: role)
+      user_role = UserRole.create(user: user, role: role)
       item = Item.create(title: "Wand",
                          description: "Power Tool",
                          price: 12.0,
