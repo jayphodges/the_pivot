@@ -12,6 +12,9 @@ class PermissionsService
     return true if controller == 'items' && action.in?(%w(index show))
     return true if controller == 'categories' && action.in?(%w(show))
     return true if controller == 'carts' && action.in?(%w(new edit show update destroy create))
+    return true if controller == 'passwords' && action.in?(%w(new create update))
+    return true if controller == 'confirmations' && action.in?(%w(new))
+    return true if controller == 'users' && action.in?(%w(show))
 
     if user.platform_admin?
       platform_admin_permissions
