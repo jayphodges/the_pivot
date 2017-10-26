@@ -11,4 +11,14 @@ class User < ApplicationRecord
   validates :full_name, presence: :true
 
   enum role: %w(default admin)
+
+  def self.most_active_customer
+    joins(orders: [:orders_items])
+    .merge(Order.completed)
+    .group('users.id')
+    .order('sum_orders_items_unit_price DESC')
+    .sum('orders_items.unit_price')
+  end
+
+
 end

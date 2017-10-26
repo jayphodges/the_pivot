@@ -25,4 +25,11 @@ class Store < ApplicationRecord
   def self.decline_store(store)
     store.update(status: 'Declined')
   end
+
+  def self.top_selling_stores
+    joins(orders: [:orders_items])
+    .group('stores.id')
+    .order('sum_unit_price DESC')
+    .sum(:unit_price)
+  end
 end

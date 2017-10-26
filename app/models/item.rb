@@ -15,4 +15,19 @@ class Item < ApplicationRecord
     sprintf('%.2f', price)
   end
 
+  def self.top_selling_items
+    joins(:orders_items, :orders)
+    .merge(Order.completed).group('items.id')
+    .order('sum_orders_items_unit_price DESC')
+    .sum('orders_items.unit_price')
+  end
+
+  def self.most_sold_items
+    joins(:orders_items, :orders)
+    .merge(Order.completed)
+    .group('items.id')
+    .order('count_items_id DESC')
+    .count('items.id')
+  end
+
 end

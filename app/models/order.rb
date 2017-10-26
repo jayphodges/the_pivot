@@ -50,4 +50,12 @@ class Order < ApplicationRecord
   def self.orders_by_day_of_week
     Order.group_by_day_of_week(:created_at, format: "%a").count
   end
+
+  def self.most_expensive_orders
+    merge(Order.completed)
+    .joins(:orders_items)
+    .group('orders.id')
+    .order('sum_unit_price DESC')
+    .sum(:unit_price)
+  end
 end
