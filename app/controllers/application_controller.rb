@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user
   before_action :set_cart
+  before_action :authorize!
 
   def current_admin?
     current_user && current_user.admin?
@@ -20,7 +21,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_user
-    unless logged_in? || current_admin?
+    unless logged_in?
       flash[:danger] = "Please log in."
       redirect_to login_url
     end
@@ -32,5 +33,10 @@ class ApplicationController < ActionController::Base
 
   def not_found
     render file: "/public/404"
+  end
+
+  def authorize!
+    permission = PermissionsService.new(current_user, params[:controller], params[:action])
+    not_found unless permission.authorized?
   end
 end

@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
   def edit
     if session[:store_id] != nil
-      @store = Store.find(session[:store_id])
+     @store = Store.find(session[:store_id])
     end
     @user = User.find(params[:id])
   end
