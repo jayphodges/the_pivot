@@ -1,8 +1,8 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :store do
 
     sequence :name do |i|
-      "name#{i}"
+      "name #{i}"
     end
 
     status 1

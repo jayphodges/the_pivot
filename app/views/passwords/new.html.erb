@@ -1,0 +1,7 @@
+<h3>Please enter your username below to request a reset code</h3>
+
+<%= form_tag do %>
+  <%= label_tag(:username) %>
+  <%= text_field_tag(:username) %>
+  <%= submit_tag('Submit') %>
+<% end %>

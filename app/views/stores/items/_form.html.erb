@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-md-4">
+
+  </div>
+  <div class="col-md-4">
+
+    <%= form_for [:admin, @item], html: { multipart: true } do |f| %>
+    <p class="form-label">Title</p>
+    <%= f.text_field :title, class: "form-item", id: "item-title", placeholder: "ex: Really Rad Instrument" %><br>
+
+    <p class="form-label">Item Description</p>
+    <%= f.text_area :description, class: "form-item", id: "item-description" , placeholder: "Enter a paragraph describing the product" %><br>
+
+    <p class="form-label">Price | <small>example: 23.50</small></p>
+    <%= f.number_field :price, class: "form-item", id: "item-price", default: 23.50 %><br>
+    <div class="row">
+      <div class="col-md-6">
+        <p class="form-label">Select Category</p>
+        <%= f.select :category_id, Category.all.collect { |c| [ c.title, c.id ] }, include_blank: false, class: "form-item" %><br>
+      </div>
+      <div class="col-md-6">
+        <p class="form-label">Status of Item</p>
+        <%= f.select :status, ["active", "retired"], class: "form-item", id: "item-status" %><br>
+        <br>
+      </div>
+    </div>
+    <hr>
+    <p class="form-label">Upload Image</p>
+    <%= f.file_field :image, id: "item-image" %>
+    <hr>
+    <%= f.submit "Submit", class: "btn btn-default" %>
+    <% end %><br><br>
+  </div>
+  <div class="col-md-4">
+  </div>
+</div>

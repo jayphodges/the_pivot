@@ -16,6 +16,15 @@ class SessionsController < ApplicationController
     end
   end
 
+  def oauth_login
+    if user = User.from_omniauth(request.env["omniauth.auth"])
+      session[:user_id] = user.id
+      redirect_to dashboard_path
+    else
+      redirect_to login_path
+    end
+  end
+
   def destroy
     session.delete(:user_id)
 

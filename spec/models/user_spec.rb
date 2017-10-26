@@ -30,6 +30,7 @@ RSpec.describe User, type: :model do
 
     context "uniqueness" do
       it 'is invalid without a unique username' do
+        Role.create(name: "registered")
         create(:user, username: 'sam')
         user = User.create(username: 'sam', password: '123', full_name: 'Sam Lim', address: 'foo.png')
 

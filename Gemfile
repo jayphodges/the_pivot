@@ -37,6 +37,8 @@ gem 'brakeman'
 gem 'figaro'
 gem "mini_magick"
 gem 'carrierwave-aws'
+gem "omniauth-twitter"
+gem 'twilio-ruby'
 # gem 'jwt'
 # gem 'simple_command'
 
@@ -52,7 +54,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'database_cleaner'
   gem 'pry-rails'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'orderly'
   gem 'faker'
   gem 'pry'
