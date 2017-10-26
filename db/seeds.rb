@@ -1,5 +1,7 @@
 start_time = Time.now
 puts "Creating Categories"
+User.destroy_all
+Store.destroy_all
 guitar = Category.create!(title: "Guitar")
 bass = Category.create!(title: "Bass")
 amps = Category.create!(title: "Amps and Effects")
