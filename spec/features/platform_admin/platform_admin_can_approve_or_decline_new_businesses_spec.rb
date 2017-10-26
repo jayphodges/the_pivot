@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe 'As a platform admin' do
   it 'admin can approve pending stores' do
+    Role.create(name: "registered")
     pa = create(:user)
     store = create(:store, name: 'Test Store1', status: 0)
     role = create(:role, name: 'platform admin')
@@ -21,6 +22,7 @@ describe 'As a platform admin' do
   end
 
   it 'admin can decline pending stores' do
+    Role.create(name: "registered")
     pa = create(:user)
     store = create(:store, name: 'Test Store2', status: 0)
     role = create(:role, name: 'platform admin')

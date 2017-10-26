@@ -10,6 +10,7 @@ class User < ApplicationRecord
   validates :password, presence: :true
   validates :address, presence: :true
   validates :full_name, presence: :true
+  after_save :default_user_role_to_registered
 
   enum role: %w(default admin)
 
@@ -44,4 +45,11 @@ class User < ApplicationRecord
       new_user.oauth_token_secret = auth_info.credentials.secret
     end
   end
+
+  private
+
+    def default_user_role_to_registered
+      role = Role.find_by(name: "registered")
+      self.user_roles.create(role_id: role.id)
+    end
 end

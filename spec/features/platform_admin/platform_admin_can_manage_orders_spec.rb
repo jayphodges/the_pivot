@@ -3,6 +3,7 @@ require "rails_helper"
 xdescribe "A Business Admin can manage orders" do
   context "Business Admin visits /dashboard" do
     scenario "admin manages an order for their business" do
+      Role.create(name: "registered")
       store = create(:store)
       category = create(:category)
       customer = create(:user)

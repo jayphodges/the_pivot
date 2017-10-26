@@ -4,6 +4,7 @@ describe "Visitor can create an account" do
   context 'visitor clicks on login button' do
     context 'visitor clicks on create account' do
       scenario 'visitor fills in information to create new account' do
+        Role.create(name: "registered")
         visit root_path
 
         click_on("Login")

@@ -3,6 +3,7 @@ require 'rails_helper'
 describe "User can see individual past order" do
 	context "user visits /orders and clicks on order link" do
 		scenario "user can see all order information" do
+      Role.create(name: "registered")
 		  user = create(:user)
       user.roles.create(name: "registered")
 			store = create(:store)

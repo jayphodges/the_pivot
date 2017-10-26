@@ -4,6 +4,7 @@ describe 'User can edit their information' do
   context 'user can log in' do
     context 'user can visit their edit page' do
       scenario 'user can edit their information' do
+        Role.create(name: "registered")
         user = create(:user)
         user.roles.create(name: "registered")
 			  allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)

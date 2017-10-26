@@ -11,6 +11,7 @@ require 'rails_helper'
 describe "A Business manager can manage orders" do
   context "Business manager visits /dashboard" do
     scenario "admin manages an order for their business" do
+      Role.create(name: "registered")
       store = Store.create(name: "Ricky's Hoop Shop")
       category = create(:category)
       customer = create(:user)
