@@ -20,9 +20,9 @@
           <td><%= order.updated_at.to_formatted_s(:long_ordinal) %></td>
           <td><%= order.status %></td>
           <td><%= link_to "View Order", order_path(order) %></td>
-          <td><%= link_to "Cancel", order_path(id: order.id, status: 'cancelled'), method: :patch if (order.paid? || order.ordered?) %></td>
-          <td><%= link_to "Mark as Paid", order_path(id: order.id, status: 'paid'), method: :patch if order.ordered? %></td>
-          <td><%= link_to "Mark as Completed", order_path(id: order.id, status: 'complete'), method: :patch if order.paid? %></td>
+          <td><%= link_to "Cancel", store_orders_path(id: order.id, status: 'cancelled'), method: :patch if (order.paid? || order.ordered?) %></td>
+          <td><%= link_to "Mark as Paid", store_orders_path(id: order.id, status: 'paid'), method: :patch if order.ordered? %></td>
+          <td><%= link_to "Mark as Completed", store_orders_path(id: order.id, status: 'complete'), method: :patch if order.paid? %></td>
         </tr>
         <% end %>
       </tbody>

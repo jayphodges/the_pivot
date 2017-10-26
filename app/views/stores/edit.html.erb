@@ -1,5 +1,7 @@
 <h1 class="center-text">Edit Your Business</h1>
+
 <%= form_for @store, :url => {:action => "update", :name => @store.name} do |f| %>
   <%= f.text_field :name, class: "form-item" %>
+
   <%= f.submit "Submit Changes" %>
 <% end %>
