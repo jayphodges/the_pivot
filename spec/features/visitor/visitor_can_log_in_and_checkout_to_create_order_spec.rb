@@ -2,11 +2,17 @@ require 'rails_helper'
 
 describe "Visitor can log in and create order" do
   context "visitor adds items to cart and logs in" do
-    xscenario "user clicks checkout to create order and can see order" do
-      user = create(:user)
+    scenario "user clicks checkout to create order and can see order" do
+      store = create(:store)
+      role = Role.create(name: "registered")
+      user = user = User.create(username: "David Bowie",
+                         password: "Goblin King",
+                         full_name: "Ziggy Stardust",
+                         address: "Labyrinth")
       category = create(:category)
-      item1 = create(:item, category: category)
-      item2 = create(:item, category: category)
+      user_role = UserRole.create(user: user, role: role)
+      item1 = create(:item, category: category, store: store)
+      item2 = create(:item, category: category, store: store)
 
       visit items_path
 
@@ -30,7 +36,7 @@ describe "Visitor can log in and create order" do
 
       click_on "Checkout"
 
-      expect(current_path).to eq(orders_path)
+      expect(current_path).to eq(order_path(1))
 
       expect(page).to have_content("Order was successfully placed")
       expect(page).to have_content("#{Order.last.id}")
