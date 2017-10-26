@@ -155,6 +155,7 @@ RSpec.describe Order, type: :model do
       end
 
       it '.most_expensive_orders' do
+        role = Role.create(name: "registered")
         user = create(:user)
         store = create(:store)
         order1 = create(:order, user: user, status: 3, store: store)

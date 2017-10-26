@@ -74,6 +74,8 @@ RSpec.describe Item, type: :model do
 
     context "top selling items" do
       it 'returns most sold items' do
+        role = Role.create(name: "registered")
+        user = create(:user)
         c = Category.create(title: "Guitars")
         s = Store.create(name: "Shop", status: 0)
         item1, item2 = create_list(:item, 2, category_id: c.id, store_id: s.id, price: 50)
@@ -95,6 +97,8 @@ RSpec.describe Item, type: :model do
 
     context "most sold item" do
       it 'returns most sold items' do
+        role = Role.create(name: "registered")
+        user = create(:user)
         c = Category.create(title: "Guitars")
         s = Store.create(name: "Shop", status: 0)
         item1 = create(:item, category_id: c.id, store_id: s.id, price: 50)
