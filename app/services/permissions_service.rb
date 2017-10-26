@@ -7,7 +7,7 @@ class PermissionsService
 
   def authorized?
     return true if controller == 'welcome' && action.in?(%w(index))
-    return true if controller == 'stores' && action == 'index'
+    return true if controller == 'stores' && action.in?(%w(index show))
     return true if controller == 'sessions' && action.in?(%w(new create destroy))
     return true if controller == 'items' && action.in?(%w(index show))
     return true if controller == 'categories' && action.in?(%w(show))
@@ -42,12 +42,13 @@ class PermissionsService
       return true if controller == 'admin/admin' && action.in?(%w(show))
     end
 
-    def  business_admin_permissions
+    def business_admin_permissions
       return true if controller == 'admin/admin' && action.in?(%w(show))
       return true if controller == 'admin/stores' && action.in?(%w(index update))
       return true if controller == 'admin/items' && action.in?(%w(index create new edit update))
       return true if controller == 'stores/orders' && action.in?(%w(index))
       return true if controller == 'stores/admins' && action.in?(%w(index)) # or maybe just the action here?
+      return true if controller == 'stores/items' && action.in?(%w(index))
     end
 
     def business_manager_permissions
@@ -61,7 +62,7 @@ class PermissionsService
 
     def registered_permissions
       return true if controller == 'users' && action.in?(%w(show index create new edit update))
-      return true if controller == 'orders' && action.in?(%w(index show))
+      return true if controller == 'orders' && action.in?(%w(index show create))
     end
 
     def guest_permissions

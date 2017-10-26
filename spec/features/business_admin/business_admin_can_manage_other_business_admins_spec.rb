@@ -6,7 +6,7 @@ describe "Business Admin can manage other business admins" do
       Role.create(name: "registered")
       store = create(:store)
       category = create(:category)
-      role  = Role.create(name: "Business Admin")
+      role  = Role.create(name: "business admin")
       user = User.create(username: "David Bowie",
                          password: "Goblin King",
                          full_name: "Ziggy Stardust",
@@ -23,6 +23,7 @@ describe "Business Admin can manage other business admins" do
                          image: "imagestring",
                          category: category,
                          store: store)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       visit "/#{store.slug}"
       expect(current_path).to eq("/#{store.slug}")

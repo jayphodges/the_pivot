@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171025041943) do
+ActiveRecord::Schema.define(version: 20171026045155) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,12 +79,12 @@ ActiveRecord::Schema.define(version: 20171025041943) do
   end
 
   create_table "user_stores", force: :cascade do |t|
-    t.bigint "users_id"
-    t.bigint "stores_id"
+    t.bigint "user_id"
+    t.bigint "store_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["stores_id"], name: "index_user_stores_on_stores_id"
-    t.index ["users_id"], name: "index_user_stores_on_users_id"
+    t.index ["store_id"], name: "index_user_stores_on_store_id"
+    t.index ["user_id"], name: "index_user_stores_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -110,6 +110,6 @@ ActiveRecord::Schema.define(version: 20171025041943) do
   add_foreign_key "orders_items", "orders"
   add_foreign_key "user_roles", "roles"
   add_foreign_key "user_roles", "users"
-  add_foreign_key "user_stores", "stores", column: "stores_id"
-  add_foreign_key "user_stores", "users", column: "users_id"
+  add_foreign_key "user_stores", "stores"
+  add_foreign_key "user_stores", "users"
 end

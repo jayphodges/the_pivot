@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe "Registered User can make purchases on any business" do
   scenario "user makes a purchase from two different stores" do
+    Role.create(name: "registered")
     store = create(:store)
     store_2 = create(:store)
     category = create(:category)
@@ -25,12 +26,13 @@ describe "Registered User can make purchases on any business" do
                        image: "imagestring",
                        category: category,
                        store: store_2)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    visit login_path
+    #visit login_path
 
-     fill_in "session[username]", with: user.username
-     fill_in "session[password]", with: user.password
-     click_button "Login"
+     #fill_in "session[username]", with: user.username
+     #fill_in "session[password]", with: user.password
+     #click_button "Login"
 
     expect(Order.all.count).to eq(0)
     visit "/#{store.slug}"
@@ -51,6 +53,7 @@ describe "Registered User can make purchases on any business" do
     expect(current_path).to eq("/cart")
 
     click_on "Checkout"
+    save_and_open_page
 
     expect(current_path).to eq("/orders/#{Order.first.id}")
     expect(page).to have_css('.order')
