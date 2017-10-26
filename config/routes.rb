@@ -37,6 +37,8 @@ Rails.application.routes.draw do
     resources :orders, only: [:index]
     resources :admins, only: [:index]
     get '/admin/items', to: 'items#index'
+    get '/admins/items/new', to: 'items#new'
+    post '/admins/items/new', to: 'items#create'
   end
 
 

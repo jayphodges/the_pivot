@@ -4,7 +4,7 @@
   </div>
   <div class="col-md-4">
 
-    <%= form_for [:admin, @item], html: { multipart: true } do |f| %>
+    <%= form_for @item, :url => {:action => "create", :name => @store.name} do |f| %>
     <p class="form-label">Title</p>
     <%= f.text_field :title, class: "form-item", id: "item-title", placeholder: "ex: Really Rad Instrument" %><br>
 
@@ -27,8 +27,9 @@
     <hr>
     <p class="form-label">Upload Image</p>
     <%= f.file_field :image, id: "item-image" %>
-    <hr>
-    <%= f.submit "Submit", class: "btn btn-default" %>
+  </hr>
+    <%= f.hidden_field(:store_id, value: '1') %>
+    <%= f.submit "Submit", class: "btn btn-default"%>
     <% end %><br><br>
   </div>
   <div class="col-md-4">
