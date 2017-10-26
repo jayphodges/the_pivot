@@ -14,7 +14,7 @@
       </thead>
       <tbody>
         <% @orders.each do |order| %>
-        <tr class="admin_index_order<%= order.id %>">
+        <tr class="admin_index_order<%= order.id %> order">
           <td>Id: <%= order.id %></td>
           <td><%= order.created_at.to_formatted_s(:long_ordinal) %></td>
           <td><%= order.updated_at.to_formatted_s(:long_ordinal) %></td>
@@ -28,4 +28,3 @@
       </tbody>
     </table>
   </div>
-

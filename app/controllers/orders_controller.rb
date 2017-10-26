@@ -20,7 +20,7 @@ class OrdersController < ApplicationController
 			order.add_unit_price_to_join(@cart)
 			session[:cart].clear
 			flash[:success] = "Order was successfully placed"
-			redirect_to orders_path
+			redirect_to order_path(order)
 		else
 			flash[:failure] = "There was an error processing your order"
 			redirect_to cart_path

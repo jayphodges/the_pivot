@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :orders_item do
     item nil
     order nil
