@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171021204019) do
+ActiveRecord::Schema.define(version: 20171026045155) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,13 +71,20 @@ ActiveRecord::Schema.define(version: 20171021204019) do
 
   create_table "user_roles", force: :cascade do |t|
     t.bigint "user_id"
-    t.bigint "store_id"
     t.bigint "role_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["role_id"], name: "index_user_roles_on_role_id"
-    t.index ["store_id"], name: "index_user_roles_on_store_id"
     t.index ["user_id"], name: "index_user_roles_on_user_id"
+  end
+
+  create_table "user_stores", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "store_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["store_id"], name: "index_user_stores_on_store_id"
+    t.index ["user_id"], name: "index_user_stores_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -87,6 +94,12 @@ ActiveRecord::Schema.define(version: 20171021204019) do
     t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "screen_name"
+    t.string "uid"
+    t.string "oauth_token"
+    t.string "oauth_token_secret"
+    t.string "phone"
+    t.string "reset_code"
   end
 
   add_foreign_key "items", "categories"
@@ -96,6 +109,7 @@ ActiveRecord::Schema.define(version: 20171021204019) do
   add_foreign_key "orders_items", "items"
   add_foreign_key "orders_items", "orders"
   add_foreign_key "user_roles", "roles"
-  add_foreign_key "user_roles", "stores"
   add_foreign_key "user_roles", "users"
+  add_foreign_key "user_stores", "stores"
+  add_foreign_key "user_stores", "users"
 end

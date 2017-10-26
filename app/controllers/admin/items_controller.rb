@@ -26,7 +26,7 @@ class Admin::ItemsController < Admin::BaseController
     @item = Item.find(params[:id])
     if @item.update(item_params)
       flash[:success] = "#{@item.title} has been updated."
-      redirect_to admin_items_path
+      redirect_to store_admin_items_path(@item.store.slug)
     else
       flash[:message] = "Item has not been updated"
       redirect_to edit_admin_item_path

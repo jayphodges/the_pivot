@@ -1,6 +1,6 @@
 class Store < ApplicationRecord
-  has_many :user_roles
-  has_many :users, through: :user_roles
+  has_many :user_stores
+  has_many :users, through: :user_stores
   has_many :items
   has_many :orders
   validates :name, uniqueness: true

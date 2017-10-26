@@ -1,0 +1,21 @@
+<table>
+  <thead>
+
+    <tr>
+      <th>UserName</th>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= @admins.each do |admin| %>
+    <tr class="admin">
+      <th> <%= admin.username %> </th>
+      <th> <%= admin.full_name %> </th>
+      <th> <%= admin.address %> </th>
+      <th> <%= link_to "Edit", edit_user_path(admin) %> </th>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

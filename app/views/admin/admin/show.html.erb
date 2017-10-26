@@ -1,7 +1,9 @@
+<% if current_user %>
 <div class="category-show-title-div">
   <h3 class="category-show-title center-text">ADMIN DASHBOARD</h3>
 </div>
   <hr>
+  <% if platform_admin? %>
 
   <div class="row">
     <div class="col-xs-3 col-md-3">
@@ -14,7 +16,7 @@
       <%= link_to 'View Items', admin_items_path, type: "button", class: "btn btn-success btn-block" %>
     </div>
     <div class="col-xs-3 col-md-3">
-      <%= link_to 'Manage Stores', admin_stores_path, type: "button", class: "btn btn-success btn-block" %>
+      <%= link_to 'Manage Stores', admin_stores_path, type: "button", class: "btn btn-success btn-block" unless business_manager? %>
     </div>
   </div>
 
@@ -88,3 +90,5 @@
     </table>
   </div>
 </div>
+  <% end %>
+<% end %>
