@@ -23,6 +23,8 @@ describe "Business Admin can manage other business admins" do
                          image: "imagestring",
                          category: category,
                          store: store)
+      store.users << user
+      store.users << user2
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       visit "/#{store.slug}"
@@ -42,6 +44,7 @@ describe "Business Admin can manage other business admins" do
       end
 
       expect(current_path).to eq("/users/#{user2.id}/edit")
+      save_and_open_page
 
       fill_in "user[address]", with: "Under Pressure"
       click_on "Submit Changes"

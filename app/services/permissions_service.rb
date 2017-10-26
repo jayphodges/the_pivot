@@ -47,8 +47,10 @@ class PermissionsService
       return true if controller == 'admin/stores' && action.in?(%w(index update))
       return true if controller == 'admin/items' && action.in?(%w(index create new edit update))
       return true if controller == 'stores/orders' && action.in?(%w(index))
-      return true if controller == 'stores/admins' && action.in?(%w(index)) # or maybe just the action here?
+      return true if controller == 'stores/admins' && action.in?(%w(index))
       return true if controller == 'stores/items' && action.in?(%w(index))
+      return true if controller == 'orders'
+      return true if controller == 'users'
     end
 
     def business_manager_permissions

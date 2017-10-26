@@ -5,7 +5,6 @@ class OrdersController < ApplicationController
 	end
 
 	def show
-    require 'pry'; binding.pry
 		#if Order.find(params[:id]).user_id == current_user.id || current_admin?
 			@order = Order.find(params[:id])
 			@items = @order.items.distinct

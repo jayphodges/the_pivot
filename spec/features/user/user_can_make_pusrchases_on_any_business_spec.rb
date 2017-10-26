@@ -53,7 +53,6 @@ describe "Registered User can make purchases on any business" do
     expect(current_path).to eq("/cart")
 
     click_on "Checkout"
-    save_and_open_page
 
     expect(current_path).to eq("/orders/#{Order.first.id}")
     expect(page).to have_css('.order')
