@@ -26,21 +26,21 @@
           <div class="item active">
             <%= image_tag("oldschoolmic.jpg") %>
             <div class="carousel-caption">
-              <h1>Microphone!</h1>
+              <h1><%= link_to @stores.first.name, stores_path(@stores.first) %></h1>
               <h3>Da best in today's microphones</h3>
             </div>
           </div>
           <div class="item">
             <%= image_tag("jankypiani.jpg") %>
             <div class="carousel-caption">
-              <h1>Piano KEYS!!!!</h1>
+              <h1><%= link_to @stores.last.name, stores_path(@stores.last) %></h1>
               <h3>You want piano? Wez gots piani!</h3>
             </div>
           </div>
           <div class="item">
             <%= image_tag("headphones.jpg") %>
             <div class="carousel-caption">
-              <h1>Headphones</h1>
+              <h1><%= link_to @stores.second.name, stores_path(@stores.second) %></h1>
               <h3>We aint got em!</h3>
             </div>
           </div>
@@ -58,9 +58,9 @@
 
       <div class="intro">
         <hr>
-        <h4>About Music Emporium</h4>
+        <h4>About Music Emporia</h4>
         <hr>
-        <p>Thank you for visiting Music Emporium, the <i>only</i> place on the internet where we cater to your specific music needs! From Guitars to Synths, we here at Music Emporium will find the perfect match for you and your new instrument. As avid music enthusiasts ourselves, we take pride in finding the <b>best</b> products at the <b>lowest</b> prices. Give us a shot and let us show you what we can do!</p>
+        <p>Thank you for visiting Music Emporia, the <i>only</i> place on the internet where we cater to your specific music needs! From Guitars to Synths, we here at Music Emporium will find the perfect match for you and your new instrument. As avid music enthusiasts ourselves, we take pride in finding the <b>best</b> products at the <b>lowest</b> prices. Give us a shot and let us show you what we can do!</p>
         <hr>
         <h4>About this Website</h4>
         <hr>

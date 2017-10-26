@@ -2,6 +2,8 @@ require 'rails_helper'
 
 describe 'A user that is not logged in' do
   it 'can request a code to change their forgotten password' do
+        create(:store)
+        create(:store)
     role = Role.create(name: 'registered')
     user = create(:user, reset_code: '123456')
     user_role = UserRole.create(user: user, role: role)

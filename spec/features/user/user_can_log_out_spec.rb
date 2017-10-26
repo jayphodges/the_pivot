@@ -3,6 +3,8 @@ require 'rails_helper'
 describe "User can log out" do
 	context "user can click link to log out" do
 		scenario "user is logged out and cannot see logout link" do
+        create(:store)
+        create(:store)
       Role.create(name: "registered")
 			user = create(:user)
 

@@ -3,6 +3,10 @@ module ApplicationHelper
     Category.all
   end
 
+  def stores_for_nav
+    Store.all
+  end
+
   def platform_admin?
     current_user && current_user.platform_admin?
   end
