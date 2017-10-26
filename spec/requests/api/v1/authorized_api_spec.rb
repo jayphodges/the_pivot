@@ -31,19 +31,18 @@ describe 'Secure API' do
 
       reply = JSON.parse(response.body)
 
-      expect(reply.first[0]).to eq(item2.id)
+      expect(reply.first[1]).to eq(200.0)
       expect(reply.count).to eq(2)
     end
     it 'will not serve an unauthorized user' do
       get "http://localhost:3000/api/v1/top_selling_stores"
 
-      expect(response).to be_success
       expect(response.status).to eq(401)
     end
   end
 
   context 'API Endpoints' do
-    
+
   end
 end
 
