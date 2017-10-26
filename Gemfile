@@ -37,6 +37,8 @@ gem 'brakeman'
 gem 'figaro'
 gem "mini_magick"
 gem 'carrierwave-aws'
+# gem 'jwt'
+# gem 'simple_command'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
