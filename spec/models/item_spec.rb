@@ -76,14 +76,41 @@ RSpec.describe Item, type: :model do
       it 'returns most sold items' do
         c = Category.create(title: "Guitars")
         s = Store.create(name: "Shop", status: 0)
-        item1, item2 = create_list(:item, 2, category_id: c.id, store_id: s.id)
+        item1, item2 = create_list(:item, 2, category_id: c.id, store_id: s.id, price: 50)
         order = create(:order, status: 3)
 
         order.items << item1
+        OrdersItem.last.update(unit_price: item1.price)
         order.items << item1
+        OrdersItem.last.update(unit_price: item1.price)
         order.items << item2
+        OrdersItem.last.update(unit_price: item2.price)
 
         result = Item.top_selling_items
+
+        expect(result.first[0]).to eq(item1.id)
+        expect(result.keys[1]).to eq(item2.id)
+      end
+    end
+
+    context "most sold item" do
+      it 'returns most sold items' do
+        c = Category.create(title: "Guitars")
+        s = Store.create(name: "Shop", status: 0)
+        item1 = create(:item, category_id: c.id, store_id: s.id, price: 50)
+        item2 = create(:item, category_id: c.id, store_id: s.id, price: 5000)
+        order = create(:order, status: 3)
+
+        order.items << item1
+        OrdersItem.last.update(unit_price: item1.price)
+        order.items << item1
+        OrdersItem.last.update(unit_price: item1.price)
+        order.items << item1
+        OrdersItem.last.update(unit_price: item1.price)
+        order.items << item2
+        OrdersItem.last.update(unit_price: item2.price)
+
+        result = Item.most_sold_items
 
         expect(result.first[0]).to eq(item1.id)
         expect(result.keys[1]).to eq(item2.id)
