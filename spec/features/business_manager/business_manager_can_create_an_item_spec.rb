@@ -10,7 +10,7 @@ describe "Business Admin can add items" do
       user = User.create(username: "David Bowie",
                          password: "Goblin King",
                          full_name: "Ziggy Stardust",
-                         address: "Labyrinth")
+                         address: "Labyrinth", phone: '1234567890')
       user_role = UserRole.create(user: user, role: role)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       visit login_path
