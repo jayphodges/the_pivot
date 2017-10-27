@@ -1,11 +1,12 @@
 require "rails_helper"
 
-xdescribe "Business Admin can manage other business admins" do
+describe "Business Admin can manage other business admins" do
   context "Business Admin visits /dashboard" do
     scenario "business admin manages another business admin" do
+      Role.create(name: "registered")
       store = create(:store)
       category = create(:category)
-      role  = Role.create(name: "Business Admin")
+      role  = Role.create(name: "business admin")
       user = User.create(username: "David Bowie",
                          password: "Goblin King",
                          full_name: "Ziggy Stardust",
@@ -22,16 +23,21 @@ xdescribe "Business Admin can manage other business admins" do
                          image: "imagestring",
                          category: category,
                          store: store)
+      store.users << user
+      store.users << user2
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-      visit store_path(store.name)
-      expect(current_path).to eq("/#{store.name}")
+      visit "/#{store.slug}"
+      expect(current_path).to eq("/#{store.slug}")
 
       expect(page).to have_link "Manage Admins"
       click_on "Manage Admins"
 
-      expect(current_path).to eq("/#{store.name}/admins")
+      expect(current_path).to eq("/#{store.slug}/admins")
+
       expect(page).to have_css('.admin')
-      within last('.admin') do
+      last_css = all('tr.admin').last
+      within (last_css) do
         expect(page).to have_link "Edit"
         expect(page).to have_content "Freddie Mercury"
         expect(page).to have_content "Radio Gaga"
@@ -43,8 +49,8 @@ xdescribe "Business Admin can manage other business admins" do
       fill_in "user[address]", with: "Under Pressure"
       click_on "Submit Changes"
 
-      expect(current_path).to eq("/#{store.name}/admins")
-      expect(page).to have_content("#{user2.name} has been modified")
+      expect(current_path).to eq("/#{store.slug}/admins")
+      expect(page).to have_content("#{user2.full_name} has been modified")
     end
   end
 end

@@ -4,7 +4,6 @@ class StoresController < ApplicationController
     @store = Store.find_by(slug: params[:store_name])
     if @store == nil
       @store = Store.find(params[:store_name])
-      binding.pry
     end
     @store
   end
