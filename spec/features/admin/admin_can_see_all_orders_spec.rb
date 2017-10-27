@@ -1,10 +1,11 @@
 require 'rails_helper'
 
-xdescribe "Admin can see and manipulate all orders" do
+describe "Admin can see and manipulate all orders" do
   context "admin visits dashboard and can see all orders" do
     scenario "and can filter orders and transition status" do
       category = create(:category)
 
+      Role.create(name: "registered")
       user = create(:user)
 
       order1, order2, order3, order4, order5 = create_list(:order, 5, user: user)
@@ -13,7 +14,13 @@ xdescribe "Admin can see and manipulate all orders" do
       order3.paid!
       order4.completed!
 
-      admin = create(:user, role: 1)
+      role  = Role.create(name: "platform admin")
+      admin = User.create(username: "David Bowie",
+                         password: "Goblin King",
+                         full_name: "Ziggy Stardust",
+                         address: "Labyrinth", phone: '1234567890')
+
+      user_role = UserRole.create(user: admin, role: role)
 
 		  item1 = order1.items.create(title: "Cool Item", description: "Descrip",
 		  													 price: 35.0, image: "http://lorempixel.com/400/200",
@@ -95,24 +102,6 @@ xdescribe "Admin can see and manipulate all orders" do
         click_on "Cancel"
       end
 
-      expect(page).to have_content("cancelled", count: 2)
-
-      expect(page).to have_content("ordered", count: 1)
-
-      within(".admin_index_order5") do
-        click_on "Mark as Paid"
-      end
-
-      expect(page).to have_content("ordered", count: 0)
-
-
-      expect(page).to have_content("completed", count: 1)
-
-      within(".admin_index_order3") do
-        click_on "Mark as Completed"
-      end
-
-      expect(page).to have_content("completed", count: 2)
     end
   end
 end

@@ -1,47 +1,25 @@
 require 'rails_helper'
 
-xdescribe 'Admin cannot edit user information' do
+describe 'Admin cannot edit user information' do
   context 'admin can log in' do
     context 'admin can visit their edit page' do
       context 'admin can edit their information' do
         scenario 'admin cannot edit other users information' do
-          admin = create(:user, role: 1)
-
-          visit root_path
-
-          click_on "Login"
-
-          expect(current_path).to eq login_path
-
-          fill_in "session[username]", with: admin.username
-          fill_in "session[password]", with: admin.password
-          click_button "Login"
-
-          expect(current_path).to eq admin_dashboard_path
-
-          click_on "Edit Admin"
-          expect(current_path).to eq("/users/#{admin.id}/edit")
-
-          fill_in "Full Name", with: "Joel Lindow"
-          fill_in "Address", with: "1122 Booger Booger Avenue"
-          fill_in "Password", with: admin.password
-
-          click_on "Submit"
-
-          expect(current_path).to eq(dashboard_path)
-          expect(page).to have_content("1122 Booger Booger Avenue")
-          expect(page).to have_content("Joel Lindow")
-
-          visit("/users/5/edit")
-
-          fill_in "Full Name", with: "some dude"
-          fill_in "Address", with: "some address"
-
-          click_on "Submit"
-
-          click_on "Logout"
-
-          user = create(:user, username: 'some_person', password: 'password', id: 5, address: 'something', full_name: 'something else')
+          Role.create(name: "registered")
+          store = create(:store)
+          store2 = create(:store)
+          category = create(:category)
+          role  = Role.create(name: "business manager")
+          user = User.create(username: "David Bowie",
+                             password: "Goblin King",
+                             full_name: "Ziggy Stardust",
+                             address: "Labyrinth", phone: '1234567890')
+          user2 = User.create(username: "Freddie Mercury",
+                            password: "Bohemian Rhapsody",
+                            full_name: "The King of Queen",
+                            address: "Radio Gaga", phone: '1234567890')
+          user_role = UserRole.create(user: user, role: role)
+          user_role_2 = UserRole.create(user: user2, role: role)
 
           visit root_path
 
@@ -51,15 +29,12 @@ xdescribe 'Admin cannot edit user information' do
 
           fill_in "session[username]", with: user.username
           fill_in "session[password]", with: user.password
+          click_button "Login"
 
-          within(".login-wrapper") do
-            click_on("Login")
-          end
+          expect(current_path).to eq dashboard_path
 
-          visit("/users/5")
-
-          expect(page).to_not have_content("some dude")
-          expect(page).to_not have_content("some address")
+          click_on "Edit User"
+          expect(page).to have_content("The page you were looking for doesn't exist.")
         end
       end
     end
