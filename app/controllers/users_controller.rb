@@ -6,11 +6,12 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
+    if @user.save && @user.phone.length == 10
       session[:user_id] = @user.id
       flash[:success] = "Logged in as #{@user.username}"
       redirect_to dashboard_path
     else
+      flash[:message] = "You have made a mistake."
       render :new
     end
   end
@@ -51,6 +52,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :password, :full_name, :address)
+    params.require(:user).permit(:username, :password, :full_name, :address, :phone)
   end
 end

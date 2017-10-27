@@ -29,15 +29,17 @@ Rails.application.routes.draw do
   post 'password-confirmation', to: 'passwords#update', as: 'update_password'
   # get '/category/:category_name', path: '/category', to: 'categories#show'
   resources :categories, path: '/category', only: [:show]
-  get '/:store_name', params: :store_name, to: 'stores#show'
+  get '/:store_name', params: :store_name, to: 'stores#show', as: 'store'
   get '/:store_name/edit', params: :store_name, to: 'stores#edit'
   patch '/:store_name', params: :store_name, to: 'stores#update'
-
+  patch '/:store_name/orders', params: :store_name, to: 'stores/orders#update'
 
   namespace :stores, as: :store, path: ":store_name" do
     resources :orders, only: [:index]
     resources :admins, only: [:index]
     get '/admin/items', to: 'items#index'
+    get '/admins/items/new', to: 'items#new'
+    post '/admins/items/new', to: 'items#create'
   end
 
 

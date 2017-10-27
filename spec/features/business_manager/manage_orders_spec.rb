@@ -1,12 +1,4 @@
 require 'rails_helper'
-#Manage orders on my business
-#When I visit ‘/:store-name/orders’
-#I should see a list of orders for the store
-#When i click on the edit button next to an order
-#I should be taken to /order/:id
-#I should see fields to edit the attributes
-#When I change the attributes and click submit
-#I should see the changes I have made
 
 describe "A Business manager can manage orders" do
   context "Business manager visits /dashboard" do
@@ -19,7 +11,7 @@ describe "A Business manager can manage orders" do
       user = User.create(username: "David Bowie",
                          password: "Goblin King",
                          full_name: "Ziggy Stardust",
-                         address: "Labyrinth")
+                         address: "Labyrinth", phone: '1234567890')
       user_role = UserRole.create(user: user, role: role)
       item = Item.create(title: "Wand",
                          description: "Power Tool",
@@ -44,9 +36,9 @@ describe "A Business manager can manage orders" do
 
       expect(current_path).to eq("/#{store.slug}/orders")
 
-        expect(page).to have_link "Mark as Paid"
-        click_on "Mark as Paid"
-        expect(current_path).to eq(order_path(order))
+      expect(page).to have_link "Mark as Paid"
+      click_on "Mark as Paid"
+      expect(current_path).to eq("/#{store.slug}/orders")
     end
   end
 end

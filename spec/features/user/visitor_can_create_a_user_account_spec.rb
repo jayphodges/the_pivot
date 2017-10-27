@@ -20,6 +20,7 @@ describe "Visitor can create an account" do
         fill_in "user[password]", with: "password"
         fill_in "user[full_name]", with: "Joel Lindow"
         fill_in "user[address]", with: "1122 Booger Booger Avenue"
+        fill_in "user[phone]", with: "1234567890"
         click_on "Submit"                                           #need create a user role on creation of new user (callback?)
 
         expect(current_path).to eq("/dashboard")
