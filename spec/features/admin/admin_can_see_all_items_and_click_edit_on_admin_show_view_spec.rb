@@ -1,10 +1,17 @@
 require 'rails_helper'
 
-xdescribe "Admin visits /admin/dashboard" do
+describe "Admin visits /admin/dashboard" do
   context "and Admin clicks link to view all items" do
     context "Admin should see a table with all items" do
       scenario "Admin should see all attributes of all items with option to edit" do
-        admin = create(:user, role: 'admin')
+        Role.create(name: "registered")
+        role  = Role.create(name: "platform admin")
+        admin = User.create(username: "David Bowie",
+                           password: "Goblin King",
+                           full_name: "Ziggy Stardust",
+                           address: "Labyrinth")
+
+        user_role = UserRole.create(user: admin, role: role)
         category = create(:category, title: "Guitars")
         item_1 = create(:item, category: category)
 

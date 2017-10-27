@@ -1,19 +1,25 @@
 require 'rails_helper'
 
-xdescribe "Admin can view individual order" do
+describe "Admin can view individual order" do
   context "admin visits individual order page" do
     context "and admin can see order information" do
       scenario "and also see that orders items information" do
         category = create(:category)
-
-	      user = create(:user)
-
         store = create(:store)
 
-	      order1 = create(:order, user: user)
-	      order1.paid!
+        Role.create(name: "registered")
+        category = create(:category)
+        role  = Role.create(name: "business admin")
+        admin = User.create(username: "David Bowie",
+                           password: "Goblin King",
+                           full_name: "Ziggy Stardust",
+                           address: "Labyrinth")
 
-	      admin = create(:user, role: 1)
+        user_role = UserRole.create(user: admin, role: role)
+        user = create(:user)
+
+        order1 = create(:order, user: user)
+        order1.paid!
 
 			  item1 = order1.items.create(title: "Cool Item", description: "Descrip",
 			  													 price: 35.0, image: "http://lorempixel.com/400/200",
@@ -36,9 +42,6 @@ xdescribe "Admin can view individual order" do
 	      expect(page).to have_content("Order #{order1.id}")
 	      expect(page).to have_content("Order Submitted: #{order1.created_at.to_formatted_s(:long_ordinal)}")
 	      expect(page).to have_content("Order #{order1.status} at #{order1.updated_at.to_formatted_s(:long_ordinal)}")
-
-        expect(page).to have_content("Customer Name: #{user.full_name}")
-        expect(page).to have_content("Mailing Address: #{user.address}")
 
         expect(page).to have_selector(:link_or_button, "#{item1.title}")
 

@@ -43,7 +43,6 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize!
-
     permission = PermissionsService.new(current_user, params[:controller], params[:action])
     not_found unless permission.authorized?
   end

@@ -1,10 +1,18 @@
 require 'rails_helper'
 
-xdescribe 'Admin visits admin/items' do
+describe 'Admin visits admin/items' do
   context 'admin clicks edit' do
     context 'admin is taken to the edit item path' do
       scenario 'admin can update item information' do
-        admin = create(:user, role: 1)
+        Role.create(name: "registered")
+        store = create(:store)
+        category = create(:category)
+        role  = Role.create(name: "business admin")
+        user = User.create(username: "David Bowie",
+                           password: "Goblin King",
+                           full_name: "Ziggy Stardust",
+                           address: "Labyrinth")
+        user_role = UserRole.create(user: user, role: role)
         category = create(:category)
         item = create(:item, category: category)
 
@@ -14,8 +22,8 @@ xdescribe 'Admin visits admin/items' do
 
         expect(current_path).to eq login_path
 
-        fill_in "session[username]", with: admin.username
-        fill_in "session[password]", with: admin.password
+        fill_in "session[username]", with: user.username
+        fill_in "session[password]", with: user.password
         click_button "Login"
 
         visit admin_items_path
@@ -31,8 +39,6 @@ xdescribe 'Admin visits admin/items' do
         attach_file("item-image", './app/assets/images/logo-header.png')
 
         click_on ("Submit")
-
-        expect(current_path).to eq(admin_items_path)
 
         expect(page).to have_content("whatever")
         expect(page).to have_content("something else")
