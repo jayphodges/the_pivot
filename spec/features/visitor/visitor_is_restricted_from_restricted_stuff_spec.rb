@@ -1,12 +1,12 @@
 require 'rails_helper'
 
-xdescribe "Visitor is restricted from admin pages and other user's data" do
+describe "Visitor is restricted from admin pages and other user's data" do
   context 'Visitor is restricted from other users info' do
     scenario 'Visitor visits /orders and cannot see other users orders' do
       visit orders_path
 
-      expect(current_path).to eq('/login')
-      expect(page).to have_content("Login")
+      expect(page).to have_content("The page you were looking for doesn't exist.")
+
     end
 
     scenario 'Visitor tries to checkout' do

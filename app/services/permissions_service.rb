@@ -36,9 +36,10 @@ class PermissionsService
 
     def platform_admin_permissions
       return true if controller == 'users' && action.in?(%w(index show edit))
-      return true if controller == 'orders' && action.in?(%w(index))
-      return true if controller == 'stores/orders' && action.in?(%w(index))
-      return true if controller == 'stores/items' && action.in?(%w(index))
+      return true if controller == 'orders' && action.in?(%w(index show))
+      return true if controller == 'stores' && action.in?(%w(index show edit update))
+      return true if controller == 'stores/orders' && action.in?(%w(index update))
+      return true if controller == 'stores/items' && action.in?(%w(index new create))
       return true if controller == 'stores/admins' && action.in?(%w(index))
       return true if controller == 'admin/stores' && action.in?(%w(index update))
       return true if controller == 'admin/items' && action.in?(%w(index create new edit update))
@@ -50,20 +51,21 @@ class PermissionsService
       return true if controller == 'admin/admin' && action.in?(%w(show))
       return true if controller == 'admin/stores' && action.in?(%w(index update))
       return true if controller == 'admin/items' && action.in?(%w(index create new edit update))
-      return true if controller == 'stores/orders' && action.in?(%w(index))
+      return true if controller == 'stores/orders' && action.in?(%w(index update))
       return true if controller == 'stores/admins' && action.in?(%w(index))
-      return true if controller == 'stores/items' && action.in?(%w(index))
+      return true if controller == 'stores/items' && action.in?(%w(index new create))
       return true if controller == 'orders'
       return true if controller == 'users'
     end
 
     def business_manager_permissions
+
       return true if controller == 'admin/admin' && action.in?(%w(show))
       return true if controller == 'admin/stores' && action.in?(%w(index))
       return true if controller == 'admin/items' && action.in?(%w(index create new edit update))
-      return true if controller == 'stores/orders' && action.in?(%w(index))
+      return true if controller == 'stores/orders' && action.in?(%w(index update))
       return true if controller == 'orders' && action.in?(%w(index show))
-
+      return true if controller == 'stores/items' && action.in?(%w(index new create))
     end
 
     def registered_permissions

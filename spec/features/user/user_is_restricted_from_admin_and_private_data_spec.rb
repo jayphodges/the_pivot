@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-xdescribe "User is restricted from admin pages and other user's data" do
+describe "User is restricted from admin pages and other user's data" do
   context 'User is restricted from other users info' do
     scenario 'User visits /orders and cannot see other users orders' do
-      Role.create(name: "registered")
+      role = Role.create(name: "registered")
       user_1 = create(:user, username: 'sam', password: '123')
       user_2 = create(:user, username: 'joel')
 
@@ -16,7 +16,7 @@ xdescribe "User is restricted from admin pages and other user's data" do
       end
 
       expect(current_path).to eq('/dashboard')
-      expect(user_1.role).to eq('default')
+      expect(user_1.roles.first.name).to eq('registered')
 
       visit orders_path
 
@@ -28,6 +28,7 @@ xdescribe "User is restricted from admin pages and other user's data" do
 
   context 'User cannot view admin pages' do
     scenario 'User visits admin dashboard' do
+      role = Role.create(name: "registered")
       user_1 = create(:user, username: 'sam', password: '123')
       user_2 = create(:user, username: 'joel')
 
