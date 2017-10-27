@@ -10,11 +10,11 @@ describe "Business Admin can manage other business admins" do
       user = User.create(username: "David Bowie",
                          password: "Goblin King",
                          full_name: "Ziggy Stardust",
-                         address: "Labyrinth")
+                         address: "Labyrinth", phone: '1234567890')
       user2 = User.create(username: "Freddie Mercury",
                         password: "Bohemian Rhapsody",
                         full_name: "The King of Queen",
-                        address: "Radio Gaga")
+                        address: "Radio Gaga", phone: '1234567891')
       user_role = UserRole.create(user: user, role: role)
       user_role2 = UserRole.create(user: user2, role: role)
       item = Item.create(title: "Wand",

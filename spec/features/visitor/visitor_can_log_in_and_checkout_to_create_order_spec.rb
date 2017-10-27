@@ -8,7 +8,7 @@ describe "Visitor can log in and create order" do
       user = user = User.create(username: "David Bowie",
                          password: "Goblin King",
                          full_name: "Ziggy Stardust",
-                         address: "Labyrinth")
+                         address: "Labyrinth", phone: '1234567890')
       category = create(:category)
       user_role = UserRole.create(user: user, role: role)
       item1 = create(:item, category: category, store: store)

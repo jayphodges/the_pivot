@@ -10,6 +10,7 @@ class User < ApplicationRecord
   validates :password, presence: :true, on: :create
   validates :address, presence: :true
   validates :full_name, presence: :true
+  validates :phone, presence: :true
   after_save :default_user_role_to_registered
 
   def self.most_active_customer

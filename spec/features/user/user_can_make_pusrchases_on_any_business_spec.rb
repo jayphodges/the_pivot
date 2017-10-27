@@ -10,7 +10,7 @@ describe "Registered User can make purchases on any business" do
     user = User.create(username: "David Bowie",
                        password: "Goblin King",
                        full_name: "Ziggy Stardust",
-                       address: "Labyrinth")
+                       address: "Labyrinth", phone: '1234567890')
 
     user_role = UserRole.create(user: user, role: role)
 
@@ -27,12 +27,6 @@ describe "Registered User can make purchases on any business" do
                        category: category,
                        store: store_2)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-
-    #visit login_path
-
-     #fill_in "session[username]", with: user.username
-     #fill_in "session[password]", with: user.password
-     #click_button "Login"
 
     expect(Order.all.count).to eq(0)
     visit "/#{store.slug}"
@@ -64,14 +58,3 @@ describe "Registered User can make purchases on any business" do
     expect(Order.all.count).to eq(1)
   end
 end
-
-# When I visit ‘/:store-name1’
-# And add an item to my cart
-# And when I visit ‘/:store-name2’
-# And add an item to my cart
-# And I click on my cart
-# My path should be ‘/cart’
-# I should see a checkout button
-# When I click on checkout
-# I should be on ‘users/:id/orders’
-# I should see my last order
