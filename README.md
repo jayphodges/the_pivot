@@ -1,86 +1,59 @@
-![Logo of the project](https://i.imgur.com/KV79Of9.png)
+### Music Emporia
+ An eCommerce, MultiTenant app with a selection of music stores with unique offerings
 
-# Music Emporium
-> An customizable eCommerce app
+### Prerequisites to Run Locally
 
-This app lets users add items to a cart and checkout. There is also admin functionality complete with a suite to add items, view metrics, and view orders.
+  * [Rails version 5.1.4](http://installrails.com/)
 
-## Installing / Getting started
+  * [Ruby version 2.4.1](https://www.ruby-lang.org/en/documentation/installation/)
 
-A quick introduction of the minimal setup you need to get this setup:
+### Running Locally
 
-First, clone the repo
+  * Clone this repo.
+  * cd into it
+  * ```bundle install```
+  * ```rake db:setup```
+  * ```rake db:seed```
+  * ```rails server```
+  * visit ```localhost:30000```
 
-```shell
-git clone git@github.com:amhursh/music_shop.git
-```
+  Keys Reguired:
+    -Twitter OminAuth
+    -AWS
+    -Twilio
 
-Next, run
+### Visit Online
 
-```shell
-bundle install
-```
+ * Launch on - [Heroku](https://ancient-tundra-62071.herokuapp.com/)
 
-Note: You may have to run that with `bundle exec`
+## Authors
 
-After you've bundled you will need to create the database and migrations
+* **Jay P Hodges** - [Github](https://github.com/jayphodges)
+* **Ricky Amparo** - [Github](https://github.com/rickyamparo)
+* **Daniel Phillips** - [Github](https://github.com/dphilla)
+* **Michael Butera** - [Github](https://github.com/buteramv)
 
-```shell
-rake db:create
-rake db:migrate
-```
+## Acknowledgments
 
-If you would like an example set of data, run
-```shell
-rake db:seed
-```
-This seed will create an administrator account with the username `admin` and password `admin`
+* Turing School of Software & Design
 
-Finally, launch the server with `rails s`
+## Authenticated API available
 
-You can visit the application locally at http://localhost:3000/
+* User login credentials required in headers [How to do this?](http://lmgtfy.com/?q=how+to+pass+headers+into+api+request)
 
-## Developing
+* Endpoints
+  * "/api/v1/most_active_customers"
+  * "/api/v1/most_expensive_orders"
+  * "/api/v1/most_sold_items"
+  * "/api/v1/top_selling_items"
+  * "/api/v1/top_selling_stores"
 
-To develop the project simply clone the repo and follow the installation steps above. The image assets are stored in `/app/assets/images`
+### Built With
 
-### Deploying / Publishing
+ * Rails, Ruby, JavaScript, JQuery, ActiveRecord, HTML, CSS, ERB, Postgresql, and Heroku.
 
-To deploy this to Heroku, simple create a new Heroku app with
-```shell
-heroku create
-```
+### Contributing
 
-And upload the master branch
-```shell
-git push heroku master
-```
+ * Want to contribute? Open an issue and join the fun.
 
-After that, migrate and seed if you so wish.
 
-## Features
-
-This application features
-* Many to many relationship between categories and items
-* Full admin functionality for creating, editing, and destroying accounts, orders, and items
-* Administrator metrics
-
-## Contributing
-
-What we would like to implement:
-* Rating system
-* Paypal integration
-* oAuth
-* Review system
-
-Please make a PR to this repo with your code. 
-
-Thank you!
-
-## Licensing
-
-One really important part: Give your project a proper license. Here you should
-state what the license is and how to find the text version of the license.
-Something like:
-
-"The code in this project is licensed under MIT license."
