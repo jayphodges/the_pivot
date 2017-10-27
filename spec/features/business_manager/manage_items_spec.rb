@@ -13,14 +13,18 @@ require 'rails_helper'
 #I should see the new edits to the item
 
 
-xdescribe "As a Business Manager" do
+describe "As a Business Manager" do
   scenario "I can edit items for my store" do
-      admin = create(:user)
+      store = create(:store)
+      Role.create(name: "registered")
+      user = create(:user)
+      role  = Role.create(name: "business manager")
+      user_role = UserRole.create(user: user, role: role)
 
       visit login_path
 
-      fill_in "session[username]", with: admin.username
-      fill_in "session[password]", with: admin.password
+      fill_in "session[username]", with: user.username
+      fill_in "session[password]", with: user.password
       click_button "Login"
 
 
@@ -30,8 +34,8 @@ xdescribe "As a Business Manager" do
 		item1 = store.items.create!(title: "Cool Item1", description: "Descrip1",
                                 price: 35.50, image: "http://lorempixel.com/400/200", category_id: category.id)
 
-    visit "/ricky-s-hoop-shop/admin/items"
 
+    visit "/ricky-s-hoop-shop/admin/items"
 
     expect(page).to have_content("Cool Item1")
 
@@ -45,7 +49,7 @@ xdescribe "As a Business Manager" do
 
     click_on ("Submit")
 
-    expect(current_path).to eq(admin_items_path)
+    expect(current_path).to eq("/#{store.slug}/admin/items")
 
     expect(page).to have_content("whatever")
     expect(page).to have_content("something else")
