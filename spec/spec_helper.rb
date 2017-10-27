@@ -1,6 +1,9 @@
 require 'simplecov'
 SimpleCov.start do
   add_filter "/spec/*"
+  add_filter "/app/channels/*"
+  add_filter "/app/mailers/*"
+  add_filter "/app/jobs/*"
 end
 
 require 'database_cleaner'
@@ -41,7 +44,7 @@ RSpec.configure do |config|
 
   config.after(:each) do
    DatabaseCleaner.clean
-  end 
+  end
 
   # rspec-mocks config goes here. You can use an alternate test double
   # library (such as bogus or mocha) by changing the `mock_with` option here.
