@@ -4,11 +4,9 @@ class StoresController < ApplicationController
     @store = Store.find_by(slug: params[:store_name])
     if @store.nil?
       @store = Store.find(params[:format])
-    end
-    if @store == nil
+    elsif @store == nil
       @store = Store.find(params[:store_name])
     end
-    @store
   end
 
   def edit
