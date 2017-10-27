@@ -39,6 +39,8 @@ describe "A Business Admin can manage orders" do
 
       click_on "Mark as Paid"
 
+      expect(current_path).to eq("/#{store.slug}/orders")
+    
       within first('.order') do
         expect(page).to have_content("#{order.id}")
         expect(page).to have_content("paid")

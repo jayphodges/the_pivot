@@ -1,3 +1,13 @@
+<p>
+  * In order to be able to reset your password *
+</p>
+<p>
+  * please enter your phone number as follows *
+</p>
+<p>
+  * 1235551234 *
+</p>
+
 <%= form_for @user do |f| %>
   <%= f.label :username %>
   <%= f.text_field :username %>
@@ -10,6 +20,9 @@
 
   <%= f.label :address %>
   <%= f.text_field :address %>
+
+  <%= f.label :phone %>
+  <%= f.text_field :phone %>
 
   <%= f.submit "Submit Changes" %>
 <% end %>
