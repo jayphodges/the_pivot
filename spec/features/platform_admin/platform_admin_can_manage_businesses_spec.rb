@@ -16,8 +16,8 @@ describe "Platform Admin can manage stores" do
                        price: 12.0,
                        image: "imagestring",
                        category: @category,
-                       store: @store)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
+                       store: @store)
   end
 
   it "admin manages an item for a store" do
