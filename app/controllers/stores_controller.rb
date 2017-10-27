@@ -2,6 +2,9 @@ class StoresController < ApplicationController
 
   def show
     @store = Store.find_by(slug: params[:store_name])
+    if @store.nil?
+      @store = Store.find(params[:format])
+    end
     if @store == nil
       @store = Store.find(params[:store_name])
     end
