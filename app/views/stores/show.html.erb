@@ -1,5 +1,7 @@
-<%= link_to "Edit Business", "/#{@store.slug}/edit" %>
-<%= link_to "Manage Admins", "/#{@store.slug}/admins" %>
+<% if current_user.business_admin? || current_user.platform_admin? %>
+  <%= link_to "Edit Business", "/#{@store.slug}/edit" %>
+  <%= link_to "Manage Admins", "/#{@store.slug}/admins" %>
+<% end %>
 
 <div class="category-show-title-div">
   <h3 class="category-show-title center-text"><%= @store.name %></h3>
