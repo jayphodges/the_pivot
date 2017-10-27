@@ -14,5 +14,7 @@ FactoryBot.define do
     sequence :address do |i|
     	"#{i} streetname, street"
     end
+
+    phone '1234567890'
   end
 end
