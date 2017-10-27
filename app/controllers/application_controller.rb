@@ -4,10 +4,6 @@ class ApplicationController < ActionController::Base
   before_action :set_cart
   before_action :authorize!
 
-  def current_admin?
-    current_user && current_user.admin?
-  end
-
   def logged_in?
     !current_user.nil?
   end

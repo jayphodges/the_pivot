@@ -4,6 +4,8 @@ SimpleCov.start do
   add_filter "/app/channels/*"
   add_filter "/app/mailers/*"
   add_filter "/app/jobs/*"
+  add_filter "/app/models/message_sender.rb"
+  add_filter "/app/models/confirmation_sender.rb"
 end
 
 require 'database_cleaner'

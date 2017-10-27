@@ -7,17 +7,6 @@ class Admin::ItemsController < Admin::BaseController
     @item = Item.new
   end
 
-  def create
-    @item = Item.new(item_params)
-    if @item.save
-      flash[:success] = "#{@item.title} has been created."
-      redirect_to item_path(@item)
-    else
-      flash[:message] = "Item has not been created"
-      redirect_to new_admin_item_path
-    end
-  end
-
   def edit
     @item = Item.find(params[:id])
   end
