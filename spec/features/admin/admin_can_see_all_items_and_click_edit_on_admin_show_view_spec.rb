@@ -9,7 +9,8 @@ describe "Admin visits /admin/dashboard" do
         admin = User.create(username: "David Bowie",
                            password: "Goblin King",
                            full_name: "Ziggy Stardust",
-                           address: "Labyrinth")
+                           address: "Labyrinth",
+                           phone: '1234567890')
 
         user_role = UserRole.create(user: admin, role: role)
         category = create(:category, title: "Guitars")
